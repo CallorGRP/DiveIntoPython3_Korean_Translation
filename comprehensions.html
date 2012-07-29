@@ -58,8 +58,6 @@ body{counter-reset:h1 3}
 </ol>
 
 <p>
-
-
 Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토리 위치를 메모리에 올려두고 필요할때마다 그 위치를 참조하여 사용합니다. 이를 현재 작업 디렉토리라고 말하는데요, 이 디렉토리는 앞에서 예로 들었던 모듈을 검색하는데도 사용합니다. 사실, Python Shell 이건, 명령행에서 파이썬 스크립트를 실행하건, 웹서버에서 파이썬 <abbr>CGI</abbr> 스크립트를 돌리건 간에 관계없이 현재 작업 디렉토리는 언제나 메모리에 상주하며 파이썬에 의해 필요할 때마다 사용됩니다.
 
 <p>
@@ -92,9 +90,11 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 
 </ol>
 
-<h3 id=ospath>Working With Filenames and Directory Names</h3>
+<h3 id=ospath>파일명과 디렉토리명 다루기</h3>
 
-<p>While we&#8217;re on the subject of directories, I want to point out the <code>os.path</code> module. <code>os.path</code> contains functions for manipulating filenames and directory names.
+<p>
+
+	우리가 디렉토리에 대해 배우는 동안은 <code>os.path</code> 모듈에 주목해주세요. <code>os.path</code> 모듈은 파일명과 디렉토리명을 다루기 위한 함수를 갖고 있습니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os</kbd>
@@ -106,14 +106,30 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 <samp>c:\Users\pilgrim</samp>
 <a><samp class=p>>>> </samp><kbd class=pp>print(os.path.join(os.path.expanduser('~'), 'diveintopython3', 'examples', 'humansize.py'))</kbd>  <span class=u>&#x2463;</span></a>
 <samp>c:\Users\pilgrim\diveintopython3\examples\humansize.py</samp></pre>
+
+
 <ol>
-<li>The <code>os.path.join()</code> function constructs a pathname out of one or more partial pathnames. In this case, it simply concatenates strings.
-<li>In this slightly less trivial case, calling the <code>os.path.join()</code> function will add an extra slash to the pathname before joining it to the filename. It&#8217;s a backslash instead of a forward slash, because I constructed this example on Windows. If you replicate this example on Linux or Mac OS X, you&#8217;ll see a forward slash instead. Don&#8217;t fuss with slashes; always use <code>os.path.join()</code> and let Python do the right thing.
-<li>The <code>os.path.expanduser()</code> function will expand a pathname that uses <code>~</code> to represent the current user&#8217;s home directory. This works on any platform where users have a home directory, including Linux, Mac OS X, and Windows. The returned path does not have a trailing slash, but the <code>os.path.join()</code> function doesn&#8217;t mind.
-<li>Combining these techniques, you can easily construct pathnames for directories and files in the user&#8217;s home directory. The <code>os.path.join()</code> function can take any number of arguments. I was overjoyed when I discovered this, since <code>addSlashIfNecessary()</code> is one of the stupid little functions I always need to write when building up my toolbox in a new language. <em>Do not</em> write this stupid little function in Python; smart people have already taken care of it for you.
+
+<li>
+	<code>os.path.join()</code> 함수는 하나 또는 그 이상의 파일과 디렉토리 경로를 조합하는데 사용합니다.
+
+<li>
+	위의 구문과 유사한 이 예제는 <code>os.path.join()</code> 함수가 디렉토리 경로 구분자인 '\'' 문자를 자동으로 추가해주는 것을 보여줍니다. 윈도우 머신에서 실행되었기 때문에 백슬래쉬 입니다. 만약 리눅스나 맥 PC 에서 실행하는 경우엔 백슬래쉬가 아닌 슬래쉬('/') 문자가 추가됩니다. 하지만, 슬래쉬인지 백슬래쉬인지에 대해 너무 신경 쓰지 않아도 됩니다. 파이썬이 OS 에 맞는 경로 구분자를 알아서 덧붙여 주니까요.
+
+
+<li>
+	<code>os.path.expanduser()</code> 함수는 현재 사용자의 홈 디렉토리를 알아낼때 사용하고 인자로 ~ 문자를 받습니다. 윈도우나 리눅스, 맥 OS 처럼 사용자의 홈 디렉토리가 생성되는 플랫홈에서 이 함수는 언제나 해당 디렉토리를 반환합니다. 반환되는 디렉토리 경로 맨 끝에 디렉토리 구분자가 붙지 않지만, <code>os.path.join()</code> 함수를 사용하는한 걱정하지 않아도 됩니다.
+
+
+<li>
+
+	윗 라인의 예제에서 배운 함수를 총동원한 예제입니다. <code>os.path.join()</code> 함수의 인자는 원하는 만큼 지정할 수 있습니다. 다른 프로그래밍 언어를 쓰다보면 항상 <code>addSlashIfNecessary()</code> 같은 함수를 직접 만들어 사용해야 하다 보니 귀찮았는데, 이 함수를 보고 얼마나 기뻤는지 모릅니다. 파이썬에서는 그런 고민이 더 이상 필요 없어졌습니다. 
+
+
 </ol>
 
-<p><code>os.path</code> also contains functions to split full pathnames, directory names, and filenames into their constituent parts.
+<p>
+	<code>os.path</code> 모듈에는 파일과 디렉토리명을 합치는 것 뿐만 아니라 나눌 수도 있습니다. 
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>pathname = '/Users/pilgrim/diveintopython3/examples/humansize.py'</kbd>
@@ -129,19 +145,47 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 <samp class=pp>'humansize'</samp>
 <samp class=p>>>> </samp><kbd class=pp>extension</kbd>
 <samp class=pp>'.py'</samp></pre>
+
+
 <ol>
-<li>The <code>split</code> function splits a full pathname and returns a tuple containing the path and filename.
-<li>Remember when I said you could use <a href=native-datatypes.html#multivar>multi-variable assignment</a> to return multiple values from a function? The <code>os.path.split()</code> function does exactly that. You assign the return value of the <code>split</code> function into a tuple of two variables. Each variable receives the value of the corresponding element of the returned tuple.
-<li>The first variable, <var>dirname</var>, receives the value of the first element of the tuple returned from the <code>os.path.split()</code> function, the file path.
-<li>The second variable, <var>filename</var>, receives the value of the second element of the tuple returned from the <code>os.path.split()</code> function, the filename.
-<li><code>os.path</code> also contains the <code>os.path.splitext()</code> function, which splits a filename and returns a tuple containing the filename and the file extension.  You use the same technique to assign each of them to separate variables.
+
+<li>
+
+	<code>split</code> 함수는 파일의 전체 경로를 입력으로 받아 파일과 그 파일이 속해있는 디렉토리로 나눠서 반환해줍니다. 이때 반환되는 데이터의 형식은 튜플입니다.
+
+
+<li>
+
+	파이썬에서는 <a href=native-datatypes.html#multivar>함수가 여러 개의 값을 리턴할 때, 이를 또한 여러 개의 변수에 담을 수 있다</a>고 했던 것 기억하시나요? <code>os.path.split()</code> 함수가 바로 그런 함수입니다. <code>split</code> 함수가 반환하는 파일과 경로명을 튜플 형태의 변수에 담을 수 있습니다. 순서 또한 그대로 지켜집니다.
+
+
+<li>
+
+	첫번째 변수인 <var>dirname</var> 에는 <code>os.path.split()</code> 함수가 반환하는 튜플 중 첫번째 원소인 파일 경로가 담깁니다.
+<li>
+
+	두번째 변수인 <var>filename</var>에는 <code>os.path.split()</code> 함수가 반환하는 튜플 중 두번째 원소인 파일명이 담깁니다.
+
+<li>
+
+	<code>os.path</code> 모듈에는 <code>splitext()</code> 라는 함수도 있습니다. 확장자를 가진 파일명을 입력으로 받아 확장자를 제외한 진짜(?) 파일이름과 파일 확장자를 튜플로 반환합니다.
+
+
 </ol>
 
-<h3 id=glob>Listing Directories</h3>
+<h3 id=glob>디렉토리 조회하기</h3>
 
-<p>The <code>glob</code> module is another tool in the Python standard library. It&#8217;s an easy way to get the contents of a directory programmatically, and it uses the sort of wildcards that you may already be familiar with from working on the command line.
+<p>
 
-<aside>The <code>glob</code> module uses shell-like wildcards.</aside>
+	<code>glob</code> 모듈 또한 파이썬 표준 라이브러리 중 하나로 디렉토리 내용을 검색하는데 사용됩니다. glob 모듈 내의 함수는 와일드카드 문자 (*) 를 이용할 수 있으므로, 더욱 간편하게 디렉토리 내용을 검색할 수 있습니다.
+
+
+
+<aside>
+
+	<code>glob</code> 모듈은 shell 방식의 와일드카드 문자를 이용합니다.</aside>
+
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>os.chdir('/Users/pilgrim/diveintopython3/')</kbd>
@@ -169,15 +213,31 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
  'romantest7.py',
  'romantest8.py',
  'romantest9.py']</samp></pre>
+
+
 <ol>
-<li>The <code>glob</code> module takes a wildcard and returns the path of all files and directories matching the wildcard. In this example, the wildcard is a directory path plus &#8220;<code>*.xml</code>&#8221;, which will match all <code>.xml</code> files in the <code>examples</code> subdirectory.
-<li>Now change the current working directory to the <code>examples</code> subdirectory. The <code>os.chdir()</code> function can take relative pathnames.
-<li>You can include multiple wildcards in your glob pattern. This example finds all the files in the current working directory that end in a <code>.py</code> extension and contain the word <code>test</code> anywhere in their filename.
+
+<li>
+
+	<code>glob</code> 모듈은 와일드카드 문자를 입력으로 받아 이에 해당하는 모든 파일과 디렉토리 경로를 반환합니다. 이 예제에서는 <code>examples</code> 폴더 내에 있는 <code>xml</code> 로 끝나는 모든 파일들을 조회합니다.
+
+
+<li>
+
+	현재 작업 디렉토리를 <code>examples</code> 폴더로 변경합니다. <code>os.chdir()</code> 함수의 인자로는 절대 경로 뿐 아니라, 상대 경로를 줘도 됩니다.
+
+<li>
+
+	인자를 지정할때 여러 개의 와일드카드 문자를 사용해도 됩니다. 이 예제는 현재 작업 디렉토리에서 <code>py</code> 확장자를 가진 파일들중 <code>test</code> 라는 문자열이 포함된 파일의 리스트를 반환합니다.
+
 </ol>
 
-<h3 id=osstat>Getting File Metadata</h3>
+<h3 id=osstat>파일 속성 조회하기</h3>
 
-<p>Every modern file system stores metadata about each file: creation date, last-modified date, file size, and so on. Python provides a single <abbr>API</abbr> to access this metadata. You don&#8217;t need to open the file; all you need is the filename.
+<p>
+
+	현대 파일 시스템은 각 파일을 저장시 파일과 관련된 메타 정보 또한 함께 저장합니다. 메타정보의 예로는 파일 생성일, 최종 수정일, 크기 등이 있습니다. 파이썬에서 이 메타정보를 조화하는 법은 <abbr>API</abbr> 하나만 알면 됩니다. 파일을 열고 닫을 필요도 없고, 파일 명만 인자로 넘겨주면 됩니다.
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os</kbd>
@@ -192,24 +252,60 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
   tm_min=25, tm_sec=44, tm_wday=0, tm_yday=194, tm_isdst=1)</samp>
 </pre>
 <ol>
-<li>The current working directory is the <code>examples</code> folder.
-<li><code>feed.xml</code> is a file in the <code>examples</code> folder. Calling the <code>os.stat()</code> function returns an object that contains several different types of metadata about the file.
-<li><code>st_mtime</code> is the modification time, but it&#8217;s in a format that isn&#8217;t terribly useful. (Technically, it&#8217;s the number of seconds since the Epoch, which is defined as the first second of January 1st, 1970. Seriously.)
-<li>The <code>time</code> module is part of the Python standard library. It contains functions to convert between different time representations, format time values into strings, and fiddle with timezones.
-<li>The <code>time.localtime()</code> function converts a time value from seconds-since-the-Epoch (from the <code>st_mtime</code> property returned from the <code>os.stat()</code> function) into a more useful structure of year, month, day, hour, minute, second, and so on. This file was last modified on July 13, 2009, at around 5:25 PM.
+
+<li>
+	현재 작업 디렉토리는 <code>examples</code> 폴더입니다.
+
+<li>
+
+	
+	example 폴더안에 있는 <code>feed.xml</code> 파일을 대상으로 <code>os.stat()</code> 함수를 호출합니다. 이 함수는 <code>feed.xml</code> 파일의 메타 정보를 담은 객체 하나를 반환합니다.
+
+
+<li>
+	
+	<code>st_mtime</code> 은 파일의 수정시각을 가지고 있습니다. 하지만, 보시다시피 결과값이 눈에 쉽게 들어오지는 않네요. (사실, 결과로 반환되는 저 숫자는 1970 년 1월 1일부터 현재까지의 시간을 초 단위로 변경한 값입니다. 계산해 보세요. 진짜예요.)
+
+<li>
+	
+
+	위의 결과 값을 좀더 알아보기 쉽게 하려면 <code>time</code> 모듈을 사용해야 합니다. 이 모듈 또한 파이썬 표준 라이브러리이고요. 이 모듈 안에는 여러 종류의 시간 포맷을 문자열로 변경해준다거나, 원하는 타임 존에 맞춰 알아보기 쉽도록 변경해주는 함수들이 잔뜩 들어 있습니다.
+
+
+<li>
+	
+
+	time 모듈 안에 있는 <code>localtime()</code> 함수는 3번에서 얻어진 결과값 (1970년 1월 1일부터 현재까지 지난 시각)을 연도, 월, 일, 시, 분, 초 등을 가진 객체에 담아 반환합니다. 이 파일은 2009년 1월 13일 5:25분 경에 수정되었네요.
+
+
 </ol>
 
 <pre class=screen>
-# continued from the previous example
+# 앞에 예제에서 이어집니다.
 <a><samp class=p>>>> </samp><kbd class=pp>metadata.st_size</kbd>                              <span class=u>&#x2460;</span></a>
 <samp class=pp>3070</samp>
 <samp class=p>>>> </samp><kbd class=pp>import humansize</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>humansize.approximate_size(metadata.st_size)</kbd>  <span class=u>&#x2461;</span></a>
 <samp class=pp>'3.0 KiB'</samp></pre>
+
+
+
 <ol>
-<li>The <code>os.stat()</code> function also returns the size of a file, in the <code>st_size</code> property. The file <code>feed.xml</code> is <code>3070</code> bytes.
-<li>You can pass the <code>st_size</code> property to the <a href=your-first-python-program.html#divingin><code>approximate_size()</code> function</a>.
+
+<li>
+	
+	<code>os.stat()</code> 함수는 파일의 크기도 반환하는데, 이는 <code>st_size</code> 프로퍼티에 담겨있습니다.  <code>feed.xml</code> 파일의 크기는 <code>3070</code> 바이트 입니다
+
+
+<li>
+	
+
+	<code>st_size</code> 프로퍼티를 <a href=your-first-python-program.html#divingin><code>approximate_size()</code> 함수</a>에 인자로 넘겨서 좀 더 읽기 쉬운 포맷으로 변경할 수도 있습니다.
+
+
 </ol>
+
+
 
 <h3 id=abspath>Constructing Absolute Pathnames</h3>
 
