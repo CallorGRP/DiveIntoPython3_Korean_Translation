@@ -307,9 +307,13 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 
 
 
-<h3 id=abspath>Constructing Absolute Pathnames</h3>
+<h3 id=abspath>파일 절대 경로 구하기</h3>
 
-<p>In <a href=#osstat>the previous section</a>, the <code>glob.glob()</code> function returned a list of relative pathnames. The first example had pathnames like <code>'examples\feed.xml'</code>, and the second example had even shorter relative pathnames like <code>'romantest1.py'</code>. As long as you stay in the same current working directory, these relative pathnames will work for opening files or getting file metadata. But if you want to construct an absolute pathname&nbsp;&mdash;&nbsp;<i>i.e.</i> one that includes all the directory names back to the root directory or drive letter&nbsp;&mdash;&nbsp;then you&#8217;ll need the <code>os.path.realpath()</code> function.
+<p>
+
+	<a href=#glob>앞에서</a> <code>glob.glob()</code> 함수로 파일을 검색하는 예를 보았었죠? 첫번째 예에서는 <code>'examples\feed.xml'</code> 를 인자로, 두번째 예에서는 *test*.py 를 인자로 주었고, 인자에 해당 하는 검색 결과값인 파일의 상대 경로가 담긴 리스트가 반환됬습니다. 사실 결과값으로 반환된 파일들과 동일한 경로에서 작업을 한다는 조건하에서는, 얻어진 결과를 이용해 파일을 여는 등의 추가적인 작업이 가능합니다만, example 폴더가 아닌 다른 곳에서 Python이 실행됬다면, 결과값은 무용지물입니다. 이런 경우에는 상대경로가 아닌 절대 경로가 필요합니다. <code>os.path.realpath()</code> 함수가 바로 이럴 때 필요한 함수입니다.
+
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os</kbd>
@@ -320,11 +324,13 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 
 <p class=a>&#x2042;
 
-<h2 id=listcomprehension>List Comprehensions</h2>
+<h2 id=listcomprehension>리스트 컴프리헨션 (List Comprehension)</h2>
 
-<aside>You can use any Python expression in a list comprehension.</aside>
+<aside>리스트 컴프리헨션내에서는 어떤 표현식도 사용 가능합니다.</aside>
 
-<p>A <dfn>list comprehension</dfn> provides a compact way of mapping a list into another list by applying a function to each of the elements of the list.
+<p>
+	리스트 컴프리헨션(<dfn>list comprehension</dfn>)이란 특정 리스트의 각각의 원소에 어떤 함수를 적용한 후 그 결과를 받아 새로운 리스트로 만들 수 있는 아주 간편한 방법입니다. 
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_list = [1, 9, 8, 4]</kbd>
@@ -335,13 +341,23 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 <a><samp class=p>>>> </samp><kbd class=pp>a_list = [elem * 2 for elem in a_list]</kbd>  <span class=u>&#x2462;</span></a>
 <samp class=p>>>> </samp><kbd>a_list</kbd>
 <samp class=pp>[2, 18, 16, 8]</samp></pre>
+
+
 <ol>
-<li>To make sense of this, look at it from right to left. <var>a_list</var> is the list you&#8217;re mapping. The Python interpreter loops through <var>a_list</var> one element at a time, temporarily assigning the value of each element to the variable <var>elem</var>. Python then applies the function <code><var>elem</var> * 2</code> and appends that result to the returned list.
-<li>A list comprehension creates a new list; it does not change the original list.
-<li>It is safe to assign the result of a list comprehension to the variable that you&#8217;re mapping. Python constructs the new list in memory, and when the list comprehension is complete, it assigns the result to the original variable.
+
+<li>
+	리스트 컴프리헨션은 오른쪽에서 왼쪽으로 읽으면 이해가 쉽습니다. <var>a_list</var> 는 어떤 함수를 적용하려는 대상이 되는 리스트입니다. 파이썬이 이 리스트 컴프리헨션을 처리하는 방식은 <var>a_list</var> 내부를 순회하면서 각각의 원소를 elem 이라는 임시변수에 저장합니다. 그리고 저장된 임시변수를 대상으로 <code><var>elem</var> * 2</code> 라는 함수를 적용후 그 결과를 반환되는 리스트에 계속하여 추가(append)합니다.
+
+<li>
+	리스트 컴프리헨션은 결과값으로 새로운 리스트를 반환합니다. 원래 리스트는 변경하지 않아요. 
+<li>
+	결과값을 사용하려면 변수에 저장해 두는 것이 좋습니다. 이 실행 예에서는 기존 a_list 의 값이 리스트 컴프리헨션에 의해 반환된 값으로 변경되었습니다. 
+
 </ol>
 
-<p>You can use any Python expression in a list comprehension, including the functions in the <code>os</code> module for manipulating files and directories.
+
+<p>
+	리스트 컴프리헨션에서는 어떠한 파이썬 표현식도 쓸 수 있습니다. 따라서 다음에 나오는 예제에서처럼 <code>os</code> 표준 라이브러리 내에 있는 파일과 디렉토리를 다루는 함수들도 리스트 컴프리헨션 안에서 사용할 수 있습니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -352,12 +368,21 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
  'c:\\Users\\pilgrim\\diveintopython3\\examples\\feed-ns0.xml',
  'c:\\Users\\pilgrim\\diveintopython3\\examples\\feed.xml']</samp>
 </pre>
+
 <ol>
-<li>This returns a list of all the <code>.xml</code> files in the current working directory.
-<li>This list comprehension takes that list of <code>.xml</code> files and transforms it into a list of full pathnames.
+
+<li>
+	현재 작업 디렉토리에 있는 파일중 확장자가 <code>.xml</code>인 파일들을 리스트 형태로 가져옵니다.
+
+<li>
+	확장자가 <code>.xml</code> 인 파일들의 목록을 가져와서, 이를 파일 전체경로로 변환한 다음 그 결과값을 리스트 형태로 반환합니다. 
+
 </ol>
 
-<p>List comprehensions can also filter items, producing a result that can be smaller than the original list.
+
+<p>
+	리스트 컴프리헨션의 다른 예로, 원래 리스트에서 원하는 아이템만 뽑아내 (filter) 새로운 리스트를 구성할 때도 사용하면 좋습니다.
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -370,10 +395,16 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
  'romantest9.py']</samp>
 </pre>
 <ol>
-<li>To filter a list, you can include an <code>if</code> clause at the end of the list comprehension. The expression after the <code>if</code> keyword will be evaluated for each item in the list. If the expression evaluates to <code>True</code>, the item will be included in the output. This list comprehension looks at the list of all <code>.py</code> files in the current directory, and the <code>if</code> expression filters that list by testing whether the size of each file is greater than <code>6000</code> bytes. There are six such files, so the list comprehension returns a list of six filenames.
+
+<li>
+	원하는 아이템을 뽑아낼 때는 리스트 컴프리헨션 뒤에 <code>if</code> 문을 사용합니다. 이 <code>if</code> 문이 리스트 각각의 아이템에 적용되어 주어진 조건에 맞는지를 판단하고, 참인 경우에만 반환 결과 리스트에 그 값이 포함됩니다. 이 예에서는 <code>.py</code> 라는 확장자를 가진 모든 파일에 대해 그 크기가 <code>6000</code> 바이트가 넘는 경우에만 결과값에 반영됩니다.
+
 </ol>
 
-<p>All the examples of list comprehensions so far have featured simple expressions&nbsp;&mdash;&nbsp;multiply a number by a constant, call a single function, or simply return the original list item (after filtering). But there&#8217;s no limit to how complex a list comprehension can be.
+
+<p>
+	자. 지금까지 본 예제들은 숫자를 곱하거나, 단일 함수를 호출하는 등 비교적 간단한 것들이었습니다. 좀 더 복잡한 예제들도 보죠.
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -387,8 +418,16 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
  ('3.3 KiB', 'feed-ns0.xml'),
  ('3.0 KiB', 'feed.xml')]</samp></pre>
 <ol>
-<li>This list comprehension finds all the <code>.xml</code> files in the current working directory, gets the size of each file (by calling the <code>os.stat()</code> function), and constructs a tuple of the file size and the absolute path of each file (by calling the <code>os.path.realpath()</code> function).
-<li>This comprehension builds on the previous one to call the <a href=your-first-python-program.html#divingin><code>approximate_size()</code> function</a> with the file size of each <code>.xml</code> file.
+
+
+<li>
+	이 리스트 컴프리헨션은 현재 작업 디렉토리에 있는 <code>.xml</code> 확장자 파일을 모두 검색해서, 이 파일의 크기(<code>os.stat()</code> 호출)와 절대 경로(<code>os.path.realpath()</code> 호출) 의 튜플로 만든 후 리스트로 반환합니다. 
+
+
+<li>
+	이 예제는 앞의 예제와 비슷한데, 반환되는 파일의 크기에 <a href=your-first-python-program.html#divingin><code>approximate_size()</code> 함수</a>를 적용하고 있습니다. 
+
+
 </ol>
 
 <p class=a>&#x2042;
