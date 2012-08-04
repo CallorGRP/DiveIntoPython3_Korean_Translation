@@ -16,7 +16,7 @@ body{counter-reset:h1 3}
 <blockquote class=q>
 <p><span class=u>&#x275D;</span> 
 
-인간의 상상력은 존재하지 않는 가상의 것을 그릴 때가 아니라, 실제로 존재하는 뭔가를 이해하려 할 때 극대화된다.
+인간의 상상력이란 존재하지 않는 가상의 것을 그릴 때가 아니라, 실존하는 뭔가를 이해하려 노력할때 극대화된다.
 
 	<span class=u>&#x275E;</span><br>&mdash; <a href=http://en.wikiquote.org/wiki/Richard_Feynman>Richard Feynman</a>
 </blockquote>
@@ -24,14 +24,14 @@ body{counter-reset:h1 3}
 <h2 id=divingin>Diving In</h2>
 <p class=f>
 
-최신 프로그래밍 언어들은 저마다 하나씩 멋진 새로운 기능을 가지고 등장하곤 합니다. 이런 기능을 통해 뭔가 복잡한 문제도 짜잔하고 단 몇 줄로 손쉽게 해결해내기도 하지요. 그런 기능이 인기의 원동력이 되기도 합니다. 흠. 그런데 다룰줄아는 언어라곤 C 나 C++ 밖에 없나요? 하루 종일 회사에서 사용해야 하는 코드엔 멋진 기능이란 눈씻고 찾아봐도 없고, 코딩도 복잡하고, 심지어 지루하기까지 한가요? 자자. 일단, 흥분을 가라앉히시고요. 아마 어쩌면 여러분이 쓰고있는 언어의 창시자께서는 여러분이 미쳐 생각못하지 못했던, 뭔가 복잡한 문제를 해결하려고 더 많은 시간을 투자했을런지도 모릅니다. 그러니 너무 실망마시구요. 아무튼요. 이번 장에서는 파이썬의 핫한 기능 가운데 하나인 comprehension에 대해 알려드리겠습니다. comprehension은 list comprehension, dictionary comprehension, set comprehension 이렇게 3 가지로 나눌수 있는데, 동작 원리는 모두 비슷하기 때문에 핵심 개념만 파악하면 다른 것도 금방 이해할 수 있습니다. comprehension 을 본격적으로 다루기에 앞서, 파이썬 3에서 파일 시스템에 있는 디렉토리와 파일을 어떤 방식으로 다루는지 잠깐 살펴보고 넘어갑시다.
+최신 프로그래밍 언어들은 저마다 하나씩 멋진 기능으로 한껏 치장한채 등장하곤 합니다. 복잡한 문제도 단 두 세 줄의 코딩으로 손쉽게 해결해내는 그런 기능 말입니다. 흠. 그런데 다룰 줄 아는 언어라곤 C 나 C++ 밖에 없으신가요? 하루 종일 회사에서 사용해야 하는 언어엔 멋진 기능이란 눈씻고 찾아봐도 없고, 문법은 복잡하고, 심지어 코딩하다 졸리기까지 한가요? 자자. 일단, 흥분을 가라앉히시고요. 아마 어쩌면 여러분이 사용중인 언어의 창시자께서는 여러분이 미쳐 생각하지 못했던, 뭔가 복잡한 문제를 해결하는데 더 많은 시간을 투자했을런지도 모릅니다. 그러니 사용하는 언어를 너무 미워하진 마세요. 아무튼요. 이번 장에서는 파이썬의 멋진 기능 가운데 하나인 comprehension에 대해 알아보겠습니다. comprehension은 우선 list comprehension, dictionary comprehension, set comprehension 이렇게 3 가지 종류로 나눌 수 있습니다. 하지만, 동작 원리는 비슷하기 때문에 한 가지의 핵심 개념만 파악하면 다른 것들도 금방 이해할 수 있습니다. comprehension 을 본격적으로 다루기에 앞서, 파이썬 3에서는 파일 시스템의 디렉토리와 파일을 어떤 방식으로 다루는지 잠깐 살펴보고 넘어갑시다.
 
 <p class=a>&#x2042;
 
 <h2 id=os>파일과 디렉토리 다루기</h2>
 
 <p>
-파이썬 3에는 <code>os</code> 라는 모듈이 있습니다. os는 아시다시피 운영체제를 의미하는 Operating System 의 약자입니다. 이름이 의미하듯, 운영체제에 관련된 정보를 다루는 모듈에 걸맞게 정말 어마어마한 숫자의 함수들이 이 <a href=http://docs.python.org/3.1/library/os.html><code>os</code></a> 모듈 아래 또아리를 틀고 있습니다. 이 모듈안에 있는 함수들을 이용하면, 디렉토리나 파일부터 프로세스 그리고 환경변수에 이르기까지, 운영체제가 가지고 있는 삼라만상의 다양한 정보를 가져오고, 조작할 수 있습니다. 한편, 컴퓨터 세상엔 윈도우나 리눅스를 제외하고도 수 많은 운영체제들이 있습니다. 파이썬은 <a href=installing-python.html>다양한 운영체제를 지원</a>합니다. 그리고, 되도록이면 파이썬 소스코드를 변경하지 않아도 여러 운영체제에서 동일하게 동작할 수 있도록 최선을 다했습니다. 하지만, 때로는 운영체제의 커널 저 깊은 곳에서 서로 다르게 동작하는 것들도 있었습니다. 그런 부분까지는 파이썬도 어떻게 할 수가 없었구요. 하는 수 없이 파이썬 코드가 달라질 수도 있습니다.  그 점은 미리 염두에 두셨으면 좋겠네요.
+파이썬 3에는 <code>os</code> 라는 모듈이 있습니다. os는 아시다시피 운영체제를 의미하는 Operating System 의 약자이고, 모듈 이름이 의미하듯, os 에 관련된 모듈임을 짐작하실 수 있겠죠? 운영체제에 관련된 정보를 다루는 모듈에 걸맞게 정말 어마어마한 숫자의 함수들이 이 <a href=http://docs.python.org/3.1/library/os.html><code>os</code></a> 모듈 아래 또아리를 틀고 있습니다. os 모듈안에 있는 함수들을 이용하면, 디렉토리나 파일부터 프로세스 그리고 환경변수에 이르기까지, 운영체제가 가지고 있는 삼라만상의 다양한 정보를 가져오고, 조작할 수 있습니다. 아시다시피, 컴퓨터 세상엔 윈도우나 리눅스를 제외하고도 수 많은 운영체제들이 있습니다. 그 많은 운영체제를 파이썬이 모두 지원할 수 있나요? 저의 대답은 <a href=installing-python.html>파이썬은 다양한 운영체제를 지원합니다</a> 입니다. 되도록이면 파이썬 코드를 변경하지 않아도 여러 운영체제에서 동일하게 동작할 수 있도록 최선을 다했습니다. 하지만, 때로는 운영체제의 커널 저 깊은 곳에서 서로 다르게 동작하는 것들도 있었습니다. 그런 부분까지는 파이썬도 어떻게 할 수가 없었구요. 이럴 때는 하는 수 없이 파이썬 코드가 달라져야 할 수도 있습니다.  그 점은 미리 염두에 두셨으면 좋겠네요.
 
 <h3 id=getcwd>현재 작업 디렉토리</h3>
 
@@ -46,7 +46,7 @@ body{counter-reset:h1 3}
 
 </ol>
 
-<aside>언제나 현재 작업 디렉토리가 존재 한답니다.</aside>
+<aside>파이썬엔 언제나 현재 작업 디렉토리라는 개념이 있습니다.</aside>
 
 <p>
 만약 Python Shell이 자신이 실행되고 있는 현재 디렉토리 위치를 알 수없다면, 위에 언급한 단계중 첫 번째인 import 에서부터 <code>ImportError</code>라는 에러가 발생할 겁니다. 휴. 시작부터 좌절모드군요. 하지만, 잠깐만요. 입장을 바꿔서 여러분이 Python Shell이 되었다고 한번 생각해보세요. import할 때 당연히 어디에서부터 모듈을 찾아야 할지를 알아야 하지 않겠습니까? 파이썬에서는 이를 위해 <a href=your-first-python-program.html#importsearchpath>the import search path</a> 를 이용합니다. 만약 앞에서 예로 들었던 <code>examples</code> 이라는 폴더가 import search path 에 없다면, 그안에 있는 모듈도 찾지 못하는 것은 당연지사죠. 생각해보면 다른 언어에서도 크게 다르지 않습니다. C++ 나 Java에서 라이브러리 안에 있는 함수를 호출하려면 library path를 시스템 환경변수 또는 작업 환경 등록변수로 등록해줘야 합니다. 그것과 동일한 이치입니다. 따라서 파이썬에서는 이를 위해 아래 두 가지 옵션 가운데 하나를 해주시면 됩니다.
@@ -324,7 +324,7 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 
 <p class=a>&#x2042;
 
-<h2 id=listcomprehension>리스트 컴프리헨션 (List Comprehension)</h2>
+<h2 id=listcomprehension>List 컴프리헨션</h2>
 
 <aside>리스트 컴프리헨션내에서는 어떤 표현식도 사용 가능합니다.</aside>
 
@@ -432,9 +432,12 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 
 <p class=a>&#x2042;
 
-<h2 id=dictionarycomprehension>Dictionary Comprehensions</h2>
+<h2 id=dictionarycomprehension>Dictionary 컴프리헨션</h2>
 
-<p>A <dfn>dictionary comprehension</dfn> is like a list comprehension, but it constructs a dictionary instead of a list.
+
+<p><dfn>dictionary 컴프리헨션</dfn>은 list 컴프리헨션과 거의 흡사합니다. 차이점은 실행 후 결과로 리스트 대신 딕셔너리를 반환하는 것 뿐입니다.
+
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob</kbd>
@@ -454,16 +457,37 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
  'pluraltest4.py']</samp>
 <a><samp class=p>>>> </samp><kbd class=pp>metadata_dict['alphameticstest.py'].st_size</kbd>                     <span class=u>&#x2465;</span></a>
 <samp class=pp>2509</samp></pre>
+
+
 <ol>
-<li>This is not a dictionary comprehension; it&#8217;s a <a href=#listcomprehension>list comprehension</a>. It finds all <code>.py</code> files with <code>test</code> in their name, then constructs a tuple of the filename and the file metadata (from calling the <code>os.stat()</code> function).
-<li>Each item of the resulting list is a tuple.
-<li>This is a dictionary comprehension. The syntax is similar to a list comprehension, with two differences. First, it is enclosed in curly braces instead of square brackets. Second, instead of a single expression for each item, it contains two expressions separated by a colon. The expression before the colon (<code>f</code> in this example) is the dictionary key; the expression after the colon (<code>os.stat(f)</code> in this example) is the value.
-<li>A dictionary comprehension returns a dictionary.
-<li>The keys of this particular dictionary are simply the filenames returned from the call to <code>glob.glob('*test*.py')</code>.
-<li>The value associated with each key is the return value from the <code>os.stat()</code> function. That means we can &#8220;look up&#8221; a file by name in this dictionary to get its file metadata. One of the pieces of metadata is <code>st_size</code>, the file size. The file <code>alphameticstest.py</code> is <code>2509</code> bytes long.
+
+<li>
+	이건 그냥 <a href=#listcomprehension>리스트 컴프리헨션</a>입니다. 파일명에 <code>test</code>라는 문자열이 들어있는 모든 python 파일 (<code>.py</code>) 을 찾아서 파일명과 메타데이타 (<code>os.stat()</code> 함수로 메타 데이타를 추출했습니다) 의 튜플을 만든후 이를 리스트로 반환합니다. metadata 라는 변수에 이 리스트를 저장합니다.
+
+
+<li> 리스트 내 각각의 아이템은 튜플입니다.
+
+<li>
+	자. 바로 이것이 딕셔너리 컴프리헨션입니다. 리스트 컴프리헨션과의 차이를 알아차리셨나요? 첫번째 차이는, 리스트 컴프리헨션은 [] (square bracket) 로 둘러싸여 있는데 반해, 딕셔너리 컴프리헨션은 {} (curly brace) 로 감쌉니다. 두번째 차이는, 리스트 컴프리헨션에서는 각각의 아이템에 대해 하나의 표현식을 사용하지만, 딕셔너리 컴프리헨션에서는 : (colon) 을 기준으로 두개의 표현식, 즉 하나는 key 로 사용하기 위한 표현식과 다른 하나는 value 로 사용하기 위한 표현식을 사용합니다. 이 예에서는 <code>f</code> 가 key, <code>os.stat(f)</code> 가 value 입니다.
+
+
+<li>
+	타입을 조회해보면 딕셔너리입니다.
+
+<li>
+	결과로 반환된 딕셔너리의 key 는 <code>glob.glob('*test*.py')</code> 호출을 통해 반환된 파일이름이네요.
+
+
+<li>
+
+	결과로 반환된 딕셔너리의 value는 <code>os.stat()</code> 함수를 통해 반환된 값입니다. 이 예제와 같이, 파일이름을 key로 해당파일의 메타 정보를 조회할 수 있는 자료구조를 딕셔너리 컴프리헨션을 사용하여 손쉽게 생성할 수 있음을 알 수 있습니다.
+
+
 </ol>
 
-<p>Like list comprehensions, you can include an <code>if</code> clause in a dictionary comprehension to filter the input sequence based on an expression which is evaluated with each item.
+<p>
+	리스트 컴프리헨션에서와 같이 딕셔너리 컴프리헨션에서도 <code>if</code> 절을 추가하여 결과값에 필터를 적용할 수 있습니다.
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>import os, glob, humansize</kbd>
@@ -474,23 +498,43 @@ Python Shell은 자신이 호출되는 동시에, 호출되었던 그 디렉토�
 <samp class=pp>['romantest9', 'romantest8', 'romantest7', 'romantest6', 'romantest10', 'pluraltest6']</samp>
 <a><samp class=p>>>> </samp><kbd class=pp>humansize_dict['romantest9']</kbd>                                                            <span class=u>&#x2463;</span></a>
 <samp class=pp>'6.5 KiB'</samp></pre>
+
+
 <ol>
-<li>This dictionary comprehension constructs a list of all the files in the current working directory (<code>glob.glob('*')</code>), gets the file metadata for each file (<code>os.stat(f)</code>), and constructs a dictionary whose keys are filenames and whose values are the metadata for each file.
-<li>This dictionary comprehension builds on the previous comprehension, filters out files smaller than <code>6000</code> bytes (<code>if meta.st_size > 6000</code>), and uses that filtered list to construct a dictionary whose keys are the filename minus the extension (<code>os.path.splitext(f)[0]</code>) and whose values are the approximate size of each file (<code>humansize.approximate_size(meta.st_size)</code>).
-<li>As you saw in a previous example, there are six such files, thus there are six items in this dictionary.
-<li>The value of each key is the string returned from the <code>approximate_size()</code> function.
+
+<li>
+	현재 작업 디렉토리에 있는 파일들의 이름과 메타정보를 기반으로 딕셔너리를 만드는 딕셔너리 컴프리헨션입니다. <code>glob.glob('*')</code> 을 통해 현재 작업 디렉토리의 모든 파일을 가져왔고, <code>os.stat(f)</code> 를 통해 각 파일의 메타 정보를 가져왔습니다. 결과로 생성되는 딕셔너리의 key는 파일명이고, value는 파일의 메타정보 입니다.
+
+
+<li>
+	앞에서 생성된 metadata_dict 딕셔너리 아이템 가운데, 그 파일의 크기가  <code>6000</code> 바이트 보다 큰 (<code>if meta.st_size > 6000</code>) 파일에 대해서만 확장자를 제외한 파일명(<code>os.path.splitext(f)[0]</code>)과 대략적인 파일크기를 뽑아내는 딕셔너리 컴프리헨션입니다.   
+
+
+<li> 6000 바이트 보다 크기가 큰 파일은 6개이군요.	
+
+<li>
+	romanteset9 이라는 key에 해당하는 value는 6.5 KiB 라는 string입니다.  <code>approximate_size()</code> 라는 함수에 의해 반환되고 있습니다. 
+
+
 </ol>
 
-<h3 id=stupiddicttricks>Other Fun Stuff To Do With Dictionary Comprehensions</h3>
+<h3 id=stupiddicttricks>
+딕셔너리 컴프리헨션을 이용한 재밌는 것들
+</h3>
 
-<p>Here&#8217;s a trick with dictionary comprehensions that might be useful someday: swapping the keys and values of a dictionary.
+<p>
+알고 있으면 유용한 테크닉 하나를 소개합니다. 딕셔너리 내의 key 와 value 를 바꿔치기 해야 할 때, 다음과 같이 딕셔너리 컴프리헨션을 사용할 수 있습니다.
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_dict = {'a': 1, 'b': 2, 'c': 3}</kbd>
 <samp class=p>>>> </samp><kbd class=pp>{value:key for key, value in a_dict.items()}</kbd>
 <samp class=pp>{1: 'a', 2: 'b', 3: 'c'}</samp></pre>
 
-<p>Of course, this only works if the values of the dictionary are immutable, like strings or tuples. If you try this with a dictionary that contains lists, it will fail most spectacularly.
+<p>
+
+	물론 이 테크닉은 원래 딕셔너리 내 value 값을 key 값으로 바꾸는 것이므로, value 값이 예제에서와 같이 숫자이거나, 또는 string 이나 tuple 처럼 immutable 해야합니다. 만약 딕셔너리내의 value가 list 와 같이 mutable 한 타입인 경우, 다음 코드와 같이 무시무시한 에러를 내며 실패합니다.	
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_dict = {'a': [1, 2, 3], 'b': 4, 'c': 5}</kbd>
@@ -502,9 +546,15 @@ TypeError: unhashable type: 'list'</samp></pre>
 
 <p class=a>&#x2042;
 
-<h2 id=setcomprehension>Set Comprehensions</h2>
+<h2 id=setcomprehension>
+	Set 컴프리헨션
 
-<p>Not to be left out, sets have their own comprehension syntax as well. It is remarkably similar to the syntax for dictionary comprehensions. The only difference is that sets just have values instead of key:value pairs.
+</h2>
+
+<p>
+	set도 자체 컴프리헨션 문법이 있습니다만, 아주 간단합니다. 딕셔너리 컴프리헨션과 똑같고 유일하게 다른점은 key:value 쌍 대신에 value 만 있습니다.
+
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_set = set(range(10))</kbd>
@@ -517,15 +567,24 @@ TypeError: unhashable type: 'list'</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>{2**x for x in range(10)}</kbd>         <span class=u>&#x2462;</span></a>
 <samp class=pp>{32, 1, 2, 4, 8, 64, 128, 256, 16, 512}</samp>
 </pre>
+
 <ol>
-<li>Set comprehensions can take a set as input. This set comprehension calculates the squares of the set of numbers from 0 to <code>9</code>.
-<li>Like list comprehensions and dictionary comprehensions, set comprehensions can contain an <code>if</code> clause to filter each item before returning it in the result set.
-<li>Set comprehensions do not need to take a set as input; they can take any sequence.
+
+<li>
+	set 컴프리헨션은 set 을 입력으로 받을 수 있습니다. 이 set 컴프리헨션 예제는 0부터 9까지의 숫자를 가진 set에서 각 원소의 제곱을 구하고 있습니다.
+
+<li>
+	set 컴프리헨션도 다른 컴프리헨션과 마찬가지로 <code>if</code> 절을 사용해 결과를 필터링할 수 있습니다.
+
+
+<li>
+	꼭 입력이 set일 필요는 없습니다. 어떤 시퀀스 (예에서는 list) 라도 가능합니다.  
+
 </ol>
 
 <p class=a>&#x2042;
 
-<h2 id=furtherreading>Further Reading</h2>
+<h2 id=furtherreading>더 공부할 내용</h2>
 <ul>
 <li><a href=http://docs.python.org/3.1/library/os.html><code>os</code> module</a>
 <li><a href=http://www.doughellmann.com/PyMOTW/os/><code>os</code>&nbsp;&mdash;&nbsp;Portable access to operating system specific features</a>
