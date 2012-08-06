@@ -14,34 +14,50 @@ body{counter-reset:h1 2}
 <p id=level>난이도: <span class=u title=beginner>&#x2666;&#x2666;&#x2662;&#x2662;&#x2662;</span>
 <h1>고유 자료형</h1>
 <blockquote class=q>
-<p><span class=u>&#x275D;</span>놀라움은 모든 철학의 토양이고, 질문으로 철학은 꽃피우지만, 무시하기 시작하면 철학은 시든다.<br>
-Wonder is the foundation of all philosophy, inquiry its progress, ignorance its end. <span class=u>&#x275E;</span><br>&mdash; Michel de Montaigne
+<p><span class=u>&#x275D;</span>
+
+	놀라움은 모든 철학의 토양이고, 질문으로 철학은 꽃피우지만, 무시하기 시작하면 철학은 시든다.<br>
+	모든 철학은 경이로움에서 출발하고, 궁금증으로 발전하지만, 무관심으로 생을 마친다. 
+
+	Wonder is the foundation of all philosophy, inquiry its progress, ignorance its end. 
+
+<span class=u>&#x275E;</span><br>&mdash; Michel de Montaigne
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>뛰어들기</h2>
-<p class=f>자료형이라. <a href=your-first-python-program.html>우리의 첫 파이썬 프로그램</a>은 잠시 잊어버리기로 하죠, 그리고 자료형에 대해서 이야기 해봅시다. 파이썬에서 <a href=your-first-python-program.html#declaringfunctions>모든 값은 자료형을 가지지만</a>, 변수의 자료형을 지정할 필요는 없습니다. 어떻게 그게 가능할까요? 파이썬은 변수에 처음 들어간 값을 보고 그 형태를 알아채 기억합니다.
-<p>파이썬은 많은 수의 고유 자료형을 가지고 있습니다. 그중 가장 중요한 것들만 써봤습니다:
+<p class=f>자료형입니다. <a href=your-first-python-program.html>우리의 첫번째 파이썬 프로그램</a>은 잠시 접어두고, 자료형에 대해서 이야기 해봅시다. 파이썬에서 <a href=your-first-python-program.html#declaringfunctions>모든 변수엔 자료형이 있습니다</a>. 하지만 명시적으로 선언할 필요는 없습니다. 어떻게 그게 가능할까요? 파이썬은 각 변수에 할당되는 값의 타입을 보고 변수의 데이터 타입을 유추합니다. 그리고 내부적으로 이를 저장해두기 때문에 프로그래머가 명시적으로 타입을 선언해줄 필요가 없습니다.
+<p>파이썬에는 다양한 자료형을 가지고 있습니다만, 그 중 중요한 몇 가지만 살펴봅시다:
 <ol>
-<li><b>논리값<font size=2>Booleans</font></b> 은 <code>참</code> 또는 <code>거짓</code>입니다.
-<li><b>수<font size=2>Numbers</font></b> 는 (<code>1</code>이나 <code>2</code> 같은) 정수도 될 수 있고 (<code>1.1</code>이나 <code>1.2</code> 같은) 실수도 될 수 있고 (<code>1/2</code>이나 <code>2/3</code> 같은) 분수도 될 수 있고  심지어 <a href=http://en.wikipedia.org/wiki/Complex_number>복소수</a>도 될 수 있습니다.
-<li><b>문자열<font size=2>Strings</font></b>은 유니코드 문자의 나열입니다, <i>예로</i> <abbr>HTML</abbr> 문서가 있죠.
-<li><b>바이트<font size=2>Bytes</font></b> 와 <b>바이트 열</b>, <i>예로</i> <abbr>JPEG</abbr> 이미지 파일이 있죠.
-<li><b>리스트<font size=2>Lists</font></b> 는 값을 순서대로 써놓은 것입니다.
-<li><b>튜플<font size=2>Tuples</font></b> 은 내용을 변경할수 없는 값을 순서대로 써놓은것 입니다.
-<li><b>집합<font size=2>Sets</font></b> 순서가 없는 값의 모음입니다.
-<li><b>사전<font size=2>Dictionaries</font></b> 순서가 없는 키-값 쌍의 모음입니다.
+<li><b><font size=2>Boolean</font></b> 은 <code>True</code> 또는 <code>False</code>입니다.
+<li><b><font size=2>Numbers</font></b> 는 (<code>1</code>이나 <code>2</code> 같은) 정수일 수도 있고, (<code>1.1</code>이나 <code>1.2</code> 같은) 실수일 수도, (<code>1/2</code>이나 <code>2/3</code> 같은) 분수일 수도 있으며, 심지어 <a href=http://en.wikipedia.org/wiki/Complex_number>복소수</a>일 수도 있습니다.
+<li><b><font size=2>String</font></b>은 유니코드 문자의 연속입니다, <i>일례로</i> <abbr>HTML</abbr> 문서는 String입니다.
+<li><b><font size=2>Byte</font></b> 와 <b>byte array</b>, <i>일례로</i> <abbr>JPEG</abbr> 이미지 파일을 들 수 있습니다.
+<li><b><font size=2>List</font></b> 는 어떤 값들을 순서대로 써놓은 것입니다.
+<li><b><font size=2>Tuple</font></b> 은 내용을 변경할수 없는 (immutable) 한 값들을 순서대로 써놓은것 입니다.
+<li><b><font size=2>Set</font></b>은 어떤 값들을 순서에 상관없이 모아둔 것입니다.
+<li><b>사전<font size=2>Dictionaries</font></b> 키-값 쌍의 모음들을 순서에 상관없이 모아둔 것입니다.
 </ol>
-<p>물론 이것보다 많은 자료형이 있습니다. 파이썬의 <a href=your-first-python-program.html#everythingisanobject>모든것은 객체</a>이기에 모듈형, 클래스형, 메소드형, 파일형, 심지어 컴파일 코드 형 같은 것도 있죠. 일부는 이미 보았던 것들입니다: <a href=your-first-python-program.html#runningscripts>모듈에는 이름이 있고</a>, <a href=your-first-python-program.html#docstrings>함수는 <code>참조문</code>을 가지는</a> 등. 클래스형에 대해서는 <a href=iterators.html>클래스와 반복자</a> 장에서 파일형에 대해서는 <a href=files.html>파일</a>장에서 배우게 될겁니다.
-<p>문자열과 바이트는 매우 중요하고 그만큼 복잡하기도 해서 하나의 장으로 따로 빼놓았습니다. 우선은 다른것 부터 살펴보죠.<p class=a>&#x2042;
+<p>물론 이게 전부는 아닙니다. 파이썬에선 <a href=your-first-python-program.html#everythingisanobject>모든 것이 객체입니다</a>. 따라서 모듈(module), 클래스(class), 메소드(method), 파일(file), 심지어 컴파일된 코드(compiled code)도 일종의 데이터 타입입니다. 이 중 몇 가지는 이미 앞에서 다뤘습니다: <a href=your-first-python-program.html#runningscripts>모듈은 이름을 의미하는 __name__ 이라는 특성을 가지고 있고</a>, <a href=your-first-python-program.html#docstrings>함수는 <code>docstrings</code>라는 특성을 가집니다</a>. 클래스 타입은 <a href=iterators.html>클래스와 반복자</a>에서 따로 배우도록 하고요, 파일 타입에 대해서는 <a href=files.html>파일</a>에서 다루겠습니다.
+<p>문자열과 바이트는 매우 중요하고 그만큼 복잡하기도 해서 별도 챕터로 빼놓았습니다. 아무튼 별도로 빼둔 것들은 그때 다시 배우도록 하고요, 우선은 그를 제외한 것들부터 살펴보죠.<p class=a>&#x2042;
 
 <h2 id=booleans>Booleans</h2>
 <aside>You can use virtually any expression in a boolean context.</aside>
-<p>논리값은 참 또는 거짓입니다. 똑똑한 파이썬은 바로 논리값을 집어넣을 수 있도록 <code><dfn>True</dfn></code>와 <code><dfn>False</dfn></code>라는 두 상수를 가지고 있습니다. 식에서 논리값을 계산할 수도 있습니다. 파이썬은 (<code>if</code>문 같은) 몇몇 곳에서는, 계산식의 결과가 논리값이길 기대합니다. 이런 곳들을 <i>논리 문맥</i>이라 합니다. 논리 문맥 안에서는 어떤 계산을 하던지 그 식의 참 또는 거짓이 판별됩니다. 각각의 자료형마다 참, 거짓을 판별하는 계산법이 틀립니다. (이 챕터 뒷부분의 구체적인 예제를 보고나면 무슨 말인지 이해가 될겁니다.)
-<p>예를 들어, 여기 <a href=your-first-python-program.html#divingin><code>humansize.py</code>의 일부분을 살펴보죠</a>:
+
+
+<p>
+	Boolean은 참 이나 거짓 가운데 하나를 의미하는 타입입니다. 이를 위해 파이썬에선 True 와 False 라는 상수를 정의해두고, 
+
+	똑똑한 파이썬은 바로 논리값을 집어넣을 수 있도록 <code><dfn>True</dfn></code>와 <code><dfn>False</dfn></code>라는 두 상수를 가지고 있습니다. 식에서 논리값을 계산할 수도 있습니다. 파이썬은 (<code>if</code>문 같은) 몇몇 곳에서는, 계산식의 결과가 논리값이길 기대합니다. 이런 곳들을 <i>논리 문맥</i>이라 합니다. 논리 문맥 안에서는 어떤 계산을 하던지 그 식의 참 또는 거짓이 판별됩니다. 각각의 자료형마다 참, 거짓을 판별하는 계산법이 틀립니다. (이 챕터 뒷부분의 구체적인 예제를 보고나면 무슨 말인지 이해가 될겁니다.)
+
+
+
+
+<p>
+	예를 들어, 여기 <a href=your-first-python-program.html#divingin><code>humansize.py</code>의 일부분을 살펴보죠</a>:
 <pre class='nd pp'><code>if size &lt; 0:
     raise ValueError('number must be non-negative')</code></pre>
 <p><var>size</var>는 정수고 0도 정수고 <code>&lt;</code> 는 수 연산자입니다: <code>size &lt; 0</code> 식의 값은 언제나 참 또는 거짓입니다. 파이썬 바로반응 셸에서 테스트 해보세요.
-<pre class='nd screen'>
+<pre class='nd screen'>		
 <samp class=p>>>> </samp><kbd class=pp>size = 1</kbd>
 <samp class=p>>>> </samp><kbd class=pp>size &lt; 0</kbd>
 <samp class=pp>False</samp>
