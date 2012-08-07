@@ -16,17 +16,13 @@ body{counter-reset:h1 2}
 <blockquote class=q>
 <p><span class=u>&#x275D;</span>
 
-	놀라움은 모든 철학의 토양이고, 질문으로 철학은 꽃피우지만, 무시하기 시작하면 철학은 시든다.<br>
-	모든 철학은 경이로움에서 출발하고, 궁금증으로 발전하지만, 무관심으로 생을 마친다. 
-
-	Wonder is the foundation of all philosophy, inquiry its progress, ignorance its end. 
-
+	모든 철학은 경이로움에서 태어나, 궁금증으로 성장하지만, 무관심으로 생을 마친다.<br>
 <span class=u>&#x275E;</span><br>&mdash; Michel de Montaigne
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>뛰어들기</h2>
-<p class=f>자료형입니다. <a href=your-first-python-program.html>우리의 첫번째 파이썬 프로그램</a>은 잠시 접어두고, 자료형에 대해서 이야기 해봅시다. 파이썬에서 <a href=your-first-python-program.html#declaringfunctions>모든 변수엔 자료형이 있습니다</a>. 하지만 명시적으로 선언할 필요는 없습니다. 어떻게 그게 가능할까요? 파이썬은 각 변수에 할당되는 값의 타입을 보고 변수의 데이터 타입을 유추합니다. 그리고 내부적으로 이를 저장해두기 때문에 프로그래머가 명시적으로 타입을 선언해줄 필요가 없습니다.
-<p>파이썬에는 다양한 자료형을 가지고 있습니다만, 그 중 중요한 몇 가지만 살펴봅시다:
+<p class=f>자료형입니다. <a href=your-first-python-program.html>우리의 첫번째 파이썬 프로그램</a>은 잠시 접어두고, 자료형에 대해서 이야기 해 봅시다. 파이썬의 <a href=your-first-python-program.html#declaringfunctions>모든 값은 그 타입을 갖고 있습니다</a>. 하지만 이를 명시적으로 선언할 필요는 없습니다. 어떻게 그게 가능할까요? 파이썬에서는 각 변수에 할당되는 값의 타입을 보고 변수의 데이터 타입을 유추하기 때문입니다. 그리고 내부적으로 이를 저장해놓기 때문에, 프로그래머가 명시적으로 변수의 타입을 선언해 줄 필요가 없습니다.
+<p>파이썬은 다양한 자료형을 가지고 있습니다만, 우선 그 중 중요한 몇 가지만 살펴봅시다:
 <ol>
 <li><b><font size=2>Boolean</font></b> 은 <code>True</code> 또는 <code>False</code>입니다.
 <li><b><font size=2>Numbers</font></b> 는 (<code>1</code>이나 <code>2</code> 같은) 정수일 수도 있고, (<code>1.1</code>이나 <code>1.2</code> 같은) 실수일 수도, (<code>1/2</code>이나 <code>2/3</code> 같은) 분수일 수도 있으며, 심지어 <a href=http://en.wikipedia.org/wiki/Complex_number>복소수</a>일 수도 있습니다.
@@ -37,26 +33,26 @@ body{counter-reset:h1 2}
 <li><b><font size=2>Set</font></b>은 어떤 값들을 순서에 상관없이 모아둔 것입니다.
 <li><b>사전<font size=2>Dictionaries</font></b> 키-값 쌍의 모음들을 순서에 상관없이 모아둔 것입니다.
 </ol>
-<p>물론 이게 전부는 아닙니다. 파이썬에선 <a href=your-first-python-program.html#everythingisanobject>모든 것이 객체입니다</a>. 따라서 모듈(module), 클래스(class), 메소드(method), 파일(file), 심지어 컴파일된 코드(compiled code)도 일종의 데이터 타입입니다. 이 중 몇 가지는 이미 앞에서 다뤘습니다: <a href=your-first-python-program.html#runningscripts>모듈은 이름을 의미하는 __name__ 이라는 특성을 가지고 있고</a>, <a href=your-first-python-program.html#docstrings>함수는 <code>docstrings</code>라는 특성을 가집니다</a>. 클래스 타입은 <a href=iterators.html>클래스와 반복자</a>에서 따로 배우도록 하고요, 파일 타입에 대해서는 <a href=files.html>파일</a>에서 다루겠습니다.
-<p>문자열과 바이트는 매우 중요하고 그만큼 복잡하기도 해서 별도 챕터로 빼놓았습니다. 아무튼 별도로 빼둔 것들은 그때 다시 배우도록 하고요, 우선은 그를 제외한 것들부터 살펴보죠.<p class=a>&#x2042;
+<p>물론 이게 전부는 아닙니다. 파이썬에선 <a href=your-first-python-program.html#everythingisanobject>모든 것이 객체(Object) 입니다</a>. 따라서 모듈(module), 클래스(class), 메소드(method), 파일(file), 심지어 컴파일된 코드(compiled code)도 일종의 데이터 타입입니다. 이 중 몇 가지는 이미 앞에서 다뤘었죠? <a href=your-first-python-program.html#runningscripts>모듈은 __name__ 이라는 특성이 있고</a>, <a href=your-first-python-program.html#docstrings>함수엔 <code>docstrings</code>이라는 특성이 있습니다</a>. 클래스 타입은 <a href=iterators.html>클래스와 반복자</a> 챕터에서 자세히 다루도록 하고요, 파일 타입은 <a href=files.html>파일</a>챕터에서 다루겠습니다.
+<p>문자열과 바이트는 매우 중요한데, 복잡하기도 해서 별도 챕터로 뺐습니다. 아무튼 이렇게 별도의 챕터로 빼둔 것들은 그때 다시 배우도록 하고요, 우선은 그를 제외한, 좀 쉬운 것부터 살펴보죠.<p class=a>&#x2042;
 
 <h2 id=booleans>Booleans</h2>
 <aside>You can use virtually any expression in a boolean context.</aside>
 
 
 <p>
-	Boolean은 참 이나 거짓 가운데 하나를 의미하는 타입입니다. 이를 위해 파이썬에선 True 와 False 라는 상수를 정의해두고, 
-
-	똑똑한 파이썬은 바로 논리값을 집어넣을 수 있도록 <code><dfn>True</dfn></code>와 <code><dfn>False</dfn></code>라는 두 상수를 가지고 있습니다. 식에서 논리값을 계산할 수도 있습니다. 파이썬은 (<code>if</code>문 같은) 몇몇 곳에서는, 계산식의 결과가 논리값이길 기대합니다. 이런 곳들을 <i>논리 문맥</i>이라 합니다. 논리 문맥 안에서는 어떤 계산을 하던지 그 식의 참 또는 거짓이 판별됩니다. 각각의 자료형마다 참, 거짓을 판별하는 계산법이 틀립니다. (이 챕터 뒷부분의 구체적인 예제를 보고나면 무슨 말인지 이해가 될겁니다.)
-
-
+	Boolean은 참 이나 거짓 가운데 하나를 의미하는 데이터 타입입니다. 파이썬은 이를 위해 <code><dfn>True</dfn></code> 와 <code><dfn>False</dfn></code> 라는 상수를 정의해서 사용하고, 이 상수를 변수에 직접 할당하여 Boolean 타입으로 만들 수 있습니다. 어떤 특정 위치에서는, 주어진 표현식이 반드시 <code><dfn>True</dfn></code> 또는 <code><dfn>False</dfn></code> 로 판명나야 하기도 합니다. if 문을 예로 들 수 있겠네요. if 문에 사용된 조건식은 반드시 <code><dfn>True</dfn></code> 나 <code><dfn>False</dfn></code>, 둘 중 하나로 판명나야 합니다. 이런 위치를 가르켜 Boolean context 라고 부릅니다. Boolean context 에는 어떤 파이썬 표현식도 사용할 수 있습니다. 파이썬이 알아서 <code><dfn>True</dfn></code>나 <code><dfn>False</dfn></code> 중 하나로 평가해줍니다. 하지만, 자료형마다 서로 다른 룰을 가지고 참,거짓이 판명된다는 사실은 알고 계세요. 아리송하죠? 역시 예제를 보는게 낫겠군요.
 
 
 <p>
-	예를 들어, 여기 <a href=your-first-python-program.html#divingin><code>humansize.py</code>의 일부분을 살펴보죠</a>:
+	예를 들어, <a href=your-first-python-program.html#divingin><code>humansize.py</code> 에서 가져온 코드를 봅시다</a>:
+
 <pre class='nd pp'><code>if size &lt; 0:
     raise ValueError('number must be non-negative')</code></pre>
-<p><var>size</var>는 정수고 0도 정수고 <code>&lt;</code> 는 수 연산자입니다: <code>size &lt; 0</code> 식의 값은 언제나 참 또는 거짓입니다. 파이썬 바로반응 셸에서 테스트 해보세요.
+<p>
+	<var>size</var>는 정수, 0도 정수 입니다. <code>&lt;</code> 는 수 연산자이고요. 그래서, <code>size &lt; 0</code> 라는 파이썬 표현식은 언제나 참 또는 거짓입니다. 파이썬 쉘에서 테스트 해보세요.
+
+
 <pre class='nd screen'>		
 <samp class=p>>>> </samp><kbd class=pp>size = 1</kbd>
 <samp class=p>>>> </samp><kbd class=pp>size &lt; 0</kbd>
@@ -67,7 +63,10 @@ body{counter-reset:h1 2}
 <samp class=p>>>> </samp><kbd class=pp>size = -1</kbd>
 <samp class=p>>>> </samp><kbd class=pp>size &lt; 0</kbd>
 <samp class=pp>True</samp></pre>
-<p>파이썬 2에서의 쓰임을 물려받아 논리값은 수로 취급되기도 합니다. <code>참</code>은 <code>1</code>; <code>거짓</code>은 0이지요.
+
+<p>
+	파이썬 버전 2에서와 같이, Boolean 타입을 마치 숫자처럼 쓸 수도 있습니다. <code>True</code>는 <code>1</code>; <code>False</code>는 0입니다.
+
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>True + True</kbd>
 <samp class=pp>2</samp>
@@ -79,12 +78,16 @@ body{counter-reset:h1 2}
 <samp class=traceback>Traceback (most recent call last):
   File "&lt;stdin>", line 1, in &lt;module>
 ZeroDivisionError: int division or modulo by zero</samp></pre>
-<p>아이쿠! 그러지 마세요. 말씀드린다는걸 깜빡했네요.
+
+<p>
+	웁스. 제가 깜빡하고 말씀을 안드렸네요. 0으로 나누면 안됩니다. :)
 
 <p class=a>&#x2042;
 
 <h2 id=numbers>Numbers</h2>
-<p>수는 굉장합니다. 많은것들이 들어있죠. 파이썬은 <dfn>정수</dfn>와 <dfn>실수(정확하게는 부동소수)</dfn>를 수라는 형태에 포함합니다. 그 둘을 다르게 선언하지 않아요; <dfn>소수점</dfn>의 유무에 따라 파이썬이 그 둘을 나눕니다.
+
+<p>
+	숫자에선 다뤄야 할 것들이 굉장히 많습니다. 일단 파이썬 3는 <dfn>정수형(integer)</dfn>과 <dfn>실수형(floating point number)</dfn>을 지원합니다. 앞에서 말씀드렸듯이, 파이썬은 변수 선언시 타입을 별도로 선언하지 않기 때문에, 정수형인지 실수형인지를 판단할 때, 값에 <dfn>소숫점</dfn>이 있는지 없는지를 보고 결정합니다.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>type(1)</kbd>                 <span class=u>&#x2460;</span></a>
 <samp class=pp>&lt;class 'int'></samp>
@@ -96,14 +99,25 @@ ZeroDivisionError: int division or modulo by zero</samp></pre>
 <samp class=pp>2.0</samp>
 <samp class=p>>>> </samp><kbd class=pp>type(2.0)</kbd>
 <samp class=pp>&lt;class 'float'></samp></pre>
+
 <ol>
-<li><code>type()</code> 함수를 써 어떤 값이나 변수의 형태를 알아볼수 잇습니다. 역시 <code>1</code> 은 <code>정수형</code>이라고 나오네요.
-<li>이와 비슷하게 <code>isinstance()</code> 함수를 쓰면 어떤 값이나 변수가 생각했던 형태가 맞는지 알수 있습니다.
-<li><code>정수</code>에 <code>정수</code>를 더하면 <code>정수</code>가 됩니다.
-<li><code>정수</code>에 <code>실수</code>를 더하면 <code>실수</code>가 됩니다. 파이썬은 <code>정수</code>에 <code>실수</code>를 더하면, 그 값을 <code>실수</code>로 만들어 버립니다.
+<li>
+	어떤 값이나 변수의 타입을 확인하려면 <code>type()</code> 함수를 사용합니다. 당연히 <code>1</code> 은 <code>정수형</code>입니다.
+<li>
+	<code>isinstance()</code> 함수를 사용하면, 첫번째 파라미터로 넘겨진 값이나 변수가 두번째 파라미터로 넘겨진 타입과 같은지 아닌지를 알 수 있습니다.
+<li>
+	<code>정수</code>에 <code>정수</code>를 더하면 <code>정수</code>가 됩니다.
+<li>
+	<code>정수</code>에 <code>실수</code>를 더하면 <code>실수</code>가 됩니다. 파이썬에선 <code>정수</code>와 <code>실수</code>를 더하면, 먼저 정수를 <code>실수</code>로 변경한 후 연산을 적용합니다. 따라서 연산결과는 실수가 됩니다.
 </ol>
-<h3 id=number-coercion>Coercing Integers To Floats And Vice-Versa</h3>
-<p>As you just saw, some operators (like addition) will coerce integers to floating point numbers as needed. You can also coerce them by yourself.
+
+
+<h3 id=number-coercion>정수와 실수간 변환하기</h3>
+
+
+<p>
+	방금 보신것과 같이, 더하기 연산자 같은 연산자 들은 주어진 정수값을 그때 그때 상황에 맞게 먼저 실수값으로 변경후 연산에 적용합니다. 하지만 다음과 같이 명시적으로 변경하는 방법도 있습니다.
+
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>float(2)</kbd>                <span class=u>&#x2460;</span></a>
 <samp class=pp>2.0</samp>
@@ -118,26 +132,37 @@ ZeroDivisionError: int division or modulo by zero</samp></pre>
 <a><samp class=p>>>> </samp><kbd class=pp>type(1000000000000000)</kbd>  <span class=u>&#x2465;</span></a>
 <samp class=pp>&lt;class 'int'></samp></pre>
 <ol>
-<li>You can explicitly coerce an <code>int</code> to a <code>float</code> by calling the <code>float()</code> function.
-float() 함수를 써 int형을 float형으로 강제 변환할수 있습니다.
-<li>Unsurprisingly, you can also coerce a <code>float</code> to an <code>int</code> by calling <code>int()</code>.
-int() 함수를 쓰면 float을 int로 바꿀수 있다는건 놀랍지 않겠죠?
-<li>The <code>int()</code> function will truncate, not round.
-int() 함수는 소수점 뒷부분을 반올림하지 않고, 버립니다.
-<li>The <code>int()</code> function truncates negative numbers towards 0. It&#8217;s a true truncate function, not a floor function.
-int() 함수는 음수의 소수 아래부분을 0에 가깝게 잘라냅니다. 이건 진짜 버리는거지, 계단형으로 만드는게 아닙니다.
-<li>Floating point numbers are accurate to 15 decimal places.
-소수는 15자리까지 정밀하게 표현합니다.
-<li>Integers can be arbitrarily large.
-정수는 정말 큰 수도 표현할수 있습니다.
+
+<li>
+	<code>float()</code> 함수를 사용해 <code>int</code>형을 <code>float</code>형으로 강제 형 변환할 수 있습니다.
+
+<li>
+	마찬가지로, <code>int()</code> 함수를 사용해 <code>float</code>형을 <code>int</code>형으로 바꿀 수 있습니다.
+
+<li>
+	<code>int()</code> 함수는 양수의 경우 소수점 아래는 그냥 버립니다.
+
+<li>
+	<code>int()</code> 함수는 음수의 경우도 마찬가지로 소수점 아래를 버립니다. 
+
+<li>
+	실수는 소숫점 아래 15 자리까지만 표현할 수 있습니다.
+
+<li>
+	정수는 임의의 큰 수를 표현합니다.
+
 </ol>
 <blockquote class='note compare python2'>
 <p><span class=u>&#x261E;</span>Python 2 had separate types for <code>int</code> and <code>long</code>. The <code>int</code> datatype was limited by <code>sys.maxint</code>, which varied by platform but was usually <code>2<sup>32</sup>-1</code>. Python 3 has just one integer type, which behaves mostly like the old <code>long</code> type from Python 2. See <a href=http://www.python.org/dev/peps/pep-0237><abbr>PEP</abbr> 237</a> for details.
-파이썬 2에서는 int와 long형이 분리되어있었습니다. int형은 sys.maxint라는 값에 그 크기의 제한을 받고 있었습니다. (이 값은 플랫폼마다 다르기는 하지만 주로 2의 32승 - 1 입니다.) 파이썬3에서는 하나의 정수형만 존재합니다. 이 정수형은 파이썬2의 long과 거의 같다고 보시면 됩니다. 자세히 알아보려면 이 링크를 따라가세요. (링크삽입)
+
+파이썬 2에서는 int 형과 long 형을 따로 정의해 두었습니다. int 형의 크기는 sys.maxint 에 정의되어 있고요. 물론 윈도우인지 리눅스인지, 32비트인지 64비트인지 같은 OS 플랫폼에 따라 달라지긴 해도, int 형의 크기는 최소한 <code>2<sup>32</sup>-1</code> 입니다. 파이썬 3에서는 long 형을 따로 두지 않고, 모든 정수는 int 형 하나로 표시합니다. 자세한 내용은 <a href=http://www.python.org/dev/peps/pep-0237><abbr>PEP</abbr> 237</a> 를 읽어 보세요.
+
 </blockquote>
-<h3 id=common-numerical-operations>Common Numerical Operations</h3>
-<p>You can do all kinds of things with numbers.
-수를 가지고 무엇이든 할 수 있습니다.
+<h3 id=common-numerical-operations>파이썬으로 산술 연산 하기</h3>
+
+<p>
+	숫자를 가지고 할 수 있는 모든 일은 역시 파이썬으로도 할 수 있답니다.
+
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>11 / 2</kbd>      <span class=u>&#x2460;</span></a>
 <samp class=pp>5.5</samp>
@@ -152,20 +177,57 @@ int() 함수는 음수의 소수 아래부분을 0에 가깝게 잘라냅니다.
 <a><samp class=p>>>> </samp><kbd class=pp>11 % 2</kbd>      <span class=u>&#x2465;</span></a>
 <samp class=pp>1</samp>
 </pre>
+
 <ol>
-<li>The <code>/</code> operator performs floating point division. It returns a <code>float</code> even if both the numerator and denominator are <code>int</code>s.
-/연산자는 실수 나눗셈을 합니다. 그래서 그 결과물이 항상 float으로 떨어지죠. 분모와 분자가 다 정수형이었다 하더라도요.
-<li>The <code>//</code> operator performs a quirky kind of integer division. When the result is positive, you can think of it as truncating (not rounding) to 0 decimal places, but be careful with that.
-// 연산자는 약간 황당한 정수 나눗셈을 합니다. 만약 결과가 양수라면 소수점 이하를 (반올림 하지 않고) 버린다고 생각해도 되지만, 조심하세요.
-<li>When integer-dividing negative numbers, the <code>//</code> operator rounds &#8220;up&#8221; to the nearest integer. Mathematically speaking, it&#8217;s rounding &#8220;down&#8221; since <code>&minus;6</code> is less than <code>&minus;5</code>, but it could trip you up if you were expecting it to truncate to <code>&minus;5</code>.
-// 연산자로 음수를 나누면 그 결과값에 가까운 정수로 올림 합니다. -5 보단 -6이 더 작으니깐 정확하게 말하면 이는 내림인거죠. 만약 결과가 -5가 될거라고 생각했다면, 실수를 했을지도 모르겠네요.
-<li>The <code>//</code> operator doesn&#8217;t always return an integer. If either the numerator or denominator is a <code>float</code>, it will still round to the nearest integer, but the actual return value will be a <code>float</code>.
-// 연산자는 언제나 정수 값을 내놓지는 않습니다. 분자와 분모중 하나가 실수이면, 그때도 가장 가까운 정수로 변환되긴 하지만, 실제 결과값은 실수로 나오게 됩니다.
-<li>The <code>**</code> operator means &#8220;raised to the power of.&#8221;  <code>11<sup>2</sup></code> is <code>121</code>.
-** 연산자는 제곱을 의미합니다. 11의 2승은 121이죠.
-<li>The <code>%</code> operator gives the remainder after performing integer division. <code>11</code> divided by <code>2</code> is <code>5</code> with a remainder of <code>1</code>, so the result here is <code>1</code>.
-% 연산자는 정수 나눗셈을 하고 난 나머지를 돌려줍니다. 11을 2로 나눈 나머지는 1이죠. 그래서 결과값이 1이 된 겁니다.
+
+<li>
+	<code>/</code> 연산자는 실수 나눗셈을 합니다. 분모와 분자 모두 <code>int</code>형이더라도 결과는 항상 <code>float</code> 형이 됩니다.
+
+
+<li>
+	<code>//</code> 연산자는 조금 독특한 정수 나눗셈을 합니다. 만약 결과가 양수라면 소숫점 이하는 무조건 버립니다. 하지만, 조심할게 있습니다.
+
+
+<li>
+	When integer-dividing negative numbers, the <code>//</code> operator rounds &#8220;up&#8221; to the nearest integer. Mathematically speaking, it&#8217;s rounding &#8220;down&#8221; since <code>&minus;6</code> is less than <code>&minus;5</code>, but it could trip you up if you were expecting it to truncate to <code>&minus;5</code>.
+
+
+	만약 <code>//</code> 연산자를 음수에 적용하면, 소숫점 이하는 역시 버리고, 결과를 가장 가까이 있는 자기보다 적은 정수값으로 만듭니다. 결과만 놓고 볼 때는, <code>&minus;5</code> 보다 <code>&minus;6</code>이 더 작으니까, 수학적으로 말하면 반내림과 같습니다. 답이 -5라고 자신있게 말씀하신 분들이 아마 적지 않을겁니다. 앞에서 조심하라고 말씀드렸었죠?
+
+
+<li>
+	The <code>//</code> operator doesn&#8217;t always return an integer. If either the numerator or denominator is a <code>float</code>, it will still round to the nearest integer, but the actual return value will be a <code>float</code>.
+
+
+	<code>//</code> 연산자의 결과값이 언제나 정수형인 것은 아닙니다. 분자와 분모 중 하나가 실수형이면, 결과값도 실수입니다. 하지만 실수인 결과값 역시 가장 가까운 작은 정수로 변환됩니다.
+
+
+<li>
+	The <code>**</code> operator means &#8220;raised to the power of.&#8221;  <code>11<sup>2</sup></code> is <code>121</code>.
+	
+	<code>**</code> 연산자는 제곱을 의미합니다. <code>11<sup>2</sup></code>은 <code>121</code>이죠.
+
+
+<li>
+	The <code>%</code> operator gives the remainder after performing integer division. <code>11</code> divided by <code>2</code> is <code>5</code> with a remainder of <code>1</code>, so the result here is <code>1</code>.
+	
+	<code>%</code> 연산자는 정수 나눗셈을 하고 난 나머지를 돌려줍니다. <code>11</code>을 <code>2</code>로 나눈 나머지는 <code>1</code>이죠. 그래서 결과는 <code>1</code>입니다.
+
 </ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <blockquote class='note compare python2'>
 <p><span class=u>&#x261E;</span>In Python 2, the <code>/</code> operator usually meant integer division, but you could make it behave like floating point division by including a special directive in your code. In Python 3, the <code>/</code> operator always means floating point division. See <a href=http://www.python.org/dev/peps/pep-0238/><abbr>PEP</abbr> 238</a> for details.
 파이썬2에서, /연산자는 주로 정수연산을 의미했습니다. 하지만 코드에 특별 지시자를 넣어 실수연산을 하게 만들수도 있었죠. 파이썬3에서는 /연산자는 항상 실수연산을 의미합니다. 더 자세히는 PEP238을 보세요.
