@@ -63,16 +63,12 @@ Acknowledgements & Inspirations
 "Google Code Prettify" ................................... http://code.google.com/p/google-code-prettify/
 */
 
-
 /* typography */
 
 body, .w a, .inherit {
   font: medium/1.75 'Gill Sans', 'Gill Sans MT', Corbel, Helvetica, 'Nimbus Sans L', sans-serif;
   word-spacing: 0.1em;
 }
-
-
-
 pre, kbd, samp, code, var, .b, pre span {
   font: small/2.154 Consolas, 'Andale Mono', Monaco, 'Liberation Mono', 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', monospace;
   word-spacing: 0;
@@ -132,7 +128,6 @@ html {
   color: #222;
 }
 body {
-  font-family: "Century Gothic", "Trebuchet MS", "맑은 고딕", Dotum, Verdana, AppleGothic, Sans-serif;
   margin: 1.75em 28px;
 }
 .c, .a, .xxxl {
@@ -147,7 +142,6 @@ body {
   line-height: .875;
   color: #82b445;
 }
-
 form div, #level {
   float: right;
 }
@@ -278,9 +272,7 @@ pre a, td code a, .w a, pre a:hover, td a:link, td a:visited, td pre {
 /* headers and pullquotes */
 
 h1, h2, h3, aside {
-  font-family: nanum, "Book Antiqua", Palatino, Georgia, serif;
-  /*font-family: "Book Antiqua", Palatino, Georgia, serif;*/
-
+  font-family: "Book Antiqua", Palatino, Georgia, serif;
 }
 h1, h2, h3 {
   font-variant: small-caps;
