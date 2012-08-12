@@ -13,42 +13,46 @@ h3:before{content:''}
 <form action=http://www.google.com/cse><div><input type=hidden name=cx value=014021643941856155761:l5eihuescdw><input type=hidden name=ie value=UTF-8>&nbsp;<input type=search name=q size=25 placeholder="powered by Google&trade;">&nbsp;<input type=submit name=sa value=Search></div></form>
 <p>여기 있어요 : <a href=index.html>Home</a> <span class=u>&#8227;</span> <a href=table-of-contents.html#whats-new>Dive Into Python 3</a> <span class=u>&#8227;</span>
 
-<h1>&#8220;파이썬3로 뛰어들기&#8221;에서 바뀐점</h1>
+<h1>&#8220;파이썬3로 뛰어들기&#8221;의 새로운 점</h1>
 <blockquote class=q>
 <p><span class=u>&#x275D;</span>여기가 들어왔던 곳이 맞나?<span class=u>&#x275E;</span><br>&mdash; 핑크 플로이드, The Wall
 </blockquote>
 <p id=toc>&nbsp;
 <h2 id=divingin>준비 레벨</h2>
 
-<p class=f>자, 이제부터 질문을 몇 개 드리겠습니다. 파이썬 프로그래머인가요? 제가 예전에 작성한 <a href=http://diveintopython.org/>파이썬으로 뛰어들기</a> 책을 읽어본 적이 있나요? 만약 읽었다면 책으로 읽었나요? (감사합니다 ^^) 어쨋든 파이썬3 를 시작할 준비를 마쳤다고요? 지금까지 제가 드린 질문에 모두 yes 라고 대답하셨다면, 이 장을 계속 읽어도 됩니다. 하지만, 만약 여러분의 대답에 yes 가 하나도 없다면, <a href=installing-python.html>처음부터 시작하는게 좋을겁니다</a>)
+<p class=f>자, 시작하기 전에 질문을 몇 개 드릴테니 대답해 보세요. 첫째, 이 글을 읽고 계신 여러분은 파이썬 프로그래머인가요? 둘째, 제가 예전에 작성했던 <a href=http://diveintopython.org/>파이썬으로 뛰어들기 (Dive Into Python)</a> 라는 책을 읽었나요? 셋째, 만약 읽었다면 책으로 읽었나요? (그렇다면, 감사합니다 ^^) 마지막으로, 어찌됬던간에 파이썬3 를 공부할 준비를 마치셨나요? 지금까지 제가 드린 질문에 전부 yes 라고 대답하셨다면, 이 장을 계속 읽어 나가셔도 됩니다. 하지만, 만약 여러분이 전부 no 라고 대답하셨다면, <a href=installing-python.html>여기</a>에서 시작하세요.
 
-<p>파이썬3를 설치하면 <code>2to3</code>라는 작은 유틸리티도 함께 깔리는데요, 파이썬 2에서 파이썬 3로 포팅하기 위한 어플리케이션인 이 유틸을 격하게 사랑해주세요. <a href=porting-code-to-python-3-with-2to3.html><code>2to3</code>로 파이썬3 포팅하기</a>라는 챕터도 따로 준비했습니다. 여기에 <code>2to3</code>를 이용해 파이썬 2에서 파이썬 3로 자동으로 포팅하기 위한 방법을 설명해두었습니다. 이 툴이 자동으로 포팅해줄 수 있는 것들이란 사실 문법의 변경이 대부분이기 때문에, 이 툴을 사용하다보면 파이썬3 를 통해 변경된 문법을 상당 부분 배울 수 있습니다. (가령 예를 들어, <code>print</code>는 이제 함수라서, <code>`x`</code>가 더이상 사용될수 없는 것 등등)
+<p>
+	파이썬 3를 설치하면 <code>2to3</code>라는 작은 어플리케이션도 함께 설치되는데요, 이 프로그램을 이용하면 파이썬 2 소스 코드를 파이썬 3 소스코드로 자동으로 변경시킬 수 있습니다. 
+	<a href=porting-code-to-python-3-with-2to3.html><code>2to3</code>로 파이썬3 포팅하기</a>라는 부록도 따로 빼서 준비했으니까 나중에 꼭 한번 읽어보시기 바랍니다. 
 
-<p><a href=case-study-porting-chardet-to-python-3.html>사례 연구: <code>chardet</code> 파이썬 3로 포팅하기</a> 에서는 제가 어떤 라이브러리를 파이썬2 에서 파이썬3 로 포팅하면서 겪었던 과정을 적어 봤습니다 (결국엔 해냈습니다 ^^). 제 작은 경험담이 도움이 될 수도, 아닐 수도 있을텐데 어쨋건 많은 걸 배워야 할 겁니다. 일단은 라이브러리가 어떻게 변경되었는지를 이해해야 합니다. 그래야만 포팅하면서 나는 에러들과 제가 그걸 어떻게 고쳤는지 이해할 수 있으니까요. 그리고 문자열 쪽에도 이슈가 꽤 있습니다.
+	<code>2to3</code> 툴이 파이썬 2 코드에서 파이썬 3 코드로 자동으로 변경해줄 수 있는 부분이란 문법의 변경이 대부분이기 때문에, 이 툴을 이용하다보면 파이썬3에서 변경된 문법을 자연스럽게 배울 수 있습니다. (예를 들어, 파이썬 3에서는 <code>print</code>는 더이상 구문이 아닌 함수이기 때문에, <code>print x</code>로 쓰면 안되고 <code>print(x)</code>로 써야 합니다.)
 
-<p>문자열이라, 휴, 어디서부터 시작해야 할지 깝깝하네요. 파이썬 2에는 문자열(string)과 유니코드 문자열(unicode string)이 있었죠. 파이썬3엔 바이트(byte)와 문자열(string)이 있습니다. 파이썬3 에서 모든 문자열은 유니코드 입니다. 그러니까 진짜 바이트를 다루고 싶으면 파이썬 3에서 새롭게 도입한 byte 타입을 사용하세요. 파이썬3에는 문자열(string)과 바이트(byte) 간의 묵시적인 형 변환을 허용하지 않기 때문에, 언제 무엇을 써야하는지 모르는 상태에서 작업을 한다면, 그 코드엔 분명 문제가 생길겁니다. 자세한 이야기는 <a href=strings.html>문자열</a> 장에서 계속하죠.
+<p><a href=case-study-porting-chardet-to-python-3.html>사례 연구: <code>chardet</code> 파이썬 3로 포팅하기</a> 에서는 파이썬 2에서 파이썬 3로 포팅하면서 겪었던 저만의 경험담을 적어 봤습니다. (결국엔 해냈습니다. ^^). 제 작은 경험담이 여러분께 도움이 될 수도, 아닐 수도 있을텐데요. 어쨌건 여러분께서는 많은 걸 배워야 할 겁니다. 우선은 라이브러리가 어떻게 변경되었는지를 이해해야 합니다. 그래야 포팅하면서 발생하는 에러들과 제가 그걸 어떻게 고쳤는지 이해할 수 있으니까요. 사실 많은 문제들은 문자열 쪽에서 생긴거였어요.
 
-<p>바이트와 문자열에 대한 내용은 워낙 광범위하게 적용되는 내용이라, 이 책에 계속해서 등장할 겁니다. 예를 들면 아래처럼 말이죠.
+<p>문자열이라, 휴, 어디서부터 시작해야 할지 막막하네요. 파이썬 2에는 문자열(string)과 유니코드 문자열(unicode string)이 있었죠. 파이썬 3에는 바이트(byte)와 문자열(string)이 있습니다. 파이썬 3에서 모든 문자열은 유니코드 입니다. 그러니까 진짜 바이트를 다루고 싶으면 파이썬 3에서 새로 도입한 byte 타입을 사용하세요. 파이썬 3는 문자열(string)과 바이트(byte) 간의 묵시적 형 변환을 허용하지 않기 때문에, 여러분이 이 둘의 차이을 정확히 이해하지 못하고, 언제 무엇을 써야 할지 모른다면, 그 코드는 마치 시한폭탄을 안고 있는거나 마찬가지입니다.언젠가는 반드시 문제가 생길겁니다. 자세한 이야기는 <a href=strings.html>문자열</a> 장에서 계속하죠.
+
+<p>바이트와 문자열은 워낙 광범위하게 적용되는 내용이라, 이 책 전반에 걸쳐 계속 등장할 겁니다. 몇가지 예를 들면 아래와 같습니다.
 
 <ul>
 <li>
-	<a href=files.html>파일</a> 장에서는 바이너리 모드와 텍스트 모드에서 파일을 읽을 때, 각각 어떻게 다른지 배웁니다. 파일을 텍스트 모드에서 읽으려면 (쓰는 것도 마찬가지지만) <code>encoding</code> 파라미터를 필요로 합니다. 어떤 함수는 문자의 갯수를 반환하고, 어떤 함수는 바이트의 갯수를 반환합니다. 만약 여러분의 코드가 한 문자는 한 바이트라고 가정하고 작성됬다면, 멀티 바이트 크기를 가진 문자열을 다룰 때 <b>빈드시</b> 문제가 생길겁니다.
+	<a href=files.html>파일</a> 장에서는 바이너리 모드와 텍스트 모드에서 파일을 읽을 때, 각각 어떻게 달라지는지 배웁니다. 텍스트 모드에서 읽을 때는 (쓰는 것도 마찬가지지만) <code>encoding</code> 파라미터를 줘야 합니다. 어떤 텍스트 파일 관련 함수는 문자의 갯수를 반환하지만, 바이트의 갯수를 반환하는 함수도 있습니다. 만약 한 문자의 크기는 한 바이트라고 가정하고 코드를 작성했다면, 멀티 바이트 크기를 가진 문자열 (가령 한글)을 다룰 때 <b>분명</b> 문제가 터질겁니다.
 <li>
-	<a href=http-web-services.html><abbr>HTTP</abbr> 웹 서비스</a>를 보면, <code>httplib2</code>모듈은 <abbr>HTTP</abbr> 메시지의 헤더와 데이터를 가져올 수 있습니다. 이 때, 주의할 점은 <abbr>HTTP</abbr> 헤더는 문자열로 들어오고, <abbr>HTTP</abbr> 바디는 바이트로 들어옵니다.
+	<a href=http-web-services.html><abbr>HTTP</abbr> 웹 서비스</a>의 <code>httplib2</code>모듈은 <abbr>HTTP</abbr> 메시지의 헤더와 데이터를 가져올 수 있는 메소드들를 가지고 있습니다. 그런데 <abbr>HTTP</abbr> 헤더는 문자열로 들어오고, <abbr>HTTP</abbr> 바디는 바이트로 들어오니까 주의해야 합니다.
 <li>
-	<a href=serializing.html>파이썬 객체 직렬화</a>를 보면, 왜 파이썬 3의 <code>pickle</code> 모듈이 파이썬2 와 호환되지 않는 새로운 데이터 형식을 정의하게 됬는지 알 게 될겁니다. (힌트 : 이것도 결국 바이트와 문자열 문제 때문입니다.) 한편, 파이썬 3에서는 <abbr>JSON</abbr> 타입으로 객체를 직렬화할 수도 있습니다. <abbr>JSON</abbr>은 <code>byte</code>타입을 지원하지 않는 제약이 있는데, 이 문제를 해결하는 방법도 알려드릴 겁니다.
+	<a href=serializing.html>파이썬 객체 직렬화</a> 챕터를 보면, 왜 파이썬 3의 <code>pickle</code> 모듈이 파이썬 2의 pickle 모듈과 호환되지 않는 새로운 타입의 데이터를 정의할 수 밖에 없었는지 이해할 수 있을겁니다. (힌트 : 이것도 결국 바이트와 문자열 문제 때문입니다) 한편, 파이썬 3에서는 <abbr>JSON</abbr> 타입으로 객체를 직렬화할 수도 있습니다. <abbr>JSON</abbr>은 <code>byte</code>타입을 지원하지 않는다는 단점이 있는데, 이 문제를 극복하는 방법도 알려드릴 겁니다.
 <li>
-	<a href=case-study-porting-chardet-to-python-3.html>사례 연구: <code>chardet</code>파이썬 3로 포팅하기</a>에선 온통 바이트와 문자열 때문에 엉망진창이 되버린 광경을 볼 수 있을겁니다.
+	<a href=case-study-porting-chardet-to-python-3.html>사례 연구: <code>chardet</code>파이썬 3로 포팅하기</a>에선 온통 바이트와 문자열 문제로 악전고투하는 광경을 목격할 수 있을 겁니다.
 </ul>
 
-<p>여러분이 지금 당장 유니코드에 별 관심이 없다 하더라도 (흐흐. 하지만, 어쩔 수 없이 봐야 합니다), <a href=strings.html#formatting-strings>파이썬3 에서의 문자열 포맷팅</a>에 대해서는 호기심이 생길겁니다. 맞습니다. 문자열 포맷팅이 파이썬2에서와 완전히 달라졌습니다. 꼭 읽어보세요. 
+<p>여러분이 지금 당장은 유니코드에 관심이 없다고 하더라도 (흐흐. 안됬지만, 어쩔 수 없이 봐야 합니다), <a href=strings.html#formatting-strings>파이썬 3에서의 문자열 포맷팅</a>에 대해서는 궁금하셨을겁니다. 왜냐하면, 파이썬 2에서와는 완전히 달라진 새로운 문자열 포맷팅이기 때문이죠. 반드시 읽어보셔야 합니다.
 
-<p>반복자(iterator)는 파이썬 3 전반에 걸쳐 사용됬습니다. 솔직히 말해, 저 자신도 반복자에 대해 몰랐던 걸 이번 기회에 많이 알게 됬습니다. 제가 파이썬에 뛰어들기라는 책을 처음으로 썼던 5년 전보다 200 프로 정도 이해가 깊어졌다고나 할까요. 여러분도 그랬으면 좋겠습니다. 파이썬2 에서 리스트를 반환하던 많은 함수들이, 이제 파이썬3에서는 반복자를 반환하는 것으로 변경되었습니다. 아무리 귀찮더라도, <a href=iterators.html#a-fibonacci-iterator>반복자 장의 뒷쪽 절반</a>이랑 <a href=advanced-iterators.html#generator-expressions>고급 반복자 장의 뒷부분 절빈</a>은 반드시 읽어보셔야 합니다.
+<p>반복자(iterator)는 파이썬 3 전반에 걸쳐 사용됬습니다. 솔직히 말해, 저 자신도 이전에는 잘 몰랐던 걸 이번 기회에 많이 알게 되었습니다. 제가 파이썬에 뛰어들기라는 책을 처음으로 썼던 5년 전보다 198 프로 정도 이해가 깊어졌다고나 할까요. 여러분도 저처럼 반복자에 대한 이해가 깊어졌으면 좋겠습니다. 파이썬 2에서 리스트를 반환하던 많은 함수들이,  파이썬 3에서는 반복자를 반환하는 것으로 변경되었습니다. 아무리 귀찮더라도, <a href=iterators.html#a-fibonacci-iterator>반복자 챕터의 뒷쪽 절반</a>이랑 <a href=advanced-iterators.html#generator-expressions>고급 반복자 챕터의 뒷부분 절반</a>은 반드시 읽어보셔야 합니다.
 
-<p>여러분의 열화와 같은 성화로, <a href=special-method-names.html>특별한 메소드 이름</a>을 부록으로 첨부했습니다, <a href=http://www.python.org/doc/3.1/reference/datamodel.html#special-method-names>파이썬 공식문서인 &#8220;데이터 모델&#8221; 장</a>과 비슷하지만 좀 더 자세히 파헤쳐 봤습니다.
+<p>여러분의 열화와 같은 성원 덕분에, <a href=special-method-names.html>특별한 메소드 이름</a>을 부록으로 첨부했습니다, <a href=http://www.python.org/doc/3.1/reference/datamodel.html#special-method-names>파이썬 공식문서인 &#8220;데이터 모델&#8221;</a>과 비슷하지만, 나름  좀 더 자세히 파헤쳐 봤습니다.
 
-<p>제가 처음 파이썬에 뛰어들기란 책을 쓸 당시만 해도, 파이썬 XML 라이브러리 중 진짜 쓸만한 게 없었습니다. 나중에 Fredrik 과 Lundh가 <a href=http://effbot.org/zone/element-index.htm>ElementTree</a>라는 꽤 괜찮은 XML 라이브러리를 만들었죠. 파이썬 위원회에선 <a href=http://docs.python.org/3.1/library/xml.etree.elementtree.html>파이썬 표준 라이브러리에 ElementTree를 통합</a>시키는 결정을 내렸고, 그래서 저는 이 ElementTree 라이브러리를 기본으로 <a href=xml.html>새로운 XML 장</a>을 작성했습니다. 예전 방식대로 XML 파싱하는것도 여전히 가능하지만, 쓰지 마세요. 구리거든요.
+<p>제가 처음 파이썬에 뛰어들기란 책을 쓸 당시만 해도, 파이썬 XML 라이브러리 중 쓸만한 게 정말 거의 없었습니다. 나중에 Fredrik 과 Lundh라는 분들이 <a href=http://effbot.org/zone/element-index.htm>ElementTree</a>라는 꽤 괜찮은 XML 라이브러리를 만들었죠. 파이썬 위원회에선 <a href=http://docs.python.org/3.1/library/xml.etree.elementtree.html>파이썬 표준 라이브러리에 ElementTree를 통합</a>시켰고, 그래서 이 ElementTree 라이브러리를 토대로 <a href=xml.html>새로운 XML</a>을 썼습니다. 예전 방식대로 XML 파싱할 수도 있지만, 쓰지 마세요. 별로 안좋습니다.
 
-<p>마지막으로 언어 자체의 변화가 아니라 파이썬 커뮤니티의 변화로 <a href=http://pypi.python.org/>The Python Package Index</a> (PyPI)이 급부상한 점을 꼽을 수 있습니다. 파이썬 3에선 작성된 코드를 패키징하고 PyPI 에 배포하는 절차를 간소화시킬수 있는 유틸리티도 제공합니다. 더 자세한 정보는 <a href=packaging.html>파이썬 라이브러리 패키징하기</a> 챕터를 읽어보세요.
+<p>언어 자체의 변화가 아니라, 파이썬 커뮤니티의 변화로는 <a href=http://pypi.python.org/>The Python Package Index</a> (PyPI) 가 유명해진 점을 꼽을 수 있습니다. 이를 위해 파이썬 3에서는 코드를 패키징하고 PyPI 에 배포하는 절차를 간단하게 할 수 있는 유틸리티도 함께 제공합니다. 자세한 정보는 <a href=packaging.html>파이썬 라이브러리 패키징하기</a> 챕터를 읽어 보세요.
 
 <p class=c>&copy; 2001&ndash;11 <a href=about.html>Mark Pilgrim</a>
