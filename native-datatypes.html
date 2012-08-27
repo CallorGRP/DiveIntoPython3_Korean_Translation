@@ -41,7 +41,7 @@ body{counter-reset:h1 2}
 
 
 <p>
-	Boolean은 참 이나 거짓 가운데 하나를 의미하는 데이터 타입입니다. 파이썬은 이를 위해 <code><dfn>True</dfn></code> 와 <code><dfn>False</dfn></code> 라는 상수를 정의해서 사용하고, 이 상수를 변수에 직접 할당하여 Boolean 타입으로 만들 수 있습니다. 어떤 특정 위치에서는, 주어진 표현식이 반드시 <code><dfn>True</dfn></code> 또는 <code><dfn>False</dfn></code> 로 판명나야 하기도 합니다. if 문을 예로 들 수 있겠네요. if 문에 사용된 조건식은 반드시 <code><dfn>True</dfn></code> 나 <code><dfn>False</dfn></code>, 둘 중 하나로 판명나야 합니다. 이런 위치를 가르켜 Boolean context 라고 부릅니다. Boolean context 에는 어떤 파이썬 표현식도 사용할 수 있습니다. 파이썬이 알아서 <code><dfn>True</dfn></code>나 <code><dfn>False</dfn></code> 중 하나로 평가해줍니다. 하지만, 자료형마다 서로 다른 룰을 가지고 참,거짓이 판명된다는 사실은 알고 계세요. 아리송하죠? 역시 예제를 보는 편이 낫겠죠?
+	Boolean은 참 이나 거짓 가운데 하나를 의미하는 데이터 타입입니다. 파이썬은 이를 위해 <code><dfn>True</dfn></code> 와 <code><dfn>False</dfn></code> 라는 상수를 정의해서 사용하고, 이 상수를 변수에 직접 할당하여 Boolean 타입으로 만들 수 있습니다. 어떤 상황에서는, 주어진 표현식이 반드시 <code><dfn>True</dfn></code> 이거나 <code><dfn>False</dfn></code> 여야 합니다. if 문을 예로 들 수 있습니다. if 문에 사용된 조건식은 반드시 <code><dfn>True</dfn></code> 나 <code><dfn>False</dfn></code> 가운데 하나로 판명나야 합니다. 이런 상황을 Boolean context 라고 부릅니다. Boolean context 에는 어떤 파이썬 표현식도 사용할 수 있습니다. 파이썬이 알아서 <code><dfn>True</dfn></code>나 <code><dfn>False</dfn></code> 중 하나로 평가해 주거든요. 하지만, 자료형마다 서로 다른 룰을 가지고, 참과 거짓이 판명된다는 사실은 알고 계셔야 합니다. 아리송하죠? 역시 예제를 보는 편이 낫겠네요.
 
 
 <p>
@@ -65,7 +65,7 @@ body{counter-reset:h1 2}
 <samp class=pp>True</samp></pre>
 
 <p>
-	파이썬 버전 2에서와 같이, Boolean 타입을 마치 숫자처럼 쓸 수도 있습니다. <code>True</code>는 <code>1</code>; <code>False</code>는 0입니다.
+	파이썬 버전 2에서와 같이, Boolean 타입을 숫자처럼 쓸 수도 있습니다. <code>True</code>는 <code>1</code>, <code>False</code>는 0을 의미합니다.
 
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>True + True</kbd>
@@ -80,14 +80,14 @@ body{counter-reset:h1 2}
 ZeroDivisionError: int division or modulo by zero</samp></pre>
 
 <p>
-	웁스. 제가 깜빡하고 말씀을 안드렸네요. 0으로 나누면 안됩니다. :)
+	아차. 제가 깜빡하고 말씀을 안드렸네요. 0으로 나누면 안되는거 아시죠?.
 
 <p class=a>&#x2042;
 
 <h2 id=numbers>Numbers</h2>
 
 <p>
-	숫자에선 다뤄야 할 것들이 굉장히 많습니다. 일단 파이썬 3는 <dfn>정수형(integer)</dfn>과 <dfn>실수형(floating point number)</dfn>을 지원합니다. 앞에서 말씀드렸듯이, 파이썬은 변수 선언시 타입을 별도로 선언하지 않기 때문에, 정수형인지 실수형인지를 판단할 때, 값에 <dfn>소숫점</dfn>이 있는지 없는지를 보고 결정합니다.
+	이번 챕터에서는 다뤄야 할 것들이 굉장히 많습니다. 일단 파이썬 3는 <dfn>정수형(integer)</dfn>과 <dfn>실수형(floating point number)</dfn>을 지원합니다. 앞에서 말씀드렸듯이, 파이썬은 변수 선언시 타입을 별도로 선언하지 않기 때문에, 정수형인지 실수형인지를 판단하려면 값에 <dfn>소숫점</dfn>이 있는지 없는지를 봐야합니다.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>type(1)</kbd>                 <span class=u>&#x2460;</span></a>
 <samp class=pp>&lt;class 'int'></samp>
@@ -106,9 +106,9 @@ ZeroDivisionError: int division or modulo by zero</samp></pre>
 <li>
 	<code>isinstance()</code> 함수를 사용하면, 첫번째 파라미터로 넘겨진 값이나 변수가 두번째 파라미터로 넘겨진 타입과 같은지 아닌지를 알 수 있습니다.
 <li>
-	<code>정수</code>에 <code>정수</code>를 더하면 <code>정수</code>가 됩니다.
+	<code>정수</code>에 <code>정수</code>를 더하면 <code>정수</code>입니다.
 <li>
-	<code>정수</code>에 <code>실수</code>를 더하면 <code>실수</code>가 됩니다. 파이썬에선 <code>정수</code>와 <code>실수</code>를 더하면, 먼저 정수를 <code>실수</code>로 변경한 후 연산을 적용합니다. 따라서 연산결과는 실수가 됩니다.
+	<code>정수</code>에 <code>실수</code>를 더하면 <code>실수</code>입니다. 파이썬에선 <code>정수</code>와 <code>실수</code>를 더하면, 먼저 정수를 <code>실수</code>로 변경한 후 연산을 적용합니다. 따라서 연산결과는 실수입니다.
 </ol>
 
 
@@ -116,7 +116,7 @@ ZeroDivisionError: int division or modulo by zero</samp></pre>
 
 
 <p>
-	방금 보신것과 같이, 더하기 연산자 같은 연산자 들은 주어진 정수값을 그때 그때 상황에 맞게 먼저 실수값으로 변경후 연산에 적용합니다. 하지만 다음과 같이 명시적으로 변경하는 방법도 있습니다.
+	앞에서 본 것과 같이, 더하기 연산자 같은 연산자 들은 주어진 정수값을 그때 그때 상황에 맞게 먼저 실수값으로 변경후 연산에 적용합니다. 하지만 다음과 같이 명시적으로 타입을 변경할 수도 있습니다.
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>float(2)</kbd>                <span class=u>&#x2460;</span></a>
@@ -137,25 +137,24 @@ ZeroDivisionError: int division or modulo by zero</samp></pre>
 	<code>float()</code> 함수를 사용해 <code>int</code>형을 <code>float</code>형으로 강제 형 변환할 수 있습니다.
 
 <li>
-	마찬가지로, <code>int()</code> 함수를 사용해 <code>float</code>형을 <code>int</code>형으로 바꿀 수 있습니다.
+	<code>int()</code> 함수를 사용해 <code>float</code>형을 <code>int</code>형으로 바꿀 수 있습니다.
 
 <li>
 	<code>int()</code> 함수는 양수의 경우 소수점 아래는 그냥 버립니다.
 
 <li>
-	<code>int()</code> 함수는 음수의 경우도 마찬가지로 소수점 아래를 버립니다. 
+	<code>int()</code> 함수는 음수의 경우도 소수점 아래는 버립니다. 
 
 <li>
 	실수는 소숫점 아래 15 자리까지만 표현할 수 있습니다.
 
 <li>
-	정수는 임의의 큰 수를 표현합니다.
+	정수는 임의의 큰 수를 표현하는데 사용합니다.
 
 </ol>
 <blockquote class='note compare python2'>
-<p><span class=u>&#x261E;</span>Python 2 had separate types for <code>int</code> and <code>long</code>. The <code>int</code> datatype was limited by <code>sys.maxint</code>, which varied by platform but was usually <code>2<sup>32</sup>-1</code>. Python 3 has just one integer type, which behaves mostly like the old <code>long</code> type from Python 2. See <a href=http://www.python.org/dev/peps/pep-0237><abbr>PEP</abbr> 237</a> for details.
-
-파이썬 2에서는 int 형과 long 형을 따로 정의해 두었습니다. int 형의 크기는 sys.maxint 에 정의되어 있고요. 물론 윈도우인지 리눅스인지, 32비트인지 64비트인지 같은 OS 플랫폼에 따라 달라지긴 해도, int 형의 크기는 최소한 <code>2<sup>32</sup>-1</code> 입니다. 파이썬 3에서는 long 형을 따로 두지 않고, 모든 정수는 int 형 하나로 표시합니다. 자세한 내용은 <a href=http://www.python.org/dev/peps/pep-0237><abbr>PEP</abbr> 237</a> 를 읽어 보세요.
+<p><span class=u>&#x261E;</span>
+파이썬 2에서는 int 형과 long 형을 따로 정의해 두었습니다. int 형의 크기는 sys.maxint 에 정의되어 있고요. 물론 윈도우인지 리눅스인지, 32비트인지 64비트인지 같은 OS 플랫폼에 따라 달라지긴 하지만, int 형의 크기는 최소한 <code>2<sup>32</sup>-1</code> 입니다. 파이썬 3에서는 long 형을 따로 두지 않고, 모든 정수는 int 형 하나로 표시합니다. 자세한 내용은 <a href=http://www.python.org/dev/peps/pep-0237><abbr>PEP</abbr> 237</a> 를 읽어 보세요.
 
 </blockquote>
 <h3 id=common-numerical-operations>파이썬으로 산술 연산 하기</h3>
@@ -189,28 +188,20 @@ ZeroDivisionError: int division or modulo by zero</samp></pre>
 
 
 <li>
-	When integer-dividing negative numbers, the <code>//</code> operator rounds &#8220;up&#8221; to the nearest integer. Mathematically speaking, it&#8217;s rounding &#8220;down&#8221; since <code>&minus;6</code> is less than <code>&minus;5</code>, but it could trip you up if you were expecting it to truncate to <code>&minus;5</code>.
 
 
-	만약 <code>//</code> 연산자를 음수에 적용하면, 소숫점 이하는 역시 버리고, 결과를 가장 가까이 있는 자기보다 적은 정수값으로 만듭니다. 결과만 놓고 볼 때는, <code>&minus;5</code> 보다 <code>&minus;6</code>이 더 작으니까, 수학적으로 말하면 반내림과 같습니다. 답이 -5라고 자신있게 말씀하신 분들이 아마 적지 않을겁니다. 앞에서 조심하라고 말씀드렸었죠?
+	만약 <code>//</code> 연산자를 음수에 적용하면, 소숫점 이하는 역시 버리고, 결과를 가장 가까이 있는 자기보다 적은 정수값으로 만듭니다. 결과만 놓고 볼 때는, <code>&minus;5</code> 보다 <code>&minus;6</code>이 더 작으니까, 수학적으로 말하면 반내림과 같습니다. -5 라고 자신있게 말씀하셨던 분 많죠? 앞에서 조심하라고 말씀드렸었죠?
 
 
 <li>
-	The <code>//</code> operator doesn&#8217;t always return an integer. If either the numerator or denominator is a <code>float</code>, it will still round to the nearest integer, but the actual return value will be a <code>float</code>.
-
-
 	<code>//</code> 연산자의 결과값이 언제나 정수형인 것은 아닙니다. 분자와 분모 중 하나가 실수형이면, 결과값도 실수입니다. 하지만 실수인 결과값 역시 가장 가까운 작은 정수로 변환됩니다.
 
 
 <li>
-	The <code>**</code> operator means &#8220;raised to the power of.&#8221;  <code>11<sup>2</sup></code> is <code>121</code>.
-	
 	<code>**</code> 연산자는 제곱을 의미합니다. <code>11<sup>2</sup></code>은 <code>121</code>이죠.
 
 
 <li>
-	The <code>%</code> operator gives the remainder after performing integer division. <code>11</code> divided by <code>2</code> is <code>5</code> with a remainder of <code>1</code>, so the result here is <code>1</code>.
-	
 	<code>%</code> 연산자는 정수 나눗셈을 하고 난 나머지를 돌려줍니다. <code>11</code>을 <code>2</code>로 나눈 나머지는 <code>1</code>이죠. 그래서 결과는 <code>1</code>입니다.
 
 </ol>
@@ -230,9 +221,9 @@ ZeroDivisionError: int division or modulo by zero</samp></pre>
 
 <blockquote class='note compare python2'>
 <p>
-	<span class=u>&#x261E;</span>In Python 2, the <code>/</code> operator usually meant integer division, but you could make it behave like floating point division by including a special directive in your code. In Python 3, the <code>/</code> operator always means floating point division. See <a href=http://www.python.org/dev/peps/pep-0238/><abbr>PEP</abbr> 238</a> for details.
+	<span class=u>&#x261E;</span>
 
-	파이썬2 에서의 / 연산자는 정수 나눗셈을 의미했습니다만, 코드 안에 특별 지시자를 넣어 실수 나눗셈 또한 가능하도록 할 수 있었습니다. 그러나 파이썬3 에서는 / 연산자는 디폴트로 실수 나눗셈을 의미합니다. 더 자세한 내용은 PEP238을 참고하세요.
+	파이썬2 에서의 <code>/</code> 연산자는 정수 나눗셈을 의미했습니다만, 코드 안에 특별 지시자를 넣어 실수 나눗셈 또한 가능하도록 할 수 있었습니다. 그러나 파이썬3 에서는 <code>/</code> 연산자는 디폴트로 실수 나눗셈을 의미합니다. 더 자세한 내용은 <a href=http://www.python.org/dev/peps/pep-0238/><abbr>PEP</abbr> 238</a>을 참고하세요.
 
 </blockquote>
 
@@ -261,20 +252,15 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <ol>
 
 <li>
-	To start using fractions, import the <code>fractions</code> module.
-	분수를 사용하려면 먼저 fractions 모듈을 임포트해야 합니다.
+	분수를 사용하려면 먼저 <code>fractions</code> 모듈을 임포트해야 합니다.
 <li>
-	To define a fraction, create a <code>Fraction</code> object and pass in the numerator and denominator.
-	분수를 만드려면 Fraction 객체를 만들고, 파라미터로 분자와 분모를 넘겨줍니다.
+	분수를 만드려면 <code>Fraction</code> 객체를 만들고, 파라미터로 분자와 분모를 넘겨줍니다.
 <li>
-	You can perform all the usual mathematical operations with fractions. Operations return a new <code>Fraction</code> object. <code>2 * (1/3) = (2/3)</code>
-	분수로 할 수 있는 어떤 계산도 할 수 있습니다. 결과값으로 새로운 Fraction 객체가 반환됩니다.
+	파이썬은 어떤 분수 계산도 할 수 있습니다. 결과값으로는 언제나 새로운 <code>Fraction</code> 객체가 반환됩니다. <code>2 * (1/3) = (2/3)</code>입니다.
 <li>
-	The <code>Fraction</code> object will automatically reduce fractions. <code>(6/4) = (3/2)</code>
-	Fraction 객체는 분자와 분모를 감지해서 자동으로 크기를 맞춰줍니다. 
+	<code>Fraction</code> 객체는 분자와 분모를 감지해서 자동으로 크기를 맞춰줍니다. <code>(6/4) = (3/2)</code> 입니다.
 <li>
-	Python has the good sense not to create a fraction with a zero denominator.
-	분모를 0으로 하면 에러입니다.
+	파이썬도 분모가 0이 되면 안된다는 것 쯤은 알고 있습니다.
 </ol>
 
 
@@ -305,20 +291,15 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 
 </ol>
 
-<h3 id=numbers-in-a-boolean-context>Numbers In A Boolean Context</h3>
 <h3 id=numbers-in-a-boolean-context>숫자도 참 또는 거짓이 될 수 있습니다</h3>
 
 
-
 <aside>
-	Zero values are false, and non-zero values are true.
-	0은 false, 0이 아닌 숫자는 true입니다.
+	0은 false 이고, 0이 아닌 숫자는 true입니다.
 </aside>
 
 <p>
-	You can use numbers <a href=#booleans>in a boolean context</a>, such as an <code>if</code> statement. Zero values are false, and non-zero values are true.
-
-	if 절 같은 곳에서는 숫자를 참/거짓을 판별할때 사용할 수 있습니다. 0은 false로 0이 아닌 숫자는 true 로 판별됩니다.
+	<code>if</code> 절 같은 곳에서는 <a href=#booleans>숫자를 참/거짓을 판별할 때 사용</a>할 수 있습니다. 0은 false로 0이 아닌 숫자는 true 로 판별됩니다.
 
 	
 
@@ -347,10 +328,10 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <ol>
 
 <li>
-	Did you know you can define your own functions in the Python interactive shell? Just press <kbd>ENTER</kbd> at the end of each line, and <kbd>ENTER</kbd> on a blank line to finish.
+
 	파이썬 쉘 안에서도 함수를 정의할 수 있답니다. 함수를 작성해 나갈때는 엔터키를 이용해 다음 행으로 계속할 수 있고, 함수 정의가 끝났을때는 엔터키를 두번 사용해 공백 라인이 맨 마지막에 오도록 하면 됩니다. 
 <li>
-	In a boolean context, non-zero integers are true; 0 is false.
+
 	boolean 값이 와야 하는 자리에 숫자가 사용되면 true 나 false 로 판명됩니다. 
 
 <li>
@@ -361,21 +342,21 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 </ol>
 <p class=a>&#x2042;
 
-<h2 id=lists>Lists</h2>
+<h2 id=lists>리스트</h2>
 
 <p>
-	Lists are Python&#8217;s workhorse datatype. When I say &#8220;<dfn>list</dfn>,&#8221; you might be thinking &#8220;array whose size I have to declare in advance, that can only contain items of the same type, <i class=baa>&amp;</i>c.&#8221; Don&#8217;t think that. Lists are much cooler than that. 
 
-	리스트 데이터 타입은 파이썬에서 없어서는 안 될 충실한 심복중 하나입니다. 리스트라는 단어를 듣는 순간, 이렇게 생각하실지도 모르겠습니다. "음, 먼저 사이즈를 정해서 미리 선언해주고, 같은 데이터 타입만 집어 넣을 수 있겠군". 파이썬의 리스트 데이터 타입을 다른 프로그래밍 언어의 배열과 비슷할 거라고 생각하셨다면, 틀렸습니다. 파이썬 리스트는 그것보다 훨씬 멋지거든요. 
+	리스트 (List) 데이터 타입은 파이썬에서 없어서는 안 될 충실한 심복중 하나입니다. 리스트라는 단어를 듣는 순간, 이렇게 생각하실지도 모르겠습니다. "음, 먼저 사이즈를 정해서 미리 선언해주고, 같은 데이터 타입만 집어 넣을 수 있겠군". 파이썬의 리스트 데이터 타입을 다른 프로그래밍 언어의 배열과 비슷할 거라고 생각하셨다면, 틀렸습니다. 파이썬 리스트는 그것보다 훨씬 멋지거든요. 
 
 <blockquote class='note compare perl5'>
 
 <p>
-	<span class=u>&#x261E;</span>A list in Python is like an array in Perl 5. In Perl 5, variables that store arrays always start with the <code>@</code> character; in Python, variables can be named anything, and Python keeps track of the datatype internally.
+	<span class=u>&#x261E;</span>
+	펄과 비교하면, 리스트는 펄 5의 배열과 유사합니다. 한편, 펄에서는 배열의 변수명이 항상 <code>@</code>로 시작해야 하지만, 파이썬엔 그런 제약이 없습니다. 파이썬은 내부적으로 데이터 형을 관리하기 때문에 명시적으로 나타낼 필요가 없는거죠.
 
 </blockquote>
-<blockquote class='note compare java'>
 
+<blockquote class='note compare java'>
 <p>
 	파이썬 리스트는 다른 언어, 가령, 자바의 배열보다 훨씬 강력합니다. 물론 딱 배열처럼만 사용하려면 그렇게 사용할 수도 있습니다. 하지만, 어떤 타입의 객체도 담을 수 있고, 그 크기가 동적으로 늘어날 수 있다는 점에서는 자바의 <code>ArrayList</code> 클래스에 비유할 수 있겠네요.
 
@@ -385,8 +366,7 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <h3 id=creatinglists>리스트 생성하기</h3>
 
 <p>
-	Creating a list is easy: use square brackets to wrap a comma-separated list of values.
-	파이썬 리스트는 간단하게 생성할 수 있습니다. 꺽쇠 안에 콤마로 구분한 값을 적어주면 됩니다.
+	파이썬 리스트를 만드는 방법은 간단합니다. 꺽쇠 안에 값을 적어주고, 콤마로 구분하면 됩니다.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>a_list = ['a', 'b', 'mpilgrim', 'z', 'example']</kbd>  <span class=u>&#x2460;</span></a>
 <samp class=p>>>> </samp><kbd class=pp>a_list</kbd>
@@ -402,8 +382,6 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <ol>
 
 <li>
-	First, you define a list of five items. Note that they retain their original order. This is not an accident. A list is an ordered set of items.
-
 	다섯개의 원소를 가진 리스트를 정의했습니다. 출력 결과에 주목하세요. 순서가 변하지 않고 그대로입니다.
 
 <li>
@@ -461,8 +439,7 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 
 <h3 id=extendinglists>리스트에 아이템 추가하기</h3>
 <p>
-	There are four ways to add items to a list.
-	리스트에 아이템을 추가하는 4 가지 방법이 있습니다.
+	리스트에 아이템을 추가하는 방법들을 알아봅니다.
 
 
 <pre class=screen>
@@ -636,6 +613,9 @@ ValueError: list.remove(x): x not in list</samp></pre>
 <p>
 	Another interesting list method is <code>pop()</code>. The <code>pop()</code> method is yet another way to <a href=#removingfromlists>remove items from a list</a>, but with a twist.
 
+	<code>pop()</code>이라는 메소드를 이용하여  <a href=#removingfromlists>리스트에서 아이템을 제거</a>할 수도 있습니다. 하지만, 주의할 점이 있습니다.
+
+
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_list = ['a', 'b', 'new', 'mpilgrim']</kbd>
 <a><samp class=p>>>> </samp><kbd class=pp>a_list.pop()</kbd>   <span class=u>&#x2460;</span></a>
@@ -656,28 +636,24 @@ ValueError: list.remove(x): x not in list</samp></pre>
 IndexError: pop from empty list</samp></pre>
 <ol>
 <li>
-	When called without arguments, the <code>pop()</code> list method removes the last item in the list <em>and returns the value it removed</em>.
 	<code>pop()</code> 메소드를 인자없이 호출하면 리스트의 맨 마지막 아이템을 반환하고, 해당 아이템은 삭제됩니다.
 <li>
 	<code>pop()</code> 메소드에 인자로 위치 인덱스를 주면, 해당 아이템을 반환후 삭제합니다.
 
 <li>
-	Calling <code>pop()</code> on an empty list raises an exception.
 	비어있는 리스트에 호출하면 예외가 발생됩니다.
 </ol>
 
 <blockquote class='note compare perl'>
 <p>
-	<span class=u>&#x261E;</span>Calling the <code>pop()</code> list method without an argument is like the <code>pop()</code> function in Perl. It removes the last item from the list and returns the value of the removed item. Perl has another function, <code>shift()</code>, which removes the first item and returns its value; in Python, this is equivalent to <code><var>a_list</var>.pop(0)</code>.
 
-	인자없는 <code>pop()</code> 메소드 호출은 펄의 <code>pop()</code> 함수와 유사합니다. 리스트 맨 마지막 원소를 반환하고, 리스트 내에서는 삭제합니다. 펄과 다른 점은, 리스트의 맨 앞부분 원소를 삭제할 때, 펄은 <code>shift()</code>라는 메소드를 따로 두고 있지만, 파이썬은 인자로 <code>0</code>을 주면 됩니다.
+	인자없는 <code>pop()</code> 메소드 호출은 펄의 <code>pop()</code> 함수와 유사합니다. 리스트 맨 마지막 원소를 반환하고, 리스트 내에서는 삭제합니다. 펄과 다른 점은, 리스트의 맨 앞부분 원소를 삭제할 때, 펄은 <code>shift()</code>라는 메소드를 따로 두고 있지만, 파이썬은 인자로 <code>0</code>을 주면 된다는 점입니다.
 
 </blockquote>
 
 <h3 id=lists-in-a-boolean-context>Lists In A Boolean Context리스트로 참, 거짓 판단하기</h3>
 <aside>
-	빈 리스트는 False입니다. 
-	Empty lists are false; all other lists are true.
+	비어있는 리스트는 False 로 치환할 수 있고, 나머지는 True 입니다. 
 </aside>
 <p>
 	You can also use a list in <a href=#booleans>a boolean context</a>, such as an <code>if</code> statement.
