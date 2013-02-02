@@ -1270,7 +1270,7 @@ KeyError: 'db.diveintopython3.org'</samp></pre>
 
 </ol>
 
-<h3 id=mixed-value-dictionaries>Mixed-Value Dictionaries</h3>
+<h3 id=mixed-value-dictionaries>dictionaries에 여러 데이터 타입 사용하기</h3>
 
 <p>
 	dictionary 아이템에 꼭 문자열을 사용해야할 이유는 없습니다. 어떤 데이터 타입이든 가능합니다. 정수 타입, boolean 타입, 임의의 객체타입, 심지어는 dictionary 자신도 dictionary 의 아이템에 사용할 수 있답니다. dictionary의 value로 이런 다양한 타입들을 동시에 섞어서 사용하는 것이 가능합니다. key는 조금 제약이 있는데, string 이나 정수 그리고 몇몇 다른 타입들을 사용할 수 있습니다. 물론 섞어서 사용하는 것도 가능하고요.
@@ -1345,10 +1345,13 @@ KeyError: 'db.diveintopython3.org'</samp></pre>
 
 <h2 id=none><code>None</code></h2>
 <p>
-	<code><dfn>None</dfn></code> is a special constant in Python. It is a <dfn>null</dfn> value. <code>None</code> is not the same as <code>False</code>. <code>None</code> is not 0. <code>None</code> is not an empty string. Comparing <code>None</code> to anything other than <code>None</code> will always return <code>False</code>.
+
+	<code><dfn>None</dfn></code>은 파이썬에서 정의된 특별한 상수값입니다. 이 상수값은 <dfn>null</dfn> 을 의미합니다만, <code>False</code>랑은 다르고, 0 을 의미하는 것도 아닙니다. 빈 문자열을 의미하지도 않습니다. 따라서 <code>None</code> 을 이런 값들과 비교하는 구문에 사용하는 실수를 저지르지 마세요.  어차피 <code>False</code>가 리턴될거니까요.
 
 <p>
-	<code>None</code> is the only null value. It has its own datatype (<code>NoneType</code>). You can assign <code>None</code> to any variable, but you can not create other <code>NoneType</code> objects. All variables whose value is <code>None</code> are equal to each other.
+
+	파이썬에서 null 값을 의미하는 것은 <code>None</code> 하나 뿐입니다. 이 상수의 타입은 <code>NoneType</code> 이고요, <code>NoneType</code> 의 객체 (파이썬에선 모든것이 객체라구요) 는 <code>None</code> 하나 뿐입니다. 변수가 <code>None</code> 으로 할당되면 그게 어떤 타입이던지 간에 동일하다고 간주됩니다.
+
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>type(None)</kbd>
 <samp class=pp>&lt;class 'NoneType'></samp>
@@ -1367,8 +1370,11 @@ KeyError: 'db.diveintopython3.org'</samp></pre>
 <samp class=p>>>> </samp><kbd class=pp>x == y</kbd>
 <samp class=pp>True</samp>
 </pre>
-<h3 id=none-in-a-boolean-context><code>None</code> In A Boolean Context</h3>
-<p>In <a href=#booleans>a boolean context</a>, <code>None</code> is false and <code>not None</code> is true.
+<h3 id=none-in-a-boolean-context><code>None</code> 으로 참, 거짓 판별하기</h3>
+
+<p><code>None</code> 이 if 문과 같이 참, 거짓의 판별이 요구되는 구문에 사용되면 false 를 의미합니다. <code>not None</code> 은 true 를 의미합니다.
+
+
 <pre class='nd screen'>
 <samp class=p>>>> </samp><kbd class=pp>def is_it_true(anything):</kbd>
 <samp class=p>... </samp><kbd class=pp>  if anything:</kbd>
@@ -1382,7 +1388,7 @@ KeyError: 'db.diveintopython3.org'</samp></pre>
 <samp>yes, it's true</samp></pre>
 <p class=a>&#x2042;
 
-<h2 id=furtherreading>Further Reading</h2>
+<h2 id=furtherreading>더 읽어볼 것들</h2>
 <ul>
 <li>
 	<a href=http://docs.python.org/3.1/library/stdtypes.html#boolean-operations-and-or-not>Boolean operations</a>
