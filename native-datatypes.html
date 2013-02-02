@@ -755,12 +755,12 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 	튜플은 list보다 빠릅니다. 여러분이 만약 상수값을 가진 list가 필요하고, 추후 변경없이 검색에만 사용할거라고 판단되면 list를 만드는 대신 튜플을 만드세요. 
 
 <li>
-	It makes your code safer if you &#8220;write-protect&#8221; data that doesn&#8217;t need to be changed. Using a tuple instead of a list is like having an implied <code>assert</code> statement that shows this data is constant, and that special thought (and a specific function) is required to override that.
-	튜플은 읽기전용 list이므로, 변경을 가하려고 하는 순간 에러를 발생시킵니다. 사용자 코드로부터 여러분의 데이터를 안전하게 지키고 싶다면 list 대신 튜플을 사용하세요. 마치 <code>assert</code>를 이용하여 방어하는 것과 같은 효과를 볼 수 있습니다.
+	
+	튜플은 읽기전용 list이므로, 변경을 가하려고 하는 순간 에러를 발생시킵니다. 사용자 코드로부터 여러분의 데이터를 안전하게 지키고 싶다면 list 대신 튜플을 사용하세요. 마치 <code>assert</code>를 이용하여 데이터를 방어하는 것과 같은 효과를 볼 수 있습니다.
 
 <li>
-	Some tuples can be used as dictionary keys (specifically, tuples that contain <i>immutable</i> values like strings, numbers, and other tuples). Lists can never be used as dictionary keys, because lists are not immutable.
-	튜플은 변경 불가능하므로(<i>immutable</i>), 딕셔너리의 키 값으로 사용할 수 있습니다. 특히 튜플 내의 아이템이 만약 string 같이 <i>immutable</i>한 경우엔 더더욱 그렇습니다.  list의 경우, immutable 하지 않으므로 딕셔너리의 키 값으로 사용될 수 없습니다.
+
+	튜플은 변경 불가능하므로(<i>immutable</i>), 딕셔너리의 키 값으로 사용할 수 있습니다. 특히 튜플 내의 아이템이 만약 string과 같이 <i>immutable</i>한 데이터 타입의 경우엔 더더욱 그렇습니다.  하지만, list는 immutable 하지 않으므로 딕셔너리의 키 값으로 사용될 수 없습니다.
 
 </ul>
 
