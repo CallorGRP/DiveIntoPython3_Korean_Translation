@@ -871,12 +871,13 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 <h2 id=sets>Sets</h2>
 
 <p>
-	A <dfn>set</dfn> is an unordered &#8220;bag&#8221; of unique values. A single set can contain values of any immutable datatype. Once you have two sets, you can do standard set operations like union, intersection, and set difference.
+	<dfn>set</dfn>은 유일한 값을 가진 데이터들을 뒤죽박죽인 채로 넣어둔 자루와 같습니다.  set 안에 들어갈 수 있는 데이터는 추후 변경이 불가능 (immutable) 해야 합니다.  두 개의 set 이 정의되 있다면, 마치 수학에서의 합집합 (union), 교집합 (intersection) 그리고 교집합을 제외한 나머지 (difference)  등과 같은 개념을 표준 set 함수를 이용해 구할 수 있습니다. 
 
-<h3 id=creating-a-set>Creating A Set</h3>
+
+<h3 id=creating-a-set>Set 생성</h3>
 
 <p>
-	First things first. Creating a set is easy.
+	먼저 set 을 만들어봅시다. 간단합니다. 
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>a_set = {1}</kbd>     <span class=u>&#x2460;</span></a>
@@ -888,16 +889,20 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 <samp class=p>>>> </samp><kbd class=pp>a_set</kbd>
 <samp class=pp>{1, 2}</samp></pre>
 <ol>
+
+
 <li>
-	To create a set with one value, put the value in curly brackets (<code>{}</code>).
+	어떤 하나의 값을 가지고 set을 만드는 경우엔, 그 값 주변을 코드에서와 같이 curly brace (<code>{}</code>)로 감싸주면 됩니다.
+
+<li>	
+	set의 타입은 <a href=iterators.html#defining-classes>클래스</a>입니다. 클래스에 대해서는 나중에 따로 설명해 드리겠습니다. 걱정마세요.
+
 <li>
-	Sets are actually implemented as <a href=iterators.html#defining-classes>classes</a>, but don&#8217;t worry about that for now.
-<li>
-	To create a set with multiple values, separate the values with commas and wrap it all up with curly brackets.
+	두 개 이상의 값을 가지고 set을 만드는 경우엔, 각각의 값들 사이에 콤마를 넣어주고, curly brace (<code>{}</code>)로 감싸주면 됩니다.
 </ol>
 
 <p>
-	You can also create a set out of a <a href=#lists>list</a>.
+	<a href=#lists>list</a>를  set으로 변환할 수도 있습니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_list = ['a', 'b', 'mpilgrim', True, False, 42]</kbd>
@@ -910,14 +915,22 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 
 <ol>
 <li>
-	To create a set from a list, use the <code>set()</code> function. (Pedants who know about how sets are implemented will point out that this is not really calling a function, but instantiating a class. I <em>promise</em> you will learn the difference later in this book. For now, just know that <code>set()</code> acts like a function, and it returns a set.)
+	list를 set으로 변환할때는 <code>set()</code>함수를 사용하면 됩니다. 혹시 어떤 깐깐한 분들께서는 "잠깐만요, 이건 사실 함수호출이 아니라 객체 생성 (class instantiation) 아닌가요?" 라고 질문하실수도 있겠습니다. 약속드릴게요. 제가 나중에 다시 설명드리겠습니다. 일단 지금은 <code>set()</code> 이 함수처럼 동작하고, set 을 반환한다고 알고 넘어갑시다. 
+
 <li>
 	As I mentioned earlier, a single set can contain values of any datatype. And, as I mentioned earlier, sets are <em>unordered</em>. This set does not remember the original order of the list that was used to create it. If you were to add items to this set, it would not remember the order in which you added them.
+
+	set 내부에는 어떤 데이터 타입도 포함될 수 있다고 말씀드렸죠? 그리고 뒤죽박죽인 채로 (<em>unordered</em>) 들어있다고 말한것도 기억하시나요? 비록 이 set 은 list 를 이용해 생성되었지만, list 에 들어있던 원소들의 순서는 깡그리 무시됩니다. 그리고 또 다른 아이템들을 이 set 안에 추가하더라도, 추가되는 순서또한 무시된다는 걸 기억하세요.
+
 <li>
-	The original list is unchanged.
+	원본 list 는 그대로 있습니다.
 </ol>
 
-<p id=emptyset>Don&#8217;t have any values yet? Not a problem. You can create an empty set.
+<p id=emptyset>
+
+	Don&#8217;t have any values yet? Not a problem. You can create an empty set.
+	set 안에 집어넣을 아이템이 아직 준비되지 않았나요? 괜찮습니다. 빈 set을 만들면 되거든요.
+
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>a_set = set()</kbd>    <span class=u>&#x2460;</span></a>
@@ -934,20 +947,24 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 
 <li>
 	To create an empty set, call <code>set()</code> with no arguments.
+
+	빈 set 을 만드려면 <code>set()</code>라고 입력합니다. 함수안에 어떤 인자도 주지 않습니다.
 <li>
 	The printed representation of an empty set looks a bit strange. Were you expecting <code>{}</code>, perhaps? That would denote an empty dictionary, not an empty set. You&#8217;ll learn about dictionaries later in this chapter.
+
+	비어있는 set을 출력하면 좀 의외의 결과가 나오죠?  뭐 <code>{}</code> 랑 비슷한 것이 나와야 하지 않을까라고 생각하셨을지도 모르겠습니다. 하지만 <code>{}</code> 는 빈 dictionary 를 의미합니다. dictionary 에 대해서는 조금있다가 배우도록 하겠습니다.
 <li>
-	Despite the strange printed representation, this <em>is</em> a set&hellip;
+	어찌됬던 간에 이게 바로 set입니다&hellip;
 <li>
-	&hellip;and this set has no members.
+	&hellip;그리고 텅텅 비어있는 set이죠.
 <li>
-	Due to historical quirks carried over from Python 2, you can not create an empty set with two curly brackets. This actually creates an empty dictionary, not an empty set.
+	Python 2에서 정의된 룰을 따르다 보니, curly brace 로는 빈 set이 아닌 빈 dictionary를 만들게 됩니다.  
 </ol>
 
-<h3 id=modifying-sets>Modifying A Set</h3>
+<h3 id=modifying-sets>Set 변경하기</h3>
 
 <p>
-	There are two different ways to add values to an existing set: the <code>add()</code> method, and the <code>update()</code> method.
+	set에 새로운 아이템을 추가하는 데는 두 가지 방법이 있습니다. 하나는 <code>add()</code> 메소드를 호출하는 것이고, 다른 하나는 <code>update()</code> 메소드를 호출하는 겁니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_set = {1, 2}</kbd>
@@ -964,13 +981,13 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 
 <ol>
 <li>
-	The <code>add()</code> method takes a single argument, which can be any datatype, and adds the given value to the set.
+	<code>add()</code> 메소드는 하나의 인자를 받습니다. 어떤 데이터 타입이든 상관없이 그 인자를 주어진 set에 추가합니다.
 <li>
-	This set now has 3 members.
+	이제 이 set은 3개의 아이템을 가지게 되었습니다.
 <li>
-	Sets are bags of <em>unique values</em>. If you try to add a value that already exists in the set, it will do nothing. It won&#8217;t raise an error; it&#8217;s just a no-op.
+	set 은 유일한 값들을 집합이라고 말씀드렸습니다. 만약 중복되는 아이템을 추가하면 아무일도 생기지 않습니다. 에러도 생기지 않구요, 그냥 아무 일도 안 일어납니다.
 <li>
-	This set <em>still</em> has 3 members.
+	여전히 3개의 아이템을 가지고 있습니다.
 </ol>
 
 <pre class=screen>
@@ -988,19 +1005,23 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 <samp class=pp>{1, 2, 3, 4, 5, 6, 8, 9, 10, 13, 20, 30}</samp></pre>
 <ol>
 <li>
-	The <code>update()</code> method takes one argument, a set, and adds all its members to the original set. It&#8217;s as if you called the <code>add()</code> method with each member of the set.
+	예제 코드에서 <code>update()</code> 메소드는 하나의 인자를 입력으로 받았는데, 그 인자 역시 set 이군요. 이 코드는 입력으로 주어진 set 을 대상이 되는 set에 추가합니다. 입력 set 내 아이템들 하나 하나에 <code>add()</code> 메소드를 호출하는 것과 같은 동작을 합니다.
 <li>
-	Duplicate values are ignored, since sets can not contain duplicates.
+	set 은 유일한 값만 받아들이므로 중복되는 값은 추가되지 않습니다.
 <li>
-	You can actually call the <code>update()</code> method with any number of arguments. When called with two sets, the <code>update()</code> method adds all the members of each set to the original set (dropping duplicates).
+	<code>update()</code> 메소드의 인자로 두 개 이상의 set 을 전달하는 것도 가능합니다. 타겟 set 내 아이템과 중복되는 것은 무시하고, 모든 아이템을 타겟 set 에 추가합니다.
+
 <li>
-	The <code>update()</code> method can take objects of a number of different datatypes, including lists. When called with a list, the <code>update()</code> method adds all the items of the list to the original set.
+	<code>update()</code> 메소드는 인자로 어떤 데이터 타입도 넘겨줄 수 있습니다. 예제에서는 인자의 타입으로 list를 넘겨주고 있습니다. list가 인자로 건네지면 list 내 모든 아이템을 타겟 set에 추가하게 됩니다.
+
 </ol>
 
-<h3 id=removing-from-sets>Removing Items From A Set</h3>
+<h3 id=removing-from-sets>Set 아이템 삭제하기</h3>
 
 <p>
 	There are three ways to remove individual values from a set. The first two, <code>discard()</code> and <code>remove()</code>, have one subtle difference.
+	set 내 아이템 삭제에는 모두 세 가지 방법이 있는데, 우선 첫번째 방법인 <code>discard()</code> 메소드를 사용하는 방법과 두번째 방법인<code>remove()</code> 메소드를 사용하는 방법에 대해 알아봅시다. 이 둘간에 아주 미묘한 차이가 있거든요.
+
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_set = {1, 3, 6, 10, 15, 21, 28, 36, 45}</kbd>
@@ -1022,17 +1043,17 @@ KeyError: 21</samp></pre>
 
 <ol>
 <li>
-	The <code>discard()</code> method takes a single value as an argument and removes that value from the set.
+	<code>discard()</code> 메소드는 값 하나를 인자로 받아 해당 값을 set에서 제거합니다.
 <li>
-	If you call the <code>discard()</code> method with a value that doesn&#8217;t exist in the set, it does nothing. No error; it&#8217;s just a no-op.
+	만약 set 내에 존재하지 않는 값을 제거하려 하면, 아무일도 발생하지 않습니다. 에러도 없구요. 진짜 아무일도 안합니다.
 <li>
-	The <code>remove()</code> method also takes a single value as an argument, and it also removes that value from the set.
+	<code>remove()</code> 메소드 또한 값 하나를 인자로 받아 해당 값을 set에서 제거합니다.
 <li>
-	Here&#8217;s the difference: if the value doesn&#8217;t exist in the set, the <code>remove()</code> method raises a <code>KeyError</code> exception.
+	바로 이 점이 다릅니다. 존재하지 않는 값을 <code>remove()</code> 메소드로 제거하려고 하면 <code>KeyError</code>라고 하는 예외가 발생합니다.
 </ol>
 
 <p>
-	Like lists, sets have a <code>pop()</code> method.
+	이제 set의 아이템을 제거하는 방법가운데 마지막, 세번째 방법 입니다. set 도 list처럼 <code>pop()</code> 메소드를 통해 아이템을 제거할 수 있습니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_set = {1, 3, 6, 10, 15, 21, 28, 36, 45}</kbd>
@@ -1054,17 +1075,21 @@ KeyError: 'pop from an empty set'</samp></pre>
 
 <ol>
 <li>
-	The <code>pop()</code> method removes a single value from a set and returns the value. However, since sets are unordered, there is no &#8220;last&#8221; value in a set, so there is no way to control which value gets removed. It is completely arbitrary.
+
+	<code>pop()</code> 메쏘드는 set 내의 임의의 아이템 하나를 제거한후 이를 반환합니다. 특이한 점은 이 메소드를 통해 어떤 원소를 반환하게 될지 미리 알 수 없다는 점입니다. 
+
 <li>
-	The <code>clear()</code> method removes <em>all</em> values from a set, leaving you with an empty set. This is equivalent to <code>a_set = set()</code>, which would create a new empty set and overwrite the previous value of the <var>a_set</var> variable.
+
+	<code>clear()</code> 메쏘드는 set의 모든 아이템을 제거합니다. 예제 코드는 <code>a_set = set()</code> 와 같은 효력을 지니는데, 새로운 빈 set을 만든후 이를 a_set 변수에 덮어씌우는 것과 같습니다.
+
 <li>
-	Attempting to pop a value from an empty set will raise a <code>KeyError</code> exception.
+	만약 빈 set에 <code>pop()</code> 메쏘드를 적용하면 <code>KeyError</code> 예외가 반환됩니다.
 </ol>
 
-<h3 id=common-set-operations>Common Set Operations</h3>
+<h3 id=common-set-operations>공통 set 연산</h3>
 
 <p>
-	Python&#8217;s <code>set</code> type supports several common set operations.
+	파이썬 3의 <code>set</code> 타입은 다음과 같은 공통 연산자들을 제공합니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_set = {2, 4, 5, 9, 12, 21, 30, 51, 76, 127, 195}</kbd>
@@ -1084,22 +1109,22 @@ KeyError: 'pop from an empty set'</samp></pre>
 
 <ol>
 <li>
-	To test whether a value is a member of a set, use the <code>in</code> operator. This works the same as lists.
+	특정 값이 set에 존재하는지 여부를 확인할 때는, list의 경우처럼 <code>in</code> 연산자를 사용합니다. 
 <li>
-	The <code>union()</code> method returns a new set containing all the elements that are in <em>either</em> set.
+	<code>union()</code> 메쏘드는 대상이 되는 두 개 set의 합집합을 결과로 반환합니다.
 <li>
-	The <code>intersection()</code> method returns a new set containing all the elements that are in <em>both</em> sets.
+	<code>intersection()</code> 메쏘드는 대상이 되는 두 개 set의 교집합을 결과로 반환합니다.
 <li>
-	The <code>difference()</code> method returns a new set containing all the elements that are in <var>a_set</var> but not <var>b_set</var>.
+	<code>difference()</code> 메쏘드는 <var>a_set</var> 에는 있지만 <var>b_set</var>에는 없는 아이템을 담은 새로운 set을 반환합니다.
 <li>
-	The <code>symmetric_difference()</code> method returns a new set containing all the elements that are in <em>exactly one</em> of the sets.
+	<code>symmetric_difference()</code> 메쏘드는 두 set 간의 합집합에서 교집합을 제외한 부분을 새로운 set 으로 반환합니다.
 </ol>
 
 <p>
-	Three of these methods are symmetric.
+	방금 다룬 4개의 메쏘드 가운데 3개는 타겟 set 과 인자로 넘겨주는 set의 위치를 변경해도 그 결과가 같습니다. 이를 조금 어렵게 표현하면 symmetric (좌우가 대칭인) 하다고 말합니다.
 
 <pre class=screen>
-# continued from the previous example
+# 앞의 예제에서 계속 이어집니다.
 <a><samp class=p>>>> </samp><kbd class=pp>b_set.symmetric_difference(a_set)</kbd>                                       <span class=u>&#x2460;</span></a>
 <samp class=pp>{3, 1, 195, 4, 6, 8, 76, 15, 17, 18, 51, 30, 127}</samp>
 <a><samp class=p>>>> </samp><kbd class=pp>b_set.symmetric_difference(a_set) == a_set.symmetric_difference(b_set)</kbd>  <span class=u>&#x2461;</span></a>
@@ -1113,19 +1138,21 @@ KeyError: 'pop from an empty set'</samp></pre>
 
 <ol>
 <li>
-	The symmetric difference of <var>a_set</var> from <var>b_set</var> <em>looks</em> different than the symmetric difference of <var>b_set</var> from <var>a_set</var>, but remember, sets are unordered. Any two sets that contain all the same values (with none left over) are considered equal.
+	앞의 예제와 출력된 결과가 달라서 조금 헷갈리시겠지만, a_set을 대상으로 b_set에 <code>symmetric_difference()</code> 메쏘드를 적용하던 b_set을 대상으로 a_set에 <code>symmetric_difference()</code>을 적용하던 그 결과는 동일합니다.  출력이 다르게 나오는 이유는 set 이 정렬되지 않은 (unordered) 컨테이너이기 때문이고요, 순서와 관계없이 동일한 아이템을 포함하고 있는 set은 동일하다고 취급됩니다.
 <li>
-	And that&#8217;s exactly what happens here. Don&#8217;t be fooled by the Python Shell&#8217;s printed representation of these sets. They contain the same values, so they are equal.
+	사람의 눈이란 혼동하기 쉽기 때문에 이렇게 프로그램적으로 확인하면 좀 더 확실합니다. a_set 과 b_set 이 동일한 아이템들을 가지고 있으므로 두 set은 동일하다고 간주됩니다.
+
 <li>
-	The union of two sets is also symmetric.
+	두 set의 합집합 역시 symmetric 합니다.
 <li>
-	The intersection of two sets is also symmetric.
+	두 set의 교집합 역시 symmetric 합니다.
 <li>
-	The difference of two sets is not symmetric. That makes sense; it&#8217;s analogous to subtracting one number from another. The order of the operands matters.
+	두 set의 차(difference)는 symmetric 하지 않습니다. 뺄셈에서와 같은 원칙이 적용됩니다. 무엇에서 무엇을 빼느냐에 따라 결과도 달라집니다.
 </ol>
 
 <p>
 	Finally, there are a few questions you can ask of sets.
+	자자, 이제 몇 개 안남았습니다. 힘을 내세요.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_set = {1, 2, 3}</kbd>
@@ -1141,17 +1168,22 @@ KeyError: 'pop from an empty set'</samp></pre>
 <samp class=pp>False</samp></pre>
 <ol>
 <li>
-	<var>a_set</var> is a <dfn>subset</dfn> of <var>b_set</var>&nbsp;&mdash;&nbsp;all the members of <var>a_set</var> are also members of <var>b_set</var>.
+	만약 <var>a_set</var>의 모든 아이템이 <var>b_set</var>에 들어있는 때,  파이썬에서는 <var>a_set</var>이  <var>b_set</var>의 <dfn>subset</dfn> 이라고 표현합니다.
+
 <li>
-	Asking the same question in reverse, <var>b_set</var> is a <dfn>superset</dfn> of <var>a_set</var>, because all the members of <var>a_set</var> are also members of <var>b_set</var>.
+
+	바꿔서 말하면 <var>b_set</var>은  <var>a_set</var>의 <dfn>superset</dfn> 이라고 말할 수도 있습니다. 
+
 <li>
-	As soon as you add a value to <var>a_set</var> that is not in <var>b_set</var>, both tests return <code>False</code>.
+	하지만 <var>a_set</var>에 <var>b_set</var>에 없는 새로운 아이템을 추가하는 순간 <dfn>subset</dfn> - <dfn>superset</dfn>관계는 끝나버리고, False를 리턴합니다.
+
 </ol>
 
-<h3 id=sets-in-a-boolean-context>Sets In A Boolean Context</h3>
+<h3 id=sets-in-a-boolean-context>Set 으로 참거짓 판별하기</h3>
 
 <p>
 	You can use sets in <a href=#booleans>a boolean context</a>, such as an <code>if</code> statement.
+	<code>if</code> 절 처럼 참거짓을 판별해야하는 상황에도 set 사용이 가능합니다. 
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>def is_it_true(anything):</kbd>
@@ -1168,11 +1200,12 @@ KeyError: 'pop from an empty set'</samp></pre>
 <samp>yes, it's true</samp></pre>
 <ol>
 <li>
-	In a boolean context, an empty set is false.
+	빈 set은 False 입니다.
 <li>
-	Any set with at least one item is true.
+	아이템이 하나라도 들어있는 set은 True 입니다.
 <li>
-	Any set with at least one item is true. The value of the items is irrelevant.
+	아이템의 값이 무엇인지는 상관없습니다. set에 아이템이 하나라도 들어있다면 True 입니다.
+
 </ol>
 
 <p class=a>&#x2042;
