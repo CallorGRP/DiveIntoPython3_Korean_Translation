@@ -18,9 +18,9 @@ body{counter-reset:h1 5}
 <blockquote class=q>
 <p>
 
-	<span class=u>&#x275D;</span> Some people, when confronted with a problem, think &#8220;I know, I&#8217;ll use regular expressions.&#8221;  Now they have two problems. <span class=u>&#x275E;</span><br>&mdash; <a href=http://www.jwz.org/hacks/marginal.html>Jamie Zawinski</a>
+	<span class=u>&#x275D;</span> 어떤 사람들은 어느 문제에 직면했을 때 이렇게 생각합니다. '흠, 이제 정규식을 써야할구먼'. 이제 그들의 문제는 두 개가 되버립니다. <span class=u>&#x275E;</span><br>&mdash; <a href=http://www.jwz.org/hacks/marginal.html>Jamie Zawinski</a>
 
-	어떤 사람들은 문제에 직면했을 때 이렇게 생각합니다. 알아, 이제 정규식을 써야할때지. 이제 그들의 문제는 두가지가 됩니다.
+	
 
 </blockquote>
 
@@ -28,25 +28,23 @@ body{counter-reset:h1 5}
 <h2 id=divingin>Diving In</h2>
 
 <p class=f>
-	Getting a small bit of text out of a large block of text is a challenge. In Python, strings have methods for searching and replacing: <code>index()</code>, <code>find()</code>, <code>split()</code>, <code>count()</code>, <code>replace()</code>, <i class=baa>&amp;</i>c. But these methods are limited to the simplest of cases. For example, the <code>index()</code> method looks for a single, hard-coded substring, and the search is always case-sensitive. To do case-insensitive searches of a string <var>s</var>, you must call <code>s.lower()</code> or <code>s.upper()</code> and make sure your search strings are the appropriate case to match. The <code>replace()</code> and <code>split()</code> methods have the same limitations.
 
-
-<p>
-	If your goal can be accomplished with string methods, you should use them. They&#8217;re fast and simple and easy to read, and there&#8217;s a lot to be said for fast, simple, readable code. But if you find yourself using a lot of different string functions with <code>if</code> statements to handle special cases, or if you&#8217;re chaining calls to <code>split()</code> and <code>join()</code> to slice-and-dice your strings, you may need to move up to regular expressions.
-	
-	많은 분량의 텍스트로 부터 작은 문자 조각을 얻어내기란 꽤 어렵습니다.  파이썬에서, 문자열을 찾거나 변경하는 몇가지 방법들이 있습니다. index(), find(), split(), count(), replace() 등이 그것이죠. 하지만 이 방법들은 아주 단순한 경우에나 쓸수 있을뿐입니다. 예를들어, index() 메소드는 찾고싶은 정확한 문자열 하나만을 찾아주고, 또한 대소문자를 구분합니다. 문자열의 대소문자를 구별하지 않는 검색을 하려면 s.lower() 또는 s.upper()을 써야하고 검색할 문자열도 그에 맞아야 하죠. replace()와 split()메소드 또한 마찬가집니다. 문자열 관련 메소드를 사용해 문제를 해결할수 있다면 그렇게 하는것이 좋습니다. 이것들은 빠르고 단순하며 읽기 편리합니다. (빠르고 간단하고 읽기편한 코드에 대해 ... 해석불가ㅠㅠ) 하지만 아주 다양한 문자열 함수들을  if 문과 섞어쓰고 있거나, split()과 join()을 아주 많이 엮어 문자열을 조각조각 내고 있는 자신을 발견한다면, 정규식으로 눈을 돌려야 할겁니다.
-
+	대용량의 텍스트 덩어리에서 원하는 작은 부분을 찾아내는 일은 결코 쉽지 않습니다. 물론 파이썬의 string 클래스는 <code>index()</code>, <code>find()</code>, <code>split()</code>, <code>count()</code>, <code>replace()</code>와 같은 메쏘드를 통해 원하는 문자열을 검색할 수 있도록 지원하고 있지만, 그 기능이 아주 제한적입니다. 가령 <code>index()</code> 메쏘드는 전체 문자열 내에서 원하는 부분만을 찾을 수 있지만, 이게 또 대 소문자를 구분해 버리기 때문에 만약 대소문자 구분없이 검색하고 싶은 경우엔 <code>lower()</code> 나 <code>upper()</code> 와 같은 메소드를 함께 써줘야 하는 복잡한 코드가 되버리는거죠. 이런 귀찮은 상황은 <code>replace()</code> 나 <code>split()</code> 같은 함수를 사용할때도 피할 수 없고요.
 
 <p>
-	Regular expressions are a powerful and (mostly) standardized way of searching, replacing, and parsing text with complex patterns of characters. Although the regular expression syntax is tight and unlike normal code, the result can end up being <em>more</em> readable than a hand-rolled solution that uses a long chain of string functions. There are even ways of embedding comments within regular expressions, so you can include fine-grained documentation within them.
+	만약 string 클래스의 메쏘드들만이라도 충분한 상황이라면, 그렇게 하시면 됩니다. 사용하기 간단하고 읽기도 쉽고 빠르거든요. 하지만 만약 여러분 코드가 이런 여러가지 string 클래스 메쏘드를 불러서 쓸 뿐 아니라 <code>if</code> 문으로 범벅이 된 채, 문자열을 쪼개고 (<code>split()</code>), 다시 합치고 ( <code>join()</code>) 등의 일을 반복한다면 어떨까요. 이때는 다른 방법에도 눈길을 한번 주시는 편이 나을겁니다. 
 
+<p>
 
-	정규식은 복잡한 문자패턴을 이용해 문자열을 검색, 치환, 해석하는 강력하며 표준화된 방법입니다.  정규식의 문법이 엄격하고 일반적인 코드와는 사뭇 다르나, 문자열 함수들을 길게 엮어 일일히 써내려간 것 보다 오히려 더 읽기 쉬울 수 있습니다. 정규식안에 내장 주석을 다는 여러가지 방법도 있어 그 안에 잘 정돈된 문서를 써놓을수도 있습니다.
+	정규식은 복잡한 문자 패턴을 이용해 문자열을 검색하고 치환하며 해석할수 있는 강력하고 표준화된 방법입니다.  정규식의 문법이 일반 프로그래밍 언어보다 엄격하기 때문에, 처음 보기에는 조금 이상하게 느껴지실 수도 있습니다. 하지만, 그 문법에 차차 익숙해지시다보면, 제한된 문자열 함수들과 if문을 이용해 만들어진 스파게티 코드보다는 훨씬 더 읽기 쉽습니다. 정규식 안에 내장 주석을 다는 다양한 방법도 있으니까, 이를 이용하여 깔끔하게 문서화 할수도 있고요 .
 
 
 <blockquote class='note compare perl5'>
 <p>
-	<span class=u>&#x261E;</span>If you&#8217;ve used regular expressions in other languages (like Perl, JavaScript, or PHP), Python&#8217;s syntax will be very familiar. Read the summary of the <a href=http://docs.python.org/dev/library/re.html#module-contents><code>re</code> module</a> to get an overview of the available functions and their arguments.
+	<span class=u>&#x261E;</span>I
+	
+	만약 Perl, JavaScript, PHP 같은 언어를 통해 미리 정규식을 사용해본 경험이 있는 분이라면, 파이썬의 정규식을 어렵지 않게 익히실 수 있을겁니다. 파이썬의 <a href=http://docs.python.org/dev/library/re.html#module-contents><code>re</code> 모듈</a>안을 들여다 보면 어떤 함수를 사용하면 되는지, 인자를 어떻게 구성하는지를 살펴볼 수 있습니다.
+
 </blockquote>
 
 
