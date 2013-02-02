@@ -342,31 +342,31 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 </ol>
 <p class=a>&#x2042;
 
-<h2 id=lists>리스트</h2>
+<h2 id=lists>리스트 (List)</h2>
 
 <p>
 
-	리스트 (List) 데이터 타입은 파이썬에서 없어서는 안 될 충실한 심복중 하나입니다. 리스트라는 단어를 듣는 순간, 이렇게 생각하실지도 모르겠습니다. "음, 먼저 사이즈를 정해서 미리 선언해주고, 같은 데이터 타입만 집어 넣을 수 있겠군". 파이썬의 리스트 데이터 타입을 다른 프로그래밍 언어의 배열과 비슷할 거라고 생각하셨다면, 틀렸습니다. 파이썬 리스트는 그것보다 훨씬 멋지거든요. 
+	리스트 (List) 데이터 타입은 파이썬에서 없어서는 안 될 충실한 심복중 하나입니다. list라는 단어를 듣는 순간, 이렇게 생각하실지도 모르겠습니다. "음, 먼저 사이즈를 정해서 미리 선언해주고, 같은 데이터 타입만 집어 넣을 수 있겠군". 파이썬의 list 데이터 타입을 다른 프로그래밍 언어의 배열과 비슷할 거라고 생각하셨다면, 틀렸습니다. 파이썬 list는 그것보다 훨씬 멋지거든요. 
 
 <blockquote class='note compare perl5'>
 
 <p>
 	<span class=u>&#x261E;</span>
-	펄과 비교하면, 리스트는 펄 5의 배열과 유사합니다. 한편, 펄에서는 배열의 변수명이 항상 <code>@</code>로 시작해야 하지만, 파이썬엔 그런 제약이 없습니다. 파이썬은 내부적으로 데이터 형을 관리하기 때문에 명시적으로 나타낼 필요가 없는거죠.
+	펄과 비교하면, list는 펄 5의 배열과 유사합니다. 한편, 펄에서는 배열의 변수명이 항상 <code>@</code>로 시작해야 하지만, 파이썬엔 그런 제약이 없습니다. 파이썬은 내부적으로 데이터 형을 관리하기 때문에 명시적으로 나타낼 필요가 없는거죠.
 
 </blockquote>
 
 <blockquote class='note compare java'>
 <p>
-	파이썬 리스트는 다른 언어, 가령, 자바의 배열보다 훨씬 강력합니다. 물론 딱 배열처럼만 사용하려면 그렇게 사용할 수도 있습니다. 하지만, 어떤 타입의 객체도 담을 수 있고, 그 크기가 동적으로 늘어날 수 있다는 점에서는 자바의 <code>ArrayList</code> 클래스에 비유할 수 있겠네요.
+	파이썬 list는 다른 언어, 가령, 자바의 배열보다 훨씬 강력합니다. 물론 딱 배열처럼만 사용하려면 그렇게 사용할 수도 있습니다. 하지만, 어떤 타입의 객체도 담을 수 있고, 그 크기가 동적으로 늘어날 수 있다는 점에서는 자바의 <code>ArrayList</code> 클래스에 비유할 수 있겠네요.
 
 
 </blockquote>
 
-<h3 id=creatinglists>리스트 생성하기</h3>
+<h3 id=creatinglists>list 생성하기</h3>
 
 <p>
-	파이썬 리스트를 만드는 방법은 간단합니다. 꺽쇠 안에 값을 적어주고, 콤마로 구분하면 됩니다.
+	파이썬 list를 만드는 방법은 간단합니다. 꺽쇠 안에 값을 적어주고, 콤마로 구분하면 됩니다.
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>a_list = ['a', 'b', 'mpilgrim', 'z', 'example']</kbd>  <span class=u>&#x2460;</span></a>
 <samp class=p>>>> </samp><kbd class=pp>a_list</kbd>
@@ -382,10 +382,10 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <ol>
 
 <li>
-	다섯개의 원소를 가진 리스트를 정의했습니다. 출력 결과에 주목하세요. 순서가 변하지 않고 그대로입니다.
+	다섯개의 원소를 가진 list를 정의했습니다. 출력 결과에 주목하세요. 순서가 변하지 않고 그대로입니다.
 
 <li>
-	리스트는 배열처럼 사용할 수 있다고 앞에서 말씀드렸죠? <code>a_list[0]</code> 은 alist 라는 리스트의 첫번째 원소를 가져옵니다. 
+	list는 배열처럼 사용할 수 있다고 앞에서 말씀드렸죠? <code>a_list[0]</code> 은 alist 라는 list의 첫번째 원소를 가져옵니다. 
 
 <li>
 	맨 마지막 아이템인 5번째 아이템은 <code>a_list[4]</code> 로 가져옵니다. 
@@ -396,13 +396,13 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 
 </ol>
 
-<h3 id=slicinglists>리스트 쪼개기</h3>
+<h3 id=slicinglists>list 쪼개기 (Slicing List)</h3>
 <aside>
 	a_list[0]는 a_list의 첫번째 아이템입니다.
 </aside>
 
 <p>
-	정의된 리스트에 대해 그 일부분을 떼내어 새로운 리스트로 정의할 수 있습니다. 이를 리스트 쪼개기 (list slicing)라고 합니다.
+	정의된 list에 대해 그 일부분을 떼내어 새로운 list로 정의할 수 있습니다. 이를 리스트 쪼개기 (list slicing)라고 합니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>a_list</kbd>
@@ -422,24 +422,24 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <ol>
 
 <li>
-	리스트를 쪼갤 때는 인덱스 두개와 그 사이에 콜론을 적어줍니다. 결과로 첫번째 인덱스 아이템(예에서는 <code>a_list[1]</code>) 을 포함하고, 두번째 인덱스의 바로 앞 아이템까지(예에서는 <code>a_list[3]</code>)를 포함하는 리스트를 반환합니다.   
+	list를 쪼갤 때는 인덱스 두개와 그 사이에 콜론을 적어줍니다. 결과로 첫번째 인덱스 아이템(예에서는 <code>a_list[1]</code>) 을 포함하고, 두번째 인덱스의 바로 앞 아이템까지(예에서는 <code>a_list[3]</code>)를 포함하는 list를 반환합니다.   
 
 <li>
-	리스트를 쪼갤때 인덱스로 음수값을 줘도 됩니다. 헷갈리시면 이런 식으로 생각하셔도 됩니다. 첫 번째 인덱스는 포함시키고 싶은 파트의 첫 번째 위치입니다. 두 번째 인덱스는 포함시키고 싶지 않은 파트의 첫 번째 위치이고요. 그리고 이 둘 사이의 아이템을 취한 것이 결과입니다. 
+	list를 쪼갤때 인덱스로 음수값을 줘도 됩니다. 헷갈리시면 이런 식으로 생각하셔도 됩니다. 첫 번째 인덱스는 포함시키고 싶은 파트의 첫 번째 위치입니다. 두 번째 인덱스는 포함시키고 싶지 않은 파트의 첫 번째 위치이고요. 그리고 이 둘 사이의 아이템을 취한 것이 결과입니다. 
 <li>
-	리스트의 인덱스는 0부터 시작합니다. 따라서 <code>a_list[0:3]</code>은 a_list 라는 리스트의 맨 처음부터 3개의 아이템입니다. <code>a_list[0]</code> 부터 시작하여 <code>a_list[3]</code>의 바로 앞까지 입니다.
+	list의 인덱스는 0부터 시작합니다. 따라서 <code>a_list[0:3]</code>은 a_list 라는 list의 맨 처음부터 3개의 아이템입니다. <code>a_list[0]</code> 부터 시작하여 <code>a_list[3]</code>의 바로 앞까지 입니다.
 <li>
 	시작 인덱스가 0인 경우엔 생략이 가능합니다. 따라서 <code>a_list[:3]</code> 는 <code>a_list[0:3]</code>와 같은 의미입니다.
 <li>
-	마찬가지 원리로 종료 인덱스가 리스트의 길이와 같은 경우엔 생략이 가능합니다. 따라서 <code>a_list[3:]</code> 는 <code>a_list[3:5]</code> 와 같은 의미입니다. <code>a_list</code>에는 다섯 개의 아이템이 있기 때문입니다. 리스트 쪼개기에서 아름다운 대칭의 미가 느껴지지 않나요? <code>a_list[:3]</code> 는 리스트의 앞부분 3개 아이템을 반환하고, <code>a_list[3:]</code>는 이를 제외한 뒷부분 전부의 아이템을 반환합니다. 따라서 이렇게 일반화할 수 있겠네요. <code>a_list[:<var>n</var>]</code> 는 언제나 앞쪽 n개의 아이템을 반환하고, <code>a_list[<var>n</var>:]</code>는 n번째 아이템부터 리스트 끝까지를 반환합니다  
+	마찬가지 원리로 종료 인덱스가 list의 길이와 같은 경우엔 생략이 가능합니다. 따라서 <code>a_list[3:]</code> 는 <code>a_list[3:5]</code> 와 같은 의미입니다. <code>a_list</code>에는 다섯 개의 아이템이 있기 때문입니다. list 쪼개기에서 아름다운 대칭의 미가 느껴지지 않나요? <code>a_list[:3]</code> 는 list의 앞부분 3개 아이템을 반환하고, <code>a_list[3:]</code>는 이를 제외한 뒷부분 전부의 아이템을 반환합니다. 따라서 이렇게 일반화할 수 있겠네요. <code>a_list[:<var>n</var>]</code> 는 언제나 앞쪽 n개의 아이템을 반환하고, <code>a_list[<var>n</var>:]</code>는 n번째 아이템부터 list 끝까지를 반환합니다  
 
 <li>
-	만약 시작과 종료 인덱스 모두를 생략하면, 리스트 내 모든 아이템을 포함한다는 의미입니다. 원래 리스트랑 똑같은 복사본이 생기는 것입니다. 이를 이용하여, <code>a_list[:]</code> 라고 써주면 간단히 <code>a_list</code> 리스트를 복사할 수 있습니다. 
+	만약 시작과 종료 인덱스 모두를 생략하면, list 내 모든 아이템을 포함한다는 의미입니다. 원래 list랑 똑같은 복사본이 생기는 것입니다. 이를 이용하여, <code>a_list[:]</code> 라고 써주면 간단히 <code>a_list</code> list를 복사할 수 있습니다. 
 </ol>
 
-<h3 id=extendinglists>리스트에 아이템 추가하기</h3>
+<h3 id=extendinglists>list에 아이템 추가하기</h3>
 <p>
-	리스트에 아이템을 추가하는 방법들을 알아봅니다.
+	list에 아이템을 추가하는 방법들을 알아봅니다.
 
 
 <pre class=screen>
@@ -459,27 +459,27 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <ol>
 
 <li>
-	<code>+</code> 연산자를 이용하여 리스트를 합칠 수 있고, 결과로는 새로운 리스트가 반환됩니다. 리스트에 담을 수 있는 아이템 갯수에는 제한이 없는데, 정확히 말하면 사용할 수 있는 메모리에 제한이 없다면 제약이 없는 셈입니다. 만약 구현하려는 어플리케이션의 사용 가능한 메모리가 많지 않다면, 사용시 주의해야 합니다. 이 코드가 하는 일을 두 단계로 나누면, 먼저 <var>a_list</var> 에 <var>[2.0, 3]</var>을 합치고, 그 결과를 다시 <var>a_list</var> 에 할당합니다. 다루고 있는 리스트의 크기가 크지 않다면 괜찮겠지만, 상당한 크기인 경우에는 두번째 단계인 할당이 일어나는 순간 많은 양의 메모리가 요구될 수 있습니다. 그 점을 미리 염두에 두셔야 합니다.
+	<code>+</code> 연산자를 이용하여 list를 합칠 수 있고, 결과로는 새로운 list가 반환됩니다. list에 담을 수 있는 아이템 갯수에는 제한이 없는데, 정확히 말하면 사용할 수 있는 메모리에 제한이 없다면 제약이 없는 셈입니다. 만약 구현하려는 어플리케이션의 사용 가능한 메모리가 많지 않다면, 사용시 주의해야 합니다. 이 코드가 하는 일을 두 단계로 나누면, 먼저 <var>a_list</var> 에 <var>[2.0, 3]</var>을 합치고, 그 결과를 다시 <var>a_list</var> 에 할당합니다. 다루고 있는 list의 크기가 크지 않다면 괜찮겠지만, 상당한 크기인 경우에는 두번째 단계인 할당이 일어나는 순간 많은 양의 메모리가 요구될 수 있습니다. 그 점을 미리 염두에 두셔야 합니다.
 
 
 <li>
-	리스트 내부에는 어떤 타입의 데이터도 함께 담을 수 있습니다. 꼭 같은 타입의 데이터일 필요는 없습니다. 이 예제는 string, 실수, 정수 이렇게 서로 다른 데이터 타입을 가진 리스트를 보여줍니다. 
+	list 내부에는 어떤 타입의 데이터도 함께 담을 수 있습니다. 꼭 같은 타입의 데이터일 필요는 없습니다. 이 예제는 string, 실수, 정수 이렇게 서로 다른 데이터 타입을 가진 list를 보여줍니다. 
 
 <li>
-	<code>append()</code> 메소드를 이용해 리스트의 맨 끝에 아이템을 추가할 수 있습니다. 이제 4개의 서로 다른 데이터 타입이 리스트 안에서 공존하는군요. 
+	<code>append()</code> 메소드를 이용해 list의 맨 끝에 아이템을 추가할 수 있습니다. 이제 4개의 서로 다른 데이터 타입이 list 안에서 공존하는군요. 
 
 <li>
-	리스트는 파이썬 내부에선 클래스로 구현되있습니다. 따라서 리스트를 하나 만든다는 것은 리스트 클래스의 인스턴스를 하나 만든다는 것과 동일합니다. 모든 인스턴스에는 메소드가 있고, 리스트 또한 예외가 아닙니다. 이 예제 코드에서는 리스트 클래스의 <code>extend()</code> 메소드를 이용하여 기존 리스트에 아이템을 추가하고 있습니다. 메소드 인자가 추가할 데이터입니다. 
+	list는 파이썬 내부에선 클래스로 구현되있습니다. 따라서 list를 하나 만든다는 것은 list 클래스의 인스턴스를 하나 만든다는 것과 동일합니다. 모든 인스턴스에는 메소드가 있고, list 또한 예외가 아닙니다. 이 예제 코드에서는 list 클래스의 <code>extend()</code> 메소드를 이용하여 기존 list에 아이템을 추가하고 있습니다. 메소드 인자가 추가할 데이터입니다. 
 
 
 <li>
-	<code>insert()</code> 메소드는 아이템 하나를 정해진 위치에 삽입할 때 사용합니다. 첫번째 인자는 삽입하고 싶은 위치이고, 동작이 성공적이면 뒤쪽에 위치한 아이템들은 자리가 하나씩 뒤로 밀리게 됩니다. 삽입하는 데이터가 기존 리스트에 이미 존재하더라고 상관없습니다. 리스트는 중복된 데이터도 허용하기 때문입니다. 예제 코드에서는 <code>'&Omega;'</code> 라는 값이 첫번째 인덱스와 마지막 인덱스, 이렇게 두 군데에서 보이고 있습니다.
+	<code>insert()</code> 메소드는 아이템 하나를 정해진 위치에 삽입할 때 사용합니다. 첫번째 인자는 삽입하고 싶은 위치이고, 동작이 성공적이면 뒤쪽에 위치한 아이템들은 자리가 하나씩 뒤로 밀리게 됩니다. 삽입하는 데이터가 기존 list에 이미 존재하더라고 상관없습니다. list는 중복된 데이터도 허용하기 때문입니다. 예제 코드에서는 <code>'&Omega;'</code> 라는 값이 첫번째 인덱스와 마지막 인덱스, 이렇게 두 군데에서 보이고 있습니다.
 
 </ol>
 
 <blockquote class='note compare perl'>
 <p>
-	<span class=u>&#x261E;</span><code><var>a_list</var>.insert(0, <var>value</var>)</code>는 펄 함수 중 <code>unshift()</code> 함수와 비슷합니다. 리스트의 맨 앞에 아이템을 삽입하고 나머지 아이템들은 전부 뒤로 한 칸씩 이동시킵니다.
+	<span class=u>&#x261E;</span><code><var>a_list</var>.insert(0, <var>value</var>)</code>는 펄 함수 중 <code>unshift()</code> 함수와 비슷합니다. list의 맨 앞에 아이템을 삽입하고 나머지 아이템들은 전부 뒤로 한 칸씩 이동시킵니다.
 
 
 </blockquote>
@@ -507,19 +507,18 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 <ol>
 
 <li>
-	<code>extend()</code> 메소드는 리스트 타입의 인자를 받아서, 그 내부의 아이템들을 <var>a_list</var>안에 추가함으로써, 기존의 리스트를 그만큼 연장해(extend)줍니다.
+	<code>extend()</code> 메소드는 list 타입의 인자를 받아서, 그 내부의 아이템들을 <var>a_list</var>안에 추가함으로써, 기존의 list를 그만큼 연장해(extend)줍니다.
 <li>
-	처음 3개의 아이템을 가진 리스트에 3개의 아이템이 있는 또 다른 리스트를 이용해 늘렸으므로, 이제 아이템의 갯수는 6개가 되었습니다. 
+	처음 3개의 아이템을 가진 list에 3개의 아이템이 있는 또 다른 list를 이용해 늘렸으므로, 이제 아이템의 갯수는 6개가 되었습니다. 
 <li>
-	한편 <code>append()</code> 메소드는 인자로 들어온 값을 리스트에 추가합니다. 인자는 하나이며, 인자의 타입은 어떤 타입이라도 괜찮습니다. 예제코드에서는 3 개의 아이템이 있는 리스트를 인자로 넘겨주고 있습니다.
+	한편 <code>append()</code> 메소드는 인자로 들어온 값을 list에 추가합니다. 인자는 하나이며, 인자의 타입은 어떤 타입이라도 괜찮습니다. 예제코드에서는 3 개의 아이템이 있는 list를 인자로 넘겨주고 있습니다.
 
 <li>
-	앞에서 리스트 내 아이템의 갯수가 6개 였으니까, 이제 9개가 되어야겠군요. 앗. 그런데, 파이썬 쉘은 7개라고 나오네요. 왜죠? 이게 바로 extend 메소드와 append 메소드 간의 차이점입니다. extend 메소드는 인자로 넘어온 리스트내 아이템 하나 하나를 추가해주지만, append 메소드는 인자가 리스트건 뭐건 상관없이 하나의 객체로 판단하고 이를 기존 리스트 끝에 추가합니다. 그래서 예제코드에선 ['g', 'h', 'i'] 가 3개의 개별적인 아이템이 아닌, 전체 리스트 하나가 통째로 리스트 안에 들어가게 된거죠. 리스트 객체는 다른 리스트 객체도 내부 아이템으로 가질 수 있다는 사실을 잊지마세요.
+	앞에서 list 내 아이템의 갯수가 6개 였으니까, 이제 9개가 되어야겠군요. 앗. 그런데, 파이썬 쉘은 7개라고 나오네요. 왜죠? 이게 바로 extend 메소드와 append 메소드 간의 차이점입니다. extend 메소드는 인자로 넘어온 list내 아이템 하나 하나를 추가해주지만, append 메소드는 인자가 list건 뭐건 상관없이 하나의 객체로 판단하고 이를 기존 list 끝에 추가합니다. 그래서 예제코드에선 ['g', 'h', 'i'] 가 3개의 개별적인 아이템이 아닌, 전체 list 하나가 통째로 list 안에 들어가게 된거죠. list 객체는 다른 list 객체도 내부 아이템으로 가질 수 있다는 사실을 잊지마세요.
 
 </ol>
 
 <h3 id=searchinglists>
-	Searching For Values In A List
 	리스트 검색하기
 </h3>
 <pre class=screen>
@@ -540,15 +539,15 @@ ZeroDivisionError: Fraction(0, 0)</samp></pre>
 ValueError: list.index(x): x not in list</samp></pre>
 <ol>
 <li>
-	특정 값이 리스트 내에 몇 개나 있는지 그 횟수를 알고 싶을때는 <code>count()</code> 메소드를 사용하세요.
+	특정 값이 list 내에 몇 개나 있는지 그 횟수를 알고 싶을때는 <code>count()</code> 메소드를 사용하세요.
 <li>
 	그냥 어떤 값이 들어 있는지 아닌지만 알고 싶다면 <code>in</code> 연산자를 이용하는 편이 간단하고, 성능도 좀 더 빠릅니다. 결과로 <code>True</code> 나 <code>False</code>가 반환됩니다. 
 
 <li>
-	특정 값이 리스트내에서 몇 번째 있는지 알고 싶다면 <code>index()</code> 메소드를 사용하세요. 이 함수는 리스트 전체를 검색하여 해당 위치(0 부터 시작합니다) 를 반환합니다. 검색을 수행할 위치도 지정할 수 있는데요, 두번째 파라미터가 검색을 시작할 위치를 의미하고, 세번째 파라미터가 검색을 끝낼 위치를 의미합니다.   
+	특정 값이 list내에서 몇 번째 있는지 알고 싶다면 <code>index()</code> 메소드를 사용하세요. 이 함수는 list 전체를 검색하여 해당 위치(0 부터 시작합니다) 를 반환합니다. 검색을 수행할 위치도 지정할 수 있는데요, 두번째 파라미터가 검색을 시작할 위치를 의미하고, 세번째 파라미터가 검색을 끝낼 위치를 의미합니다.   
 
 <li>
-	찾고자 하는 값이 리스트 내에 여러 번 등장하더라도, <code>index()</code> 메소드는 처음으로 발견한 위치를 반환합니다. 예에서 <code>'new'</code> 라는 문자열은 <code>a_list[2]</code> 에 하나, <code>a_list[4]</code>에 다른 하나, 이렇게 모두 두 번 등장합니다. 하지만, <code>index()</code> 메소드는 첫번째 위치인 2만 반환합니다. 
+	찾고자 하는 값이 list 내에 여러 번 등장하더라도, <code>index()</code> 메소드는 처음으로 발견한 위치를 반환합니다. 예에서 <code>'new'</code> 라는 문자열은 <code>a_list[2]</code> 에 하나, <code>a_list[4]</code>에 다른 하나, 이렇게 모두 두 번 등장합니다. 하지만, <code>index()</code> 메소드는 첫번째 위치인 2만 반환합니다. 
 
 <li>
 	검색대상이 발견되지 않으면, 예외를 일으킵니다.
@@ -561,11 +560,11 @@ ValueError: list.index(x): x not in list</samp></pre>
 
 <h3 id=removingfromlists>리스트에서 아이템 삭제하기</h3>
 
-<aside>리스트는 빈 공간을 허용하지 않습니다.</aside>
+<aside>list는 빈 공간을 허용하지 않습니다.</aside>
 
-<p>리스트는 배열과 달리 아이템을 추가하면 그 크기가 동적으로 늘어나고, 삭제하면 동적으로 줄어듭니다. 
+<p>list는 배열과 달리 아이템을 추가하면 그 크기가 동적으로 늘어나고, 삭제하면 동적으로 줄어듭니다. 
 
-	앞에서는 리스트에 아이템을 추가해 리스트가 동적으로 확장시키는 방법을 알아봤으니, 이제부턴 리스트내 아이템을 삭제하는 방법을 알아봅시다. 아이템을 추가할 때와 마찬가지로 몇 가지 다른 방법을 사용할 수 있습니다.  
+	앞에서는 list에 아이템을 추가해 list가 동적으로 확장시키는 방법을 알아봤으니, 이제부턴 list내 아이템을 삭제하는 방법을 알아봅시다. 아이템을 추가할 때와 마찬가지로 몇 가지 다른 방법을 사용할 수 있습니다.  
 	Lists can expand and contract automatically. You&#8217;ve seen the expansion part. There are several different ways to remove items from a list as well.
 
 <pre class=screen>
@@ -579,9 +578,9 @@ ValueError: list.index(x): x not in list</samp></pre>
 <samp class=pp>'new'</samp></pre>
 <ol>
 <li>
-	del 구문을 이용하여 리스트 내 특정 아이템을 삭제할 수 있습니다.
+	del 구문을 이용하여 list 내 특정 아이템을 삭제할 수 있습니다.
 <li>
-	리스트에서 특정 위치의 아이템을 삭제했다고 해서, 그 자리가 마치 이빨빠진 자리처럼 계속 비워져 있지는 않습니다. 그 뒷부분에 위치한 아이템들이 자동으로, 차례대로 이동하여 빈자리를 메꿔줍니다. 따라서 여전히 그 자리는 다른 아이템에 의해 채워지게 됩니다. 
+	list에서 특정 위치의 아이템을 삭제했다고 해서, 그 자리가 마치 이빨빠진 자리처럼 계속 비워져 있지는 않습니다. 그 뒷부분에 위치한 아이템들이 자동으로, 차례대로 이동하여 빈자리를 메꿔줍니다. 따라서 여전히 그 자리는 다른 아이템에 의해 채워지게 됩니다. 
 
 </ol>
 
@@ -602,10 +601,10 @@ ValueError: list.remove(x): x not in list</samp></pre>
 <ol>
 
 <li>
-	<code>remove()</code> 메소드도 삭제에 사용하는 메소드 입니다. 삭제하고 싶은 아이템의 값을 파라미터로 받아 리스트내에서 첫번째로 발견되는 해당 아이템을 삭제합니다. 다시 한번 말씀드리지만, 특정 아이템이 삭제된 자리는 그 뒤의 아이템들이 자동으로 차례차례 메꿔줍니다.
+	<code>remove()</code> 메소드도 삭제에 사용하는 메소드 입니다. 삭제하고 싶은 아이템의 값을 파라미터로 받아 list내에서 첫번째로 발견되는 해당 아이템을 삭제합니다. 다시 한번 말씀드리지만, 특정 아이템이 삭제된 자리는 그 뒤의 아이템들이 자동으로 차례차례 메꿔줍니다.
 
 <li>
-	리스트 내 존재하지 않는 값을 삭제하려고 하면 예외가 발생됩니다.
+	list 내 존재하지 않는 값을 삭제하려고 하면 예외가 발생됩니다.
 </ol>
 
 <h3 id=popgoestheweasel>리스트에서 아이템 삭제하기: 보너스</h3>
@@ -613,7 +612,7 @@ ValueError: list.remove(x): x not in list</samp></pre>
 <p>
 	Another interesting list method is <code>pop()</code>. The <code>pop()</code> method is yet another way to <a href=#removingfromlists>remove items from a list</a>, but with a twist.
 
-	<code>pop()</code>이라는 메소드를 이용하여  <a href=#removingfromlists>리스트에서 아이템을 제거</a>할 수도 있습니다. 하지만, 주의할 점이 있습니다.
+	<code>pop()</code>이라는 메소드를 이용하여  <a href=#removingfromlists>list에서 아이템을 제거</a>할 수도 있습니다. 하지만, 주의할 점이 있습니다.
 
 
 <pre class=screen>
@@ -636,28 +635,28 @@ ValueError: list.remove(x): x not in list</samp></pre>
 IndexError: pop from empty list</samp></pre>
 <ol>
 <li>
-	<code>pop()</code> 메소드를 인자없이 호출하면 리스트의 맨 마지막 아이템을 반환하고, 해당 아이템은 삭제됩니다.
+	<code>pop()</code> 메소드를 인자없이 호출하면 list의 맨 마지막 아이템을 반환하고, 해당 아이템은 삭제됩니다.
 <li>
 	<code>pop()</code> 메소드에 인자로 위치 인덱스를 주면, 해당 아이템을 반환후 삭제합니다.
 
 <li>
-	비어있는 리스트에 호출하면 예외가 발생됩니다.
+	비어있는 list에 호출하면 예외가 발생됩니다.
 </ol>
 
 <blockquote class='note compare perl'>
 <p>
 
-	인자없는 <code>pop()</code> 메소드 호출은 펄의 <code>pop()</code> 함수와 유사합니다. 리스트 맨 마지막 원소를 반환하고, 리스트 내에서는 삭제합니다. 펄과 다른 점은, 리스트의 맨 앞부분 원소를 삭제할 때, 펄은 <code>shift()</code>라는 메소드를 따로 두고 있지만, 파이썬은 인자로 <code>0</code>을 주면 된다는 점입니다.
+	인자없는 <code>pop()</code> 메소드 호출은 펄의 <code>pop()</code> 함수와 유사합니다. list 맨 마지막 원소를 반환하고, list 내에서는 삭제합니다. 펄과 다른 점은, list의 맨 앞부분 원소를 삭제할 때, 펄은 <code>shift()</code>라는 메소드를 따로 두고 있지만, 파이썬은 인자로 <code>0</code>을 주면 된다는 점입니다.
 
 </blockquote>
 
-<h3 id=lists-in-a-boolean-context>리스트로 참, 거짓 판단하기</h3>
+<h3 id=lists-in-a-boolean-context>list로 참, 거짓 판단하기</h3>
 <aside>
-	리스트내에 아이템이 하나라도 들어있다면, 이 리스트는 True 로 사용될 수 있습니다. 
+	list내에 아이템이 하나라도 들어있다면, 이 list는 True 로 사용될 수 있습니다. 
 </aside>
 <p>
 
-	<code>if</code>문과 같이 <a href=#booleans>참, 거짓을 판별하는 구문</a>에서도 리스트를 사용할 수 있습니다.
+	<code>if</code>문과 같이 <a href=#booleans>참, 거짓을 판별하는 구문</a>에서도 list를 사용할 수 있습니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>def is_it_true(anything):</kbd>
@@ -674,20 +673,19 @@ IndexError: pop from empty list</samp></pre>
 <samp>yes, it's true</samp></pre>
 <ol>
 <li>
-	빈 리스트는 false를 의미합니다.
+	빈 list는 false를 의미합니다.
 
 <li>
-	리스트내에 아이템이 하나라도 들어있으면 true로 판명됩니다.
+	list내에 아이템이 하나라도 들어있으면 true로 판명됩니다.
 <li>
-	리스트내에있는 아이템의 값과는 관계없이, 비어있는 리스트가 아니라면 true로 판명됩니다. 	
+	list내에있는 아이템의 값과는 관계없이, 비어있는 list가 아니라면 true로 판명됩니다. 	
 </ol>
 
 <p class=a>&#x2042;
 
-<h2 id=tuples>튜플</h2>
+<h2 id=tuples>튜플 (Tuple)</h2>
 
-<p>A <dfn>tuple</dfn> is an immutable list.  A tuple can not be changed in any way once it is created.
-<p><dfn>튜플</dfn> 은 리스트의 일종으로 일반 리스트와 다른점은 내부 아이템의 수정이 불가능합니다.  튜플은 일단 생성되고 나면 어떤 방식으로든 수정할 수 없습니다.
+<p><dfn>튜플</dfn>은  list의 일종입니다. 일반 list와 다른점은 내부 아이템의 수정이 불가능합니다.  튜플은 일단 생성되고 나면 어떤 방식으로든 수정이 불가능 합니다.
 
 <pre class=screen>
 <a><samp class=p>>>> </samp><kbd class=pp>a_tuple = ("a", "b", "mpilgrim", "z", "example")</kbd>  <span class=u>&#x2460;</span></a>
@@ -701,22 +699,22 @@ IndexError: pop from empty list</samp></pre>
 <samp class=pp>('b', 'mpilgrim')</samp></pre>
 <ol>
 <li>
-	튜플을 정의하는 방법은 리스트와 동일합니다. 다만 리스트에서는 둥근괄호를 사용하였지만, 튜플에서는 각진 괄호를 사용합니다. 
+	튜플을 정의하는 방법은 list와 동일합니다. 다만 list에서는 둥근괄호를 사용하였지만, 튜플에서는 각진 괄호를 사용합니다. 
 
 <li>
-	튜플도 리스트와 마찬가지로 첫번째 원소는 0부터 시작합니다. 
+	튜플도 list와 마찬가지로 첫번째 원소는 0부터 시작합니다. 
 
 <li>
-	리스트와 마찬가지로 인덱스에 마이너스 값이 사용되면 뒤쪽 위치에서부터 카운트합니다.
+	list와 마찬가지로 인덱스에 마이너스 값이 사용되면 뒤쪽 위치에서부터 카운트합니다.
 
 <li>
-	리스트와 마찬가지로 쪼개기(slicing)도 가능합니다. 리스트에서도 쪼개기를 하면, 새로운 리스트가 만들어지는 것처럼 튜플에서도 쪼개기를 하면 그 결과로 새로운 튜플이 생성됩니다. 
+	list와 마찬가지로 쪼개기(slicing)도 가능합니다. list에서도 쪼개기를 하면, 새로운 list가 만들어지는 것처럼 튜플에서도 쪼개기를 하면 그 결과로 새로운 튜플이 생성됩니다. 
 
 </ol>
 
 <p>
 
-	튜플이 리스트와 다른점 중 눈여겨 볼 점은 일단 만들어지고 난 다음엔 수정이 불가능하다는 것입니다. 튜플이란 결국 읽기 전용 리스트인 셈이고, 이런 특징을 고상하게 말하면 <dfn>immutable</dfn> 하다고 합니다. 튜플은 읽기 전용 리스트이므로 뭔가 변경을 할때 사용할 만한 메소드를 하나도 지원하지 않습니다. <code>append()</code>, <code>extend()</code>, <code>insert()</code>, <code>remove()</code>, and <code>pop()</code> 와 같은 메소드들이 하나도 없습니다. 다만 쪼개기 (slicing) 정도는 지원하기 때문에, 어떤 값이 들어있는지 검사할 때 사용할 수 있겠습니다.   
+	튜플이 list와 다른점 중 눈여겨 볼 점은 일단 만들어지고 난 다음엔 수정이 불가능하다는 것입니다. 튜플이란 결국 읽기 전용 list인 셈이고, 이런 특징을 고상하게 말하면 <dfn>immutable</dfn> 하다고 합니다. 튜플은 읽기 전용 list이므로 뭔가 변경을 할때 사용할 만한 메소드를 하나도 지원하지 않습니다. <code>append()</code>, <code>extend()</code>, <code>insert()</code>, <code>remove()</code>, and <code>pop()</code> 와 같은 메소드들이 하나도 없습니다. 다만 쪼개기 (slicing) 정도는 지원하기 때문에, 어떤 값이 들어있는지 검사할 때 사용할 수 있겠습니다.   
 
 
 
@@ -754,21 +752,21 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 
 <ul> 
 <li>
-	튜플은 리스트보다 빠릅니다. 여러분이 만약 상수값을 가진 리스트가 필요하고, 추후 변경없이 검색에만 사용할거라고 판단되면 리스트를 만드는 대신 튜플을 만드세요. 
+	튜플은 list보다 빠릅니다. 여러분이 만약 상수값을 가진 list가 필요하고, 추후 변경없이 검색에만 사용할거라고 판단되면 list를 만드는 대신 튜플을 만드세요. 
 
 <li>
 	It makes your code safer if you &#8220;write-protect&#8221; data that doesn&#8217;t need to be changed. Using a tuple instead of a list is like having an implied <code>assert</code> statement that shows this data is constant, and that special thought (and a specific function) is required to override that.
-	튜플은 읽기전용 리스트이므로, 변경을 가하려고 하는 순간 에러를 발생시킵니다. 사용자 코드로부터 여러분의 데이터를 안전하게 지키고 싶다면 리스트 대신 튜플을 사용하세요. 마치 <code>assert</code>를 이용하여 방어하는 것과 같은 효과를 볼 수 있습니다.
+	튜플은 읽기전용 list이므로, 변경을 가하려고 하는 순간 에러를 발생시킵니다. 사용자 코드로부터 여러분의 데이터를 안전하게 지키고 싶다면 list 대신 튜플을 사용하세요. 마치 <code>assert</code>를 이용하여 방어하는 것과 같은 효과를 볼 수 있습니다.
 
 <li>
 	Some tuples can be used as dictionary keys (specifically, tuples that contain <i>immutable</i> values like strings, numbers, and other tuples). Lists can never be used as dictionary keys, because lists are not immutable.
-	튜플은 변경 불가능하므로(<i>immutable</i>), 딕셔너리의 키 값으로 사용할 수 있습니다. 특히 튜플 내의 아이템이 만약 string 같이 <i>immutable</i>한 경우엔 더더욱 그렇습니다.  리스트의 경우, immutable 하지 않으므로 딕셔너리의 키 값으로 사용될 수 없습니다.
+	튜플은 변경 불가능하므로(<i>immutable</i>), 딕셔너리의 키 값으로 사용할 수 있습니다. 특히 튜플 내의 아이템이 만약 string 같이 <i>immutable</i>한 경우엔 더더욱 그렇습니다.  list의 경우, immutable 하지 않으므로 딕셔너리의 키 값으로 사용될 수 없습니다.
 
 </ul>
 
 <blockquote class=note>
 <p>
-	<span class=u>&#x261E;</span>튜플을 리스트로 전환하거나, 꺼꾸로 리스트를 튜플로 전환하는 것도 가능합니다. 이를 위해 파이썬의 내장함수인 <code>tuple()</code> 은 리스트를 튜플로 변경할 때 사용할 수 있습니다. 그리고 <code>list()</code> 는 튜플을 리스트로 변경할 때 사용합니다. 리스트나 튜플 내부에 들어있던 아이템에는 전혀 영향을 미치지 않습니다. 다만 리스트에서 튜플로, 또는 튜플에서 리스트로 타입을 변경할 뿐입니다. 우리가 어렸을 적 놀던 얼음 땡을 기억하시나요? 이 함수들이 바로 파이썬의 얼음 땡 함수입니다. <code>tuple()</code> 은 리스트에 얼음을 걸어서 읽기전용인 튜플로 만들고, <code>list()</code>는 꼼짝없이 얼어붙어있던 읽기 전용 튜플을 읽기 쓰기가 가능한 리스트로 만들어 줍니다.
+	<span class=u>&#x261E;</span>튜플을 list로 전환하거나, 꺼꾸로 list를 튜플로 전환하는 것도 가능합니다. 이를 위해 파이썬의 내장함수인 <code>tuple()</code> 은 list를 튜플로 변경할 때 사용할 수 있습니다. 그리고 <code>list()</code> 는 튜플을 list로 변경할 때 사용합니다. list나 튜플 내부에 들어있던 아이템에는 전혀 영향을 미치지 않습니다. 다만 list에서 튜플로, 또는 튜플에서 list로 타입을 변경할 뿐입니다. 우리가 어렸을 적 놀던 얼음 땡을 기억하시나요? 이 함수들이 바로 파이썬의 얼음 땡 함수입니다. <code>tuple()</code> 은 list에 얼음을 걸어서 읽기전용인 튜플로 만들고, <code>list()</code>는 꼼짝없이 얼어붙어있던 읽기 전용 튜플을 읽기 쓰기가 가능한 list로 만들어 줍니다.
 
 </blockquote>
 
@@ -811,13 +809,6 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 
 
 
-
-
-
-
-
-
-
 <h3 id=multivar>여러 값을 한꺼번에 할당하기</h3>
 
 <p>파이썬 튜플이 가진 멋진 기능중 하나는, 여러 값을 한꺼 번에 할당해야 하는 상황에서 튜플을 사용할 수 있다는 점입니다. 
@@ -850,14 +841,9 @@ AttributeError: 'tuple' object has no attribute 'remove'</samp>
 <ol>
 
 <li>
-	The built-in <code>range()</code> function constructs a sequence of integers. (Technically, the <code>range()</code> function returns an <a href=iterators.html>iterator</a>, not a list or a tuple, but you&#8217;ll learn about that distinction later.) <var>MONDAY</var>, <var>TUESDAY</var>, <var>WEDNESDAY</var>, <var>THURSDAY</var>, <var>FRIDAY</var>, <var>SATURDAY</var>, and <var>SUNDAY</var> are the variables you&#8217;re defining. (This example came from the <code>calendar</code> module, a fun little module that prints calendars, like the <abbr>UNIX</abbr> program <code>cal</code>. The <code>calendar</code> module defines integer constants for days of the week.)
+	내장함수 <code>range()</code> 는 일련의 정수들을 만들어 냅니다. (정확히 말하면 <code>range()</code> 는 list나 tuple이 아닌 <a href=iterators.html>반복자(iterator)</a>를 반환합니다. 이들의 차이점은 뒤에서 따로 다룰겁니다) <var>MONDAY</var>, <var>TUESDAY</var>, <var>WEDNESDAY</var>, <var>THURSDAY</var>, <var>FRIDAY</var>, <var>SATURDAY</var>, and <var>SUNDAY</var> 와 같은 변수들을 정의했고요. 
 
-
-	내장함수 <code>range()</code> 는 일련의 정수들을 만듭니다. (정확히 말하면 <code>range()</code> 는 리스트나 튜플이 아닌 <a href=iterators.html>반복자</a>를 반환합니다. 이들의 차이점은 뒤에서 따로 다룰겁니다) <var>MONDAY</var>, <var>TUESDAY</var>, <var>WEDNESDAY</var>, <var>THURSDAY</var>, <var>FRIDAY</var>, <var>SATURDAY</var>, and <var>SUNDAY</var> 와 같은 변수들을 정의했고요. 
-
-	(이 예제 코드는 사실 <code>calendar</code> 모듈에서 가져왔습니다. 달력과 관련된 모듈인데요, <abbr>UNIX</abbr> 운영체제를 보면<code>cal</code> 이라고 하는 날짜를 출력하는 프로그램이 있는데, 이와 비슷한 기능을 가진 모듈입니다.  이 <code>calendar</code> 모듈은 월요일부터 일요일까지를 정수의 상수값으로 정의해두고 있습니다.)
-
-
+	(이 예제 코드는 사실 <code>calendar</code> 모듈에서 가져왔습니다. 이 모듈은 달력과 관련된 기능들을 모아둔 모듈인데요, <abbr>UNIX</abbr> 운영체제를 보면<code>cal</code> 이라고 하는 날짜를 출력하는 프로그램이 있는데, 이와 비슷한 기능을 가진 모듈입니다.  이 <code>calendar</code> 모듈은 월요일부터 일요일까지를 정수의 상수값으로 정의해두고 있습니다.)
 
 <li>
 	자 이제 모든 변수가 값을 갖게되었습니다. <var>MONDAY</var> 는 0, <var>TUESDAY</var> 는 <code>1</code>, 이런식으로 값이 할당됩니다.
