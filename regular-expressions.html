@@ -42,17 +42,17 @@ body{counter-reset:h1 5}
 <blockquote class='note compare perl5'>
 <p>
 	<span class=u>&#x261E;</span>I
-	
-	만약 Perl, JavaScript, PHP 같은 언어를 통해 미리 정규식을 사용해본 경험이 있는 분이라면, 파이썬의 정규식을 어렵지 않게 익히실 수 있을겁니다. 파이썬의 <a href=http://docs.python.org/dev/library/re.html#module-contents><code>re</code> 모듈</a>안을 들여다 보면 어떤 함수를 사용하면 되는지, 인자를 어떻게 구성하는지를 살펴볼 수 있습니다.
+
+	만약 Perl, JavaScript, PHP 같은 언어를 통해 미리 정규식을 사용해본 경험이 있는 분이라면, 파이썬의 정규식 또한 어렵지 않게 익히실 수 있을겁니다. 파이썬의 <a href=http://docs.python.org/dev/library/re.html#module-contents><code>re</code> 모듈</a>안을 살펴 보면 어떤 함수를 사용해야 하는지, 인자는 어떤식으로 구성해야 하는지도 알 수 있습니다.
 
 </blockquote>
 
 
 <p class=a>&#x2042;
 
-<h2 id=streetaddresses>Case Study: Street Addresses</h2>
+<h2 id=streetaddresses>사례 연구: 거리 주소 찾기</h2>
 <p>
-	This series of examples was inspired by a real-life problem I had in my day job several years ago, when I needed to scrub and standardize street addresses exported from a legacy system before importing them into a newer system. (See, I don&#8217;t just make this stuff up; it&#8217;s actually useful.)  This example shows how I approached the problem.
+	여기서 사용된 예제는 제가 실제로 업무중 해결해야 했던 문제 가운데 발췌해 왔습니다. 몇 년 전 저는 오래된 시스템에서 사용자 주소를 추출하여 새 시스템으로 이전해야 했는데, 그때 겪었던 문제를 바탕으로 재구성했습니다.
 
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>s = '100 NORTH MAIN ROAD'</kbd>
@@ -70,21 +70,30 @@ body{counter-reset:h1 5}
 
 <ol>
 <li>
-	My goal is to standardize a street address so that <code>'ROAD'</code> is always abbreviated as <code>'RD.'</code>. At first glance, I thought this was simple enough that I could just use the string method <code>replace()</code>. After all, all the data was already uppercase, so case mismatches would not be a problem. And the search string, <code>'ROAD'</code>, was a constant. And in this deceptively simple example, <code>s.replace()</code> does indeed work.
+
+	다양한 방식으로 입력된 주소 체계를 표준화된 방식으로 처리해야 했습니다. 가령 <code>'ROAD'</code> 라는 문자열은 약어인 <code>'RD.'</code> 로 표기해야 했죠. 얼핏 보기에 그리 어려워보이지 않아서, string 클래스의 메쏘드인 <code>replace()</code>를 쓰면 되겠구나 라고 생각 했습니다. 게다가 모든 문자열이 대문자로 입력되있던 터라 대소문자 구분도 필요없었구요. 그래서 <code>s.replace()</code> 코드를 실행시켰더니 정말 제대로 동작하더라구요.
 <li>
-	Life, unfortunately, is full of counterexamples, and I quickly discovered this one. The problem here is that <code>'ROAD'</code> appears twice in the address, once as part of the street name <code>'BROAD'</code> and once as its own word. The <code>replace()</code> method sees these two occurrences and blindly replaces both of them; meanwhile, I see my addresses getting destroyed.
+	하지만 세상에 쉬운 일이 어디 있을까요. <code>'BROAD'</code> 같은 주소의 경우, <code>'ROAD'</code> 라는 문자열이 두번이나 등장하게 되더라고요. 이런 경우 <code>replace()</code> 메쏘드가 두번 적용되 버리니까, 제 순진한 방법은 금방 통하지 않게 되버렸습니다.
 <li>
-	To solve the problem of addresses with more than one <code>'ROAD'</code> substring, you could resort to something like this: only search and replace <code>'ROAD'</code> in the last four characters of the address (<code>s[-4:]</code>), and leave the string alone (<code>s[:-4]</code>). But you can see that this is already getting unwieldy. For example, the pattern is dependent on the length of the string you&#8217;re replacing. (If you were replacing <code>'STREET'</code> with <code>'ST.'</code>, you would need to use <code>s[:-6]</code> and <code>s[-6:].replace(...)</code>.) Would you like to come back in six months and debug this?  I know I wouldn&#8217;t.
+
+	이렇게 <code>'ROAD'</code>가 두번 나타나는 경우를 위해 이렇게 한번 생각해 봤습니다. 문자열을 바꿀 때 주소 문자열 맨 뒤에 나오는 단어에서 마지막 4 글자에만 변환을 적용시키는 겁니다. <code>s[-4:]</code> 와 같은 코드를 작성하면 되지 않을까요? 흠. 그런데 다시 한번 생각해보니 이것도 썩 좋은 방법은 아닌것 같더라고요. 만약 <code>'STREET'</code> 를 <code>'ST.'</code>로 변경하는 경우엔 4 글자가 아니라 6 글자를 바꿔야 하는거잖아요? 나중에 버그가 생길게 뻔해보이는 아이디어 더군요.
+
 <li>
-	It&#8217;s time to move up to regular expressions. In Python, all functionality related to regular expressions is contained in the <code>re</code> module.
+	결국 저는 정규표현식을 이용하기로 마음먹었습니다. 파이썬의 정규표현식은 <code>re</code> 모듈 안에 포함되있습니다.
+
 <li>
-	Take a look at the first parameter: <code>'ROAD$'</code>. This is a simple regular expression that matches <code>'ROAD'</code> only when it occurs at the end of a string. The <code>$</code> means &#8220;end of the string.&#8221; (There is a corresponding character, the caret <code>^</code>, which means &#8220;beginning of the string.&#8221;) Using the <code>re.sub()</code> function, you search the string <var>s</var> for the regular expression <code>'ROAD$'</code> and replace it with <code>'RD.'</code>. This matches the <code>ROAD</code> at the end of the string <var>s</var>, but does <em>not</em> match the <code>ROAD</code> that&#8217;s part of the word <code>BROAD</code>, because that&#8217;s in the middle of <var>s</var>.
+	sub 함수의 첫번째 인자(<code>'ROAD$'</code>)의 의미는 <code>'ROAD'</code> 라는 문자열을 찾는 정규표현식입니다.  <code>$</code> 표시와 함께 사용되어 문자열의 맨 뒤에 나오는 경우만을 찾도록 규정하고 있습니다. 카렛(caret) 이라고 부르는 <code>^</code> 기호는 문자열 맨 앞에 나오는 경우를 의미하고요. 예제코드는 <code>re.sub()</code> 함수를 이용하여, string s 에 정규표현식 <code>'ROAD$'</code> 를 적용하여 검색한 후, 반환되는 결과값을 <code>'RD.'</code>로 바꾸는 동작을 수행합니다. 사용된 정규 표현식은 string s 의 맨 뒤에 나오는 <code>ROAD</code>만을 타겟으로 하지, <code>BROAD</code>와 같이 string 중간에 나타나는 단어의 일부분인 경우에는 매치되지 않는다고 간주합니다. 
+
 </ol>
 
 
-<aside>^ matches the start of a string. $ matches the end of a string.</aside>
+<aside>
+	^ 는 string 의 시작, $ 는 string의 끝 부분을 찾습니다.
+</aside>
 <p>
-	Continuing with my story of scrubbing addresses, I soon discovered that the previous example, matching <code>'ROAD'</code> at the end of the address, was not good enough, because not all addresses included a street designation at all. Some addresses simply ended with the street name. I got away with it most of the time, but if the street name was <code>'BROAD'</code>, then the regular expression would match <code>'ROAD'</code> at the end of the string as part of the word <code>'BROAD'</code>, which is not what I wanted.
+
+	주소 문자열을 단일화 하려는 저의 노력은 계속됩니다. 문자열 끝에서 <code>'ROAD'</code>를 찾아 변환시키는 접근법이 통하지 않는 경우를 발견했기 때문입니다. 희한하게도, 어떤 주소는 맨 뒤에 <code>'ROAD'</code> 를 붙이지 않은 채 도로명만 떡하니 나타나는 경우도 있더라고요. 한 술 더떠 그 도로명이 <code>'BROAD'</code> 인 경우도 있었는데, 그랬더니 아주 우스꽝스런 일이 생기더군요. 
+
 <pre class=screen>
 <samp class=p>>>> </samp><kbd class=pp>s = '100 BROAD'</kbd>
 <samp class=p>>>> </samp><kbd class=pp>re.sub('ROAD$', 'RD.', s)</kbd>
@@ -100,13 +109,22 @@ body{counter-reset:h1 5}
 <samp class=pp>'100 BROAD RD. APT 3'</samp></pre>
 <ol>
 <li>
-	What I <em>really</em> wanted was to match <code>'ROAD'</code> when it was at the end of the string <em>and</em> it was its own word (and not a part of some larger word). To express this in a regular expression, you use <code>\b</code>, which means &#8220;a word boundary must occur right here.&#8221; In Python, this is complicated by the fact that the <code>'\'</code> character in a string must itself be escaped. This is sometimes referred to as the backslash plague, and it is one reason why regular expressions are easier in Perl than in Python. On the down side, Perl mixes regular expressions with other syntax, so if you have a bug, it may be hard to tell whether it&#8217;s a bug in syntax or a bug in your regular expression.
+
+	제가 정말 원했던 건 문자열 맨뒤에 나타나는 <code>'ROAD'</code>라는 문자열을 찾아 바꾸는 것이었습니다. 그리고 이 문자열은 어느 다른 문자열의 일부분이면 안되는 거였죠. 정규표현식에서 이런 요구사항을 표현하려면 <code>\b</code>를 사용합니다. 이 기호의 의미는 "단어가 바로 여기서부터 시작되거나 끝나야 한다, 단어의 경계 (boundary)가 바로 여깁니다"" 라고 알려주는 역할을 합니다.
+	파이썬에서는 <code>'\'</code> 문자가 문자열안에 포함되면 escape 문자로 인식됩니다. 이걸 어려운 말로 backslash plague라고 하는데요. 이런 특징 때문에 파이썬에서 정규표현식 쓰기가 좀 까다롭긴 하죠.
+	펄에서는 이렇게 해주지 않아도 되기 때문에, 파이썬보다 편리합니다만, 때로는 펄의 이런 특징이 독이 되는 경우도 있습니다. 오류가 발생했을때 이 버그가 펄의 잘못된 문법으로 인해 생긴 것인지, 아니면 정규표현식을 잘못 작성해서 생긴 것인지 분간하기 어려울 때가 있으니까요. 세상 일 모두가 장단점이 있죠.
+
+
 <li>
-	To work around the backslash plague, you can use what is called a <i>raw string</i>, by prefixing the string with the letter <code>r</code>. This tells Python that nothing in this string should be escaped; <code>'\t'</code> is a tab character, but <code>r'\t'</code> is really the backslash character <code>\</code> followed by the letter <code>t</code>. I recommend always using raw strings when dealing with regular expressions; otherwise, things get too confusing too quickly (and regular expressions are confusing enough already).
+	backslash plague 문제를 피하는 방법이 하나 있긴 합니다. <i>raw string</i> 이라고 하는 것을 사용하면 되는데요. 일단 사용법은 문자열 앞에 <code>r</code> 문자를 붙여주면 끝입니다. 이 문자를 붙여주면, 파이썬에게 "이 문자열은 아무것도 escape 처리하지 마셈" 이라고 알려주는 것과 같습니다. 일례로, <code>'\t'</code>은 탭 문자를 의미하지만, <code>r'\t'</code> 는 백 슬래쉬 문자 <code>\</code>에 <code>t</code>문자를 연속해서 사용한 것에 지나지 않습니다. 파이썬에서 정규표현식을 사용할 때는 반드시 raw string을 사용하시기를 권장합니다. 안그러면 코드 보기 정말 헷갈리거든요.
+
 <li>
-	<em>*sigh*</em>  Unfortunately, I soon found more cases that contradicted my logic. In this case, the street address contained the word <code>'ROAD'</code> as a whole word by itself, but it wasn&#8217;t at the end, because the address had an apartment number after the street designation. Because <code>'ROAD'</code> isn&#8217;t at the very end of the string, it doesn&#8217;t match, so the entire call to <code>re.sub()</code> ends up replacing nothing at all, and you get the original string back, which is not what you want.
+	<em>에구 에구</em>. 산넘어 산이라더니. 제 아름다운 정규식이 또 한번 보기좋게 실패하는 경우가 있더라고요. ROAD 라는 문자열이 나오긴 나오는데, 문자열 전체 위치중 맨 뒤에 나오지 않으니까 제 정규식은 찾았다고 배를 째버리고 <code>re.sub()</code> 함수는 결과적으로 아무 일도 안하더라 이 말씀입니다.
+
 <li>
-	To solve this problem, I removed the <code>$</code> character and added another <code>\b</code>. Now the regular expression reads &#8220;match <code>'ROAD'</code> when it&#8217;s a whole word by itself anywhere in the string,&#8221; whether at the end, the beginning, or somewhere in the middle.
+	결국 저는 문자열 맨 뒤에서 찾겠다는 의미인 <code>$</code> 기호를 빼버리고 대신 <code>\b</code> 기호를 한번 더 사용해서 <code>'ROAD'</code> 라는 온전한 문자열 하나를 찾되, 그 문자열이 전체 문자열 어디에 있던지 상관없이 문자열 치환이 일어나도록 변경했습니다. 야호. 이제야 비로소 발뻗고 편히 쉴 수 있게 됬습니다.
+
+
 </ol>
 <p class=a>&#x2042;
 
